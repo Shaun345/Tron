@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v3.2.1                      
 ******************************************************************************
->> Linked Wed Apr 17 20:15:36 2024
+>> Linked Wed Apr 17 21:50:07 2024
 
 OUTPUT FILE NAME:   <ECE319K_Lab9H.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001d89
@@ -156,7 +156,7 @@ section   page    origin      length       input sections
                   00001fa0    000004fb     ST7735.o (.rodata._ZL4Font)
                   0000249b    0000003b     ST7735.o (.rodata._ZL5Rcmd1)
                   000024d6    0000002b     ST7735.o (.rodata._ZL5Rcmd3)
-                  00002501    00000016     ST7735.o (.rodata.str1.151242922833174902491)
+                  00002501    00000016     ST7735.o (.rodata.str1.21412624306788250691)
                   00002517    0000000d     ST7735.o (.rodata._ZL10Rcmd2green)
                   00002524    0000000d     ST7735.o (.rodata._ZL8Rcmd2red)
                   00002531    0000000a     Lab9HMain.o (.rodata._ZL14Goodbye_French)
@@ -165,16 +165,16 @@ section   page    origin      length       input sections
                   0000254e    00000008     Lab9HMain.o (.rodata._ZL15Goodbye_English)
                   00002556    00000008     Lab9HMain.o (.rodata._ZL16Language_English)
                   0000255e    00000008     Lab9HMain.o (.rodata._ZL16Language_Spanish)
-                  00002566    00000008     ST7735.o (.rodata.str1.32425923164416384231)
+                  00002566    00000008     ST7735.o (.rodata.str1.93016078013707483441)
                   0000256e    00000007     Lab9HMain.o (.rodata._ZL13Hello_Spanish)
-                  00002575    00000007     ST7735.o (.rodata.str1.43040408279739677101)
-                  0000257c    00000007     ST7735.o (.rodata.str1.45660796252614259451)
+                  00002575    00000007     ST7735.o (.rodata.str1.21620223700419758931)
+                  0000257c    00000007     ST7735.o (.rodata.str1.88028603354938635771)
                   00002583    00000006     Lab9HMain.o (.rodata._ZL13Hello_English)
                   00002589    00000006     Lab9HMain.o (.rodata._ZL15Goodbye_Spanish)
                   0000258f    00000006     Lab9HMain.o (.rodata._ZL18Goodbye_Portuguese)
                   00002595    00000005     Lab9HMain.o (.rodata._ZL12Hello_French)
                   0000259a    00000004     Lab9HMain.o (.rodata._ZL16Hello_Portuguese)
-                  0000259e    00000002     ST7735.o (.rodata.str1.70247537590335144861)
+                  0000259e    00000002     ST7735.o (.rodata.str1.110180589943863331191)
 
 .init_array 
 *          0    000025a0    00000008     

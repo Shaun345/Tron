@@ -9,11 +9,11 @@ CMD_SRCS += \
 ../mspm0g3507.cmd 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Clock.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/LaunchPad.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/TExaS.c \
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c \
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.c \
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/TExaS.c \
 ../TExaSTestmain.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Timer.c 
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.c 
 
 C_DEPS += \
 ./Clock.d \
@@ -44,10 +44,10 @@ C_DEPS__QUOTED += \
 "Timer.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/inc/Clock.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/inc/LaunchPad.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/inc/TExaS.c" \
+"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" \
+"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.c" \
+"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/TExaS.c" \
 "../TExaSTestmain.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/inc/Timer.c" 
+"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Timer.c" 
 
 

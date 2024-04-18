@@ -142,7 +142,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 ST7735R.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/bin/tiarmclang.exe" -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -D__MSPM0G3507__ -gdwarf-3 -Wl,-m"ST7735R.map" -Wl,--heap_size=512 -Wl,--stack_size=512 -Wl,-i"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/ST7735R/Debug/syscfg" -Wl,-i"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="ST7735R_linkInfo.xml" -Wl,--rom_model -o "ST7735R.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/bin/tiarmclang.exe" -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -D__MSPM0G3507__ -gdwarf-3 -Wl,-m"ST7735R.map" -Wl,--heap_size=512 -Wl,--stack_size=512 -Wl,-i"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/ST7735R/Debug/syscfg" -Wl,-i"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-armllvm_3.2.1.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="ST7735R_linkInfo.xml" -Wl,--rom_model -o "ST7735R.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

@@ -1,7 +1,6 @@
 # FIXED
 
-DAC5.o: \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/DAC5.cpp \
+DAC5.o: C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.cpp \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/DeviceFamily.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/m0p/mspm0g350x.h \

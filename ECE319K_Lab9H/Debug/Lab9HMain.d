@@ -31,18 +31,18 @@ Lab9HMain.o: ../Lab9HMain.cpp \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/ST7735.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Clock.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/LaunchPad.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/TExaS.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Timer.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/SlidePot.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/DAC5.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/SmallFont.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/LED.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/Switch.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/Sound.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/images/images.h
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/ST7735.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/TExaS.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SlidePot.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/SmallFont.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/LED.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Switch.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/images/images.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -104,26 +104,26 @@ C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h:
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/ST7735.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/ST7735.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Clock.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/LaunchPad.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/TExaS.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/TExaS.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Timer.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/SlidePot.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SlidePot.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/DAC5.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/SmallFont.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/SmallFont.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/LED.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/LED.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/Switch.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Switch.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/Sound.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/ECE319K_Lab9H/images/images.h:
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/images/images.h:

@@ -12,7 +12,7 @@ S_SRCS += \
 ../TrafficLightFSM.s 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/MSPM0_ValvanoWare/inc/Clock.c 
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c 
 
 S_DEPS += \
 ./TrafficLightFSM.d 
@@ -35,7 +35,7 @@ S_DEPS__QUOTED += \
 "TrafficLightFSM.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/MSPM0_ValvanoWare/inc/Clock.c" 
+"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" 
 
 S_SRCS__QUOTED += \
 "../TrafficLightFSM.s" 
