@@ -1,0 +1,401 @@
+******************************************************************************
+            TI ARM Clang Linker PC v3.2.1                      
+******************************************************************************
+>> Linked Mon Mar 18 19:44:17 2024
+
+OUTPUT FILE NAME:   <ST7735R.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00002059
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00020000  00002168  0001de98  R  X
+  SRAM                  20200000   00008000  00000415  00007beb  RW X
+  BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
+  BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00002168   00002168    r-x
+  00000000    00000000    000000c0   000000c0    r-- .intvecs
+  000000c0    000000c0    00001400   00001400    r-- .rodata
+  000014c0    000014c0    00000c70   00000c70    r-x .text
+  00002130    00002130    00000038   00000038    r-- .cinit
+20200000    20200000    00000215   00000000    rw-
+  20200000    20200000    00000200   00000000    rw- .sysmem
+  20200200    20200200    00000012   00000000    rw- .data
+  20200212    20200212    00000003   00000000    rw- .bss
+20207e00    20207e00    00000200   00000000    rw-
+  20207e00    20207e00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000c0     
+                  00000000    000000c0     startup_mspm0g3507_ticlang.o (.intvecs)
+
+.text      0    000014c0    00000c70     
+                  000014c0    00000210     ST7735.o (.text.ST7735_DrawBitmap)
+                  000016d0    000001b4     Clock.o (.text.Clock_Init80MHz)
+                  00001884    00000118     ST7735.o (.text.ST7735_FillRect)
+                  0000199c    000000f8     SPI.o (.text.SPI_Init)
+                  00001a94    000000d4     ST7735Rtestmain.o (.text.main)
+                  00001b68    000000a2     ST7735.o (.text.commandList)
+                  00001c0a    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  00001c0c    00000098     ST7735.o (.text.ST7735_InitR)
+                  00001ca4    00000088     ST7735.o (.text.setAddrWindow)
+                  00001d2c    0000007c     LaunchPad.o (.text.LaunchPad_Init)
+                  00001da8    00000078     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00001e20    00000048     SPI.o (.text.SPI_OutCommand)
+                  00001e68    00000040     SPI.o (.text.SPI_Reset)
+                  00001ea8    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  00001ee8    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00001f24    00000038     LaunchPad.o (.text.ActivatePortA_B)
+                  00001f5c    00000038     SPI.o (.text.SPI_OutData)
+                  00001f94    00000034     Clock.o (.text.Clock_Delay1ms)
+                  00001fc8    00000034     ST7735.o (.text.ST7735_SetCursor)
+                  00001ffc    00000030     ST7735.o (.text.commonInit)
+                  0000202c    0000002c     ST7735.o (.text.ST7735_FillScreen)
+                  00002058    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  00002080    00000020     LaunchPad.o (.text.LaunchPad_InS3)
+                  000020a0    0000001c     LaunchPad.o (.text.LaunchPad_InS2)
+                  000020bc    00000016     libc.a : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset)
+                  000020d2    00000012            : memcpy16.S.obj (.text:TI_memcpy_small)
+                  000020e4    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  000020f6    00000010     Clock.o (.text.Clock_Delay)
+                  00002106    00000002     --HOLE-- [fill = 0]
+                  00002108    0000000c     Clock.o (.text.Clock_Freq)
+                  00002114    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  0000211c    00000004     startup_mspm0g3507_ticlang.o (.text.Default_Handler)
+                  00002120    00000004     startup_mspm0g3507_ticlang.o (.text.Reset_Handler)
+                  00002124    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00002128    00000004            : exit.c.obj (.text:abort)
+                  0000212c    00000004     --HOLE-- [fill = 0]
+
+.cinit     0    00002130    00000038     
+                  00002130    00000012     (.cinit..data.load) [load image, compression = lzss]
+                  00002142    00000002     --HOLE-- [fill = 0]
+                  00002144    0000000c     (__TI_handler_table)
+                  00002150    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00002158    00000010     (__TI_cinit_table)
+
+.rodata    0    000000c0    00001400     
+                  000000c0    00001380     ST7735Rtestmain.o (.rodata.TEXAS)
+                  00001440    0000003b     ST7735.o (.rodata.Rcmd1)
+                  0000147b    0000002b     ST7735.o (.rodata.Rcmd3)
+                  000014a6    0000000d     ST7735.o (.rodata.Rcmd2green)
+                  000014b3    0000000d     ST7735.o (.rodata.Rcmd2red)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.sysmem    0    20200000    00000200     UNINITIALIZED
+                  20200000    00000010     libc.a : memory.c.obj (.sysmem)
+                  20200010    000001f0     --HOLE--
+
+.data      0    20200200    00000012     UNINITIALIZED
+                  20200200    00000004     Clock.o (.data.BusFreq)
+                  20200204    00000004     ST7735.o (.data.StX)
+                  20200208    00000004     ST7735.o (.data.StY)
+                  2020020c    00000002     ST7735.o (.data.StTextColor)
+                  2020020e    00000002     ST7735.o (.data._height)
+                  20200210    00000002     ST7735.o (.data._width)
+
+.bss       0    20200212    00000003     UNINITIALIZED
+                  20200212    00000001     ST7735.o (.bss.ColStart)
+                  20200213    00000001     ST7735.o (.bss.RowStart)
+                  20200214    00000001     ST7735.o (.bss.TabColor)
+
+.stack     0    20207e00    00000200     UNINITIALIZED
+                  20207e00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20207e04    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20200000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20200000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       ST7735Rtestmain.o              212    4992      0      
+       ST7735.o                       1402   128       17     
+       Clock.o                        516    0         4      
+       SPI.o                          440    0         0      
+       LaunchPad.o                    240    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         2810   5120      21     
+                                                              
+    .\ticlang\
+       startup_mspm0g3507_ticlang.o   8      192       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         8      192       0      
+                                                              
+    C:\ti\ccs1260\ccs\tools\compiler\ti-cgt-armllvm_3.2.1.LTS\lib\armv6m-ti-none-eabi/c/libc.a
+       copy_decompress_lzss.c.obj     120    0         0      
+       autoinit.c.obj                 60     0         0      
+       boot_cortex_m.c.obj            40     0         0      
+       copy_zero_init.c.obj           22     0         0      
+       copy_decompress_none.c.obj     18     0         0      
+       memcpy16.S.obj                 18     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         286    0         0      
+                                                              
+    C:\ti\ccs1260\ccs\tools\compiler\ti-cgt-armllvm_3.2.1.LTS\lib\clang/15.0.7/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       aeabi_uidivmod.S.obj           64     0         0      
+       aeabi_memcpy.S.obj             8      0         0      
+       aeabi_div0.c.obj               2      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         74     0         0      
+                                                              
+       Heap:                          0      0         512    
+       Stack:                         0      0         512    
+       Linker Generated:              0      54        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   3178   5366      1045   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00002158 records: 2, size/record: 8, table size: 16
+	.data: load addr=00002130, load size=00000012 bytes, run addr=20200200, run size=00000012 bytes, compression=lzss
+	.bss: load addr=00002150, load size=00000008 bytes, run addr=20200212, run size=00000003 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00002144 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+0000211d  ADC0_IRQHandler               
+0000211d  ADC1_IRQHandler               
+0000211d  AES_IRQHandler                
+00001f25  ActivatePortA_B               
+20200200  BusFreq                       
+00002128  C$$EXIT                       
+0000211d  CANFD0_IRQHandler             
+000020f7  Clock_Delay                   
+00001f95  Clock_Delay1ms                
+00002109  Clock_Freq                    
+000016d1  Clock_Init80MHz               
+0000211d  DAC0_IRQHandler               
+0000211d  DMA_IRQHandler                
+0000211d  Default_Handler               
+0000211d  GROUP0_IRQHandler             
+0000211d  GROUP1_IRQHandler             
+0000211d  HardFault_Handler             
+0000211d  I2C0_IRQHandler               
+0000211d  I2C1_IRQHandler               
+000020a1  LaunchPad_InS2                
+00002081  LaunchPad_InS3                
+00001d2d  LaunchPad_Init                
+0000211d  NMI_Handler                   
+0000211d  PendSV_Handler                
+0000211d  RTC_IRQHandler                
+00002121  Reset_Handler                 
+0000211d  SPI0_IRQHandler               
+0000211d  SPI1_IRQHandler               
+0000199d  SPI_Init                      
+00001e21  SPI_OutCommand                
+00001f5d  SPI_OutData                   
+00001e69  SPI_Reset                     
+000014c1  ST7735_DrawBitmap             
+00001885  ST7735_FillRect               
+0000202d  ST7735_FillScreen             
+00001c0d  ST7735_InitR                  
+00001fc9  ST7735_SetCursor              
+0000211d  SVC_Handler                   
+2020020c  StTextColor                   
+20200204  StX                           
+20200208  StY                           
+0000211d  SysTick_Handler               
+000000c0  TEXAS                         
+0000211d  TIMA0_IRQHandler              
+0000211d  TIMA1_IRQHandler              
+0000211d  TIMG0_IRQHandler              
+0000211d  TIMG12_IRQHandler             
+0000211d  TIMG6_IRQHandler              
+0000211d  TIMG7_IRQHandler              
+0000211d  TIMG8_IRQHandler              
+000020d3  TI_memcpy_small               
+0000211d  UART0_IRQHandler              
+0000211d  UART1_IRQHandler              
+0000211d  UART2_IRQHandler              
+0000211d  UART3_IRQHandler              
+20208000  __STACK_END                   
+00000200  __STACK_SIZE                  
+00000200  __SYSMEM_SIZE                 
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00002158  __TI_CINIT_Base               
+00002168  __TI_CINIT_Limit              
+00002168  __TI_CINIT_Warm               
+00002144  __TI_Handler_Table_Base       
+00002150  __TI_Handler_Table_Limit      
+00001ee9  __TI_auto_init_nobinit_nopinit
+00001da9  __TI_decompress_lzss          
+000020e5  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+000020bd  __TI_zero_init_nomemset       
+00001c0b  __aeabi_idiv0                 
+00002115  __aeabi_memcpy                
+00002115  __aeabi_memcpy4               
+00002115  __aeabi_memcpy8               
+00001ea9  __aeabi_uidiv                 
+00001ea9  __aeabi_uidivmod              
+ffffffff  __binit__                     
+UNDEFED   __mpu_init                    
+20207e00  __stack                       
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+00002059  _c_int00_noargs               
+20200000  _sys_memory                   
+UNDEFED   _system_post_cinit            
+00002125  _system_pre_init              
+00002129  abort                         
+ffffffff  binit                         
+00000000  interruptVectors              
+00001a95  main                          
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000000  __TI_static_base__            
+00000000  interruptVectors              
+000000c0  TEXAS                         
+00000200  __STACK_SIZE                  
+00000200  __SYSMEM_SIZE                 
+000014c1  ST7735_DrawBitmap             
+000016d1  Clock_Init80MHz               
+00001885  ST7735_FillRect               
+0000199d  SPI_Init                      
+00001a95  main                          
+00001c0b  __aeabi_idiv0                 
+00001c0d  ST7735_InitR                  
+00001d2d  LaunchPad_Init                
+00001da9  __TI_decompress_lzss          
+00001e21  SPI_OutCommand                
+00001e69  SPI_Reset                     
+00001ea9  __aeabi_uidiv                 
+00001ea9  __aeabi_uidivmod              
+00001ee9  __TI_auto_init_nobinit_nopinit
+00001f25  ActivatePortA_B               
+00001f5d  SPI_OutData                   
+00001f95  Clock_Delay1ms                
+00001fc9  ST7735_SetCursor              
+0000202d  ST7735_FillScreen             
+00002059  _c_int00_noargs               
+00002081  LaunchPad_InS3                
+000020a1  LaunchPad_InS2                
+000020bd  __TI_zero_init_nomemset       
+000020d3  TI_memcpy_small               
+000020e5  __TI_decompress_none          
+000020f7  Clock_Delay                   
+00002109  Clock_Freq                    
+00002115  __aeabi_memcpy                
+00002115  __aeabi_memcpy4               
+00002115  __aeabi_memcpy8               
+0000211d  ADC0_IRQHandler               
+0000211d  ADC1_IRQHandler               
+0000211d  AES_IRQHandler                
+0000211d  CANFD0_IRQHandler             
+0000211d  DAC0_IRQHandler               
+0000211d  DMA_IRQHandler                
+0000211d  Default_Handler               
+0000211d  GROUP0_IRQHandler             
+0000211d  GROUP1_IRQHandler             
+0000211d  HardFault_Handler             
+0000211d  I2C0_IRQHandler               
+0000211d  I2C1_IRQHandler               
+0000211d  NMI_Handler                   
+0000211d  PendSV_Handler                
+0000211d  RTC_IRQHandler                
+0000211d  SPI0_IRQHandler               
+0000211d  SPI1_IRQHandler               
+0000211d  SVC_Handler                   
+0000211d  SysTick_Handler               
+0000211d  TIMA0_IRQHandler              
+0000211d  TIMA1_IRQHandler              
+0000211d  TIMG0_IRQHandler              
+0000211d  TIMG12_IRQHandler             
+0000211d  TIMG6_IRQHandler              
+0000211d  TIMG7_IRQHandler              
+0000211d  TIMG8_IRQHandler              
+0000211d  UART0_IRQHandler              
+0000211d  UART1_IRQHandler              
+0000211d  UART2_IRQHandler              
+0000211d  UART3_IRQHandler              
+00002121  Reset_Handler                 
+00002125  _system_pre_init              
+00002128  C$$EXIT                       
+00002129  abort                         
+00002144  __TI_Handler_Table_Base       
+00002150  __TI_Handler_Table_Limit      
+00002158  __TI_CINIT_Base               
+00002168  __TI_CINIT_Limit              
+00002168  __TI_CINIT_Warm               
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+20200000  _sys_memory                   
+20200200  BusFreq                       
+20200204  StX                           
+20200208  StY                           
+2020020c  StTextColor                   
+20207e00  __stack                       
+20208000  __STACK_END                   
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[101 symbols]
