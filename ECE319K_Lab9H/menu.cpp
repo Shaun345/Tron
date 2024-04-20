@@ -9,6 +9,7 @@ using namespace std;
 #include "GameSettings.h"
 extern int bikeSpeed;
 extern bool abilityEnabled;
+extern int currLang;
 
 // Offsets for text
 int col = 16;
@@ -22,7 +23,7 @@ struct Menu
     int highlight;
     int next[4];
 
-    Menu(string text[2][4], int mod, int *next)
+    Menu(string text[2][4], int mod, const int *next)
     {
         for (int val = 0; val < mod; val++)
         {
@@ -55,7 +56,6 @@ Menu menuFSM[] = {
     Menu(langText, 3, langChange),
     Menu(settText, 4, settChange)};
 
-int currLang = 0;
 int lasInd = 1;
 int currInd = 0;
 
@@ -63,13 +63,9 @@ void up()
 {
     ST7735_DrawString(col, row + off * menuFSM[currInd].highlight, menuFSM[currInd].text[currLang][menuFSM[currInd].highlight].c_str(), 65289);
     if (menuFSM[currInd].highlight == 0)
-    {
         menuFSM[currInd].highlight = menuFSM[currInd].mod - 1;
-    }
     else
-    {
         menuFSM[currInd].highlight--;
-    }
     ST7735_DrawString(col, row + off * menuFSM[currInd].highlight, menuFSM[currInd].text[currLang][menuFSM[currInd].highlight].c_str(), 65535);
 }
 
