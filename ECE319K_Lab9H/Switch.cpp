@@ -18,7 +18,7 @@ void Switch_Init(void)
     IOMUX->SECCFG.PINCM[PA25INDEX] = 0x00050081;
     IOMUX->SECCFG.PINCM[PA26INDEX] = 0x00050081;
     IOMUX->SECCFG.PINCM[PA27INDEX] = 0x00050081;
-    //IOMUX->SECCFG.PINCM[PA28INDEX] = 0x00050081;
+    IOMUX->SECCFG.PINCM[PA28INDEX] = 0x00050081;
     IOMUX->SECCFG.PINCM[PB23INDEX] = 0x00050081;
     //IOMUX->SECCFG.PINCM[PB24INDEX] = 0x00050081;
   
@@ -31,5 +31,5 @@ uint32_t Switch_In(void)
     unsigned int bIn = 0x03 & (GPIOB->DIN31_0 >> 23);
     unsigned int aIn = 0x3C & (GPIOA->DIN31_0 >> 22);
 
-    return (0x03 & (GPIOB->DIN31_0 >> 24)) | (0x1E & (GPIOA->DIN31_0 >> 23));
+    return aIn | bIn;
 }

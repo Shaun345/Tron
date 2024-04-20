@@ -16,13 +16,19 @@ class SlidePot{ private:
 // distance = (slope*data+offset)/4096
   uint32_t slope;    // calibration coeffients
   uint32_t offset;
+  uint32_t channel;
+
+  static short count = 0;
+  short index;
+
 public:
   SlidePot(uint32_t m, uint32_t b); // initialize slide pot
   void Init(void);                  // initialize ADC1
   uint32_t In(void);                // return last ADC sample value (0 to 4095)
   void Save(uint32_t n);            // save ADC, set semaphore
   void Sync(void);                  // wait for semaphore
-  uint32_t Convert(uint32_t n);     // convert ADC raw sample to fixed-point distance, 0.001cm
+  uint32_t Convert(uint32_t n);     // convert ADC raw sample to fixed-point distance
+  uint32_t JoystickConvert(uint32_t n);     // convert ADC raw sample to fixed-point distance
   float FloatConvert(uint32_t n);   // do not use this function
   uint32_t Distance(void);          // return last distance value (0 to 2000), 0.001cm
 };

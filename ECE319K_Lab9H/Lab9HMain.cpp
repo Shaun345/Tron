@@ -44,10 +44,14 @@ uint32_t Random(uint32_t n)
     return (Random32() >> 16) % n;
 }
 
-SlidePot Sensor(1500, 0); // copy calibration from Lab 7
+SlidePot AxisX(200, -100, 1);
+SlidePot AxisY(200, -100, 2);
+
+
 int buttonInput = 0;
 // Change this to a FSM
 short gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
+bool semaphore = 0;
 
 // games  engine runs at 30Hz
 void TIMG12_IRQHandler(void)
@@ -64,6 +68,7 @@ void TIMG12_IRQHandler(void)
         // 3) move sprites
         // 4) start sounds
         // 5) set semaphore
+        semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
         GPIOB->DOUTTGL31_0 = GREEN; // toggle PB27 (minimally intrusive debugging)
     }
@@ -117,8 +122,8 @@ int main(void)
     ST7735_SetRotation(1);
     // note: if you colors are weird, see different options for
     //  ST7735_InitR(INITR_REDTAB); inside ST7735_InitPrintf()
-    ST7735_FillScreen(ST7735_BLACK);
-    Sensor.Init();                                   // PB18 = ADC1 channel 5, slidepot
+    AxisX.Init();                                    // PA16 = ADC1 channel 1, Joystick
+    AxisX.Init();                                    // PA17 = ADC1 channel 2, Joystick
     Switch_Init();                                   // initialize switches
     LED_Init();                                      // initialize LED
     Sound_Init();                                    // initialize sound
@@ -131,15 +136,18 @@ int main(void)
     // Start the menu
     tronMenuInit();
 
-    
-
     while (1)
     {
-        periodic_update(buttonInput);
-        
         // wait for semaphore
-        // clear semaphore
-        // update ST7735R
-        // check for end game or level switch
+        if (semaphore)
+        {
+            // clear semaphore
+            semaphore = false;
+
+            // update ST7735R
+            periodic_update(buttonInput);
+
+            // check for end game or level switch
+        }
     }
 }
