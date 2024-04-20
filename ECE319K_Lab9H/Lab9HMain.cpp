@@ -44,11 +44,13 @@ uint32_t Random(uint32_t n)
     return (Random32() >> 16) % n;
 }
 
-SlidePot AxisX(200, -100, 1);
-SlidePot AxisY(200, -100, 2);
+SlidePot AxisX(200, 100, 1);
+SlidePot AxisY(200, 100, 2);
 
 
 int buttonInput = 0;
+int xInput = 0;
+int yInput = 0;
 // Change this to a FSM
 short gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
 bool semaphore = 0;
@@ -63,6 +65,13 @@ void TIMG12_IRQHandler(void)
         GPIOB->DOUTTGL31_0 = GREEN; // toggle PB27 (minimally intrusive debugging)
                                     // game engine goes here
         // 1) sample slide pot
+        // Get raw data
+        xInput = AxisX.In();
+        yInput = AxisY.In();
+        // Convert to -100 to 100
+        xInput = AxisX.JoystickConvert(xInput);
+        yInput = AxisX.JoystickConvert(yInput);
+
         // 2) read input switches
         buttonInput = Switch_In();
         // 3) move sprites

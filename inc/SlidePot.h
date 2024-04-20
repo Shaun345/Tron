@@ -15,14 +15,14 @@ class SlidePot{ private:
   uint32_t distance; // distance in 0.001cm
 // distance = (slope*data+offset)/4096
   uint32_t slope;    // calibration coeffients
-  uint32_t offset;
+  int32_t offset;
   uint32_t channel;
 
-  static short count = 0;
-  short index;
+  static uint16_t count;
+  uint16_t index;
 
 public:
-  SlidePot(uint32_t m, uint32_t b); // initialize slide pot
+  SlidePot(uint32_t m, uint32_t b, uint16_t channel); // initialize slide pot
   void Init(void);                  // initialize ADC1
   uint32_t In(void);                // return last ADC sample value (0 to 4095)
   void Save(uint32_t n);            // save ADC, set semaphore

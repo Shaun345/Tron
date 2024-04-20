@@ -9,6 +9,8 @@
 #define ADCVREF_VDDA 0x000
 #define ADCVREF_INT 0x200
 
+uint16_t SlidePot::count = 0;
+
 uint32_t SlidePot::In(void)
 {
     ADC1->ULLMEM.CTL0 |= 0x000000001;
@@ -22,7 +24,7 @@ uint32_t SlidePot::In(void)
 
 // constructor, invoked on creation of class
 // m and b are linear calibration coefficents
-SlidePot::SlidePot(uint32_t m, uint32_t b, uint32_t channel)
+SlidePot::SlidePot(uint32_t m, uint32_t b, uint16_t channel)
 {
     slope = m;
     offset = b;
