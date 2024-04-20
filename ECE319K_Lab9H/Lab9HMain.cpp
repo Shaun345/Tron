@@ -45,6 +45,9 @@ uint32_t Random(uint32_t n)
 }
 
 SlidePot Sensor(1500, 0); // copy calibration from Lab 7
+int buttonInput = 0;
+// Change this to a FSM
+short gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
 
 // games  engine runs at 30Hz
 void TIMG12_IRQHandler(void)
@@ -57,6 +60,7 @@ void TIMG12_IRQHandler(void)
                                     // game engine goes here
         // 1) sample slide pot
         // 2) read input switches
+        buttonInput = Switch_In();
         // 3) move sprites
         // 4) start sounds
         // 5) set semaphore
@@ -69,92 +73,6 @@ uint8_t TExaS_LaunchPadLogicPB27PB26(void)
     return (0x80 | ((GPIOB->DOUT31_0 >> 26) & 0x03));
 }
 
-typedef enum
-{
-    English,
-    Spanish,
-    Portuguese,
-    French
-} Language_t;
-Language_t myLanguage = English;
-typedef enum
-{
-    HELLO,
-    GOODBYE,
-    LANGUAGE
-} phrase_t;
-const char Hello_English[] = "Hello";
-const char Hello_Spanish[] = "\xADHola!";
-const char Hello_Portuguese[] = "Ol\xA0";
-const char Hello_French[] = "All\x83";
-const char Goodbye_English[] = "Goodbye";
-const char Goodbye_Spanish[] = "Adi\xA2s";
-const char Goodbye_Portuguese[] = "Tchau";
-const char Goodbye_French[] = "Au revoir";
-const char Language_English[] = "English";
-const char Language_Spanish[] = "Espa\xA4ol";
-const char Language_Portuguese[] = "Portugu\x88s";
-const char Language_French[] = "Fran\x87"
-                               "ais";
-const char *Phrases[3][4] = {
-    {Hello_English, Hello_Spanish, Hello_Portuguese, Hello_French},
-    {Goodbye_English, Goodbye_Spanish, Goodbye_Portuguese, Goodbye_French},
-    {Language_English, Language_Spanish, Language_Portuguese, Language_French}};
-// use main1 to observe special characters
-int main1(void)
-{ // main1
-    char l;
-    __disable_irq();
-    PLL_Init(); // set bus speed
-    LaunchPad_Init();
-    ST7735_InitPrintf();
-    ST7735_SetRotation(1);
-    ST7735_FillScreen(0x0000); // set screen to black
-    for (int myPhrase = 0; myPhrase <= 2; myPhrase++)
-    {
-        for (int myL = 0; myL <= 3; myL++)
-        {
-            ST7735_OutString((char *)Phrases[LANGUAGE][myL]);
-            ST7735_OutChar(' ');
-            ST7735_OutString((char *)Phrases[myPhrase][myL]);
-            ST7735_OutChar(13);
-        }
-    }
-    Clock_Delay1ms(3000);
-    ST7735_FillScreen(0x0000); // set screen to black
-    l = 128;
-    while (1)
-    {
-        Clock_Delay1ms(2000);
-        for (int j = 0; j < 3; j++)
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                ST7735_SetCursor(7 * j + 0, i);
-                ST7735_OutUDec(l);
-                ST7735_OutChar(' ');
-                ST7735_OutChar(' ');
-                ST7735_SetCursor(7 * j + 4, i);
-                ST7735_OutChar(l);
-                l++;
-            }
-        }
-    }
-}
-
-// use main3 to test switches and LEDs
-int main3(void)
-{ // main3
-    __disable_irq();
-    PLL_Init(); // set bus speed
-    LaunchPad_Init();
-    Switch_Init(); // initialize switches
-    LED_Init();    // initialize LED
-    while (1)
-    {
-        // write code to test switches and LEDs
-    }
-}
 // use main4 to test sound outputs
 int main4(void)
 {
@@ -213,18 +131,12 @@ int main(void)
     // Start the menu
     tronMenuInit();
 
-    // Change this to a FSM
-    int gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
-    int lastInput = 0;
+    
 
     while (1)
     {
-        int input = Switch_In();
-        if (input != lastInput)
-        {
-            periodic_update(input);
-            lastInput = input;
-        }
+        periodic_update(buttonInput);
+        
         // wait for semaphore
         // clear semaphore
         // update ST7735R
