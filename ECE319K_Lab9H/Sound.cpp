@@ -80,6 +80,11 @@ void Sound_Menu(void)
     Sound_Start(MenuSound, sizeof(MenuSound));
 }
 
+void Sound_Explosion(void)
+{
+    Sound_Start(explosion, sizeof(explosion));
+}
+
 void Sound_Select(void)
 {
     Sound_Start(TronMenuSelect, sizeof(TronMenuSelect));
