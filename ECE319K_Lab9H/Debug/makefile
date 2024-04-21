@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./Clock.o" \
 "./DAC5.o" \
+"./GamePlay.o" \
 "./Joystick2.o" \
 "./LED.o" \
 "./Lab9HMain.o" \
@@ -29,7 +30,7 @@ ORDERED_OBJS += \
 "./ticlang/startup_mspm0g3507_ticlang.o" \
 "../mspm0g3507.cmd" \
 $(GEN_CMDS__FLAG) \
--Wl,-l"C:/ti/mspm0_sdk_1_30_00_03/source/ti/driverlib/lib/ticlang/m0p/mspm0g1x0x_g3x0x/driverlib.a" \
+-Wl,-l"C:/ti/mspm0_sdk_1_20_01_06/source/ti/driverlib/lib/ticlang/m0p/mspm0g1x0x_g3x0x/driverlib.a" \
 -Wl,-llibc.a \
 
 -include ../makefile.init
@@ -164,9 +165,9 @@ ECE319K_Lab9H.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Clock.o" "DAC5.o" "Joystick2.o" "LED.o" "Lab9HMain.o" "LaunchPad.o" "SPI.o" "ST7735.o" "SlidePot.o" "SmallFont.o" "Sound.o" "Switch.o" "TExaS.o" "Timer.o" "menu.o" "images\pipedreams\PipeSound.o" "ticlang\startup_mspm0g3507_ticlang.o" 
+	-$(RM) "Clock.o" "DAC5.o" "GamePlay.o" "Joystick2.o" "LED.o" "Lab9HMain.o" "LaunchPad.o" "SPI.o" "ST7735.o" "SlidePot.o" "SmallFont.o" "Sound.o" "Switch.o" "TExaS.o" "Timer.o" "menu.o" "images\pipedreams\PipeSound.o" "ticlang\startup_mspm0g3507_ticlang.o" 
 	-$(RM) "images\pipedreams\PipeSound.d" "ticlang\startup_mspm0g3507_ticlang.d" 
-	-$(RM) "Clock.d" "DAC5.d" "Joystick2.d" "LED.d" "Lab9HMain.d" "LaunchPad.d" "SPI.d" "ST7735.d" "SlidePot.d" "SmallFont.d" "Sound.d" "Switch.d" "TExaS.d" "Timer.d" "menu.d" 
+	-$(RM) "Clock.d" "DAC5.d" "GamePlay.d" "Joystick2.d" "LED.d" "Lab9HMain.d" "LaunchPad.d" "SPI.d" "ST7735.d" "SlidePot.d" "SmallFont.d" "Sound.d" "Switch.d" "TExaS.d" "Timer.d" "menu.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

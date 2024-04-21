@@ -1,6 +1,6 @@
 # FIXED
 
-SPI.o: C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.cpp \
+SPI.o: C:/ECE\ 319\ Final\ Project/Tron/inc/SPI.cpp \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/DeviceFamily.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/m0p/mspm0g350x.h \
@@ -31,8 +31,8 @@ SPI.o: C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.cpp \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.h
+ C:/ECE\ 319\ Final\ Project/Tron/inc/SPI.h \
+ C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -94,6 +94,6 @@ C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h:
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.h:
+C:/ECE\ 319\ Final\ Project/Tron/inc/SPI.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.h:
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.h:

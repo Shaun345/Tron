@@ -8,6 +8,8 @@ SHELL = cmd.exe
 CPP_SRCS += \
 C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.cpp \
+../GamePlay.cpp \
+../Joystick2.cpp \
 ../LED.cpp \
 ../Lab9HMain.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.cpp \
@@ -27,6 +29,7 @@ CMD_SRCS += \
 OBJS += \
 ./Clock.o \
 ./DAC5.o \
+./GamePlay.o \
 ./Joystick2.o \
 ./LED.o \
 ./Lab9HMain.o \
@@ -44,6 +47,7 @@ OBJS += \
 CPP_DEPS += \
 ./Clock.d \
 ./DAC5.d \
+./GamePlay.d \
 ./Joystick2.d \
 ./LED.d \
 ./Lab9HMain.d \
@@ -61,6 +65,7 @@ CPP_DEPS += \
 OBJS__QUOTED += \
 "Clock.o" \
 "DAC5.o" \
+"GamePlay.o" \
 "Joystick2.o" \
 "LED.o" \
 "Lab9HMain.o" \
@@ -78,6 +83,7 @@ OBJS__QUOTED += \
 CPP_DEPS__QUOTED += \
 "Clock.d" \
 "DAC5.d" \
+"GamePlay.d" \
 "Joystick2.d" \
 "LED.d" \
 "Lab9HMain.d" \
@@ -95,6 +101,8 @@ CPP_DEPS__QUOTED += \
 CPP_SRCS__QUOTED += \
 "C:/ECE 319 Final Project/Tron/inc/Clock.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/DAC5.cpp" \
+"../GamePlay.cpp" \
+"../Joystick2.cpp" \
 "../LED.cpp" \
 "../Lab9HMain.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/LaunchPad.cpp" \

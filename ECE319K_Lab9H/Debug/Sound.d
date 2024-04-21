@@ -31,10 +31,10 @@ Sound.o: ../Sound.cpp \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_debugss.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h \
  C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/sounds/sounds.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.h
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Sound.h \
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/sounds/sounds.h \
+ C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.h \
+ C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -96,10 +96,10 @@ C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/hw_sysctl.h:
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/peripherals/m0p/sysctl/hw_sysctl_mspm0g1x0x_g3x0x.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h:
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Sound.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/sounds/sounds.h:
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/sounds/sounds.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.h:
+C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.h:
 
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.h:
+C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.h:
