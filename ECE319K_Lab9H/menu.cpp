@@ -3,6 +3,7 @@
 #include "images/images.h"
 #include <string>
 #include <map>
+#include "Sound.h"
 
 using namespace std;
 
@@ -52,9 +53,9 @@ string settText[2][4] = {{"Color:", "Speed:", "Special:", "Back"},
 int settChange[] = {2, 2, 2, 0};
 
 Menu menuFSM[] = {
-    Menu(mainText, 3, mainChange),
-    Menu(langText, 3, langChange),
-    Menu(settText, 4, settChange)};
+Menu(mainText, 3, mainChange),
+Menu(langText, 3, langChange),
+Menu(settText, 4, settChange)};
 
 int lasInd = 1;
 int currInd = 0;
@@ -135,6 +136,7 @@ void periodic_update(int input)
     if (input != lastInput)
     {
         lastInput = input;
+
         switch (input)
         {
         case 0x0800:
@@ -156,5 +158,23 @@ void periodic_update(int input)
         default:
             break;
         }
+
+        switch (input)
+        {
+            case 0x0800:
+            case 0x0004:
+            case 0x0400:
+            case 0x0010:
+                Sound_Menu();
+                break;
+
+            case 0x0020:
+                Sound_Select();
+                break;
+
+            default:
+                break;
+        }
+
     }
 }

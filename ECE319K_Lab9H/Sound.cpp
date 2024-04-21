@@ -15,6 +15,10 @@
 uint32_t period = Kz11;
 uint32_t priority = 0;
 
+uint32_t size = 0;
+uint32_t ind = 0;
+const unsigned char *curSound;
+
 void SysTick_IntArm(uint32_t periodIn, uint32_t priorityIn)
 {
     // write this
@@ -26,6 +30,8 @@ void SysTick_IntArm(uint32_t periodIn, uint32_t priorityIn)
 // Initialize the 5 bit DAC
 void Sound_Init(void)
 {
+    DAC5_Init();
+
     SysTick->CTRL &= 0;
     SysTick->LOAD = period - 1;
     SCB->SHP[1] = (SCB->SHP[1] & (~0xC0000000)) | priority << 30;
@@ -35,7 +41,14 @@ void Sound_Init(void)
 extern "C" void SysTick_Handler(void);
 void SysTick_Handler(void)
 { // called at 11 kHz
-  // output one value to DAC if a sound is active
+    // output one value to DAC if a sound is active
+    if (ind < size)
+    {
+        DAC5_Out(curSound[ind]);
+        ind++;
+    }
+    else
+        Sound_Stop();
 }
 
 //******* Sound_Start ************
@@ -50,6 +63,9 @@ void SysTick_Handler(void)
 // special cases: as you wish to implement
 void Sound_Start(const uint8_t *pt, uint32_t count)
 {
+    ind = 0;
+    curSound = pt;
+    size = count;
     SysTick->LOAD = period - 1;
     SysTick->VAL = 0;
 }
@@ -59,31 +75,37 @@ void Sound_Stop(void)
     SysTick->LOAD = 0;
 }
 
-void Sound_Shoot(void)
+void Sound_Menu(void)
 {
-    // write this
-}
-void Sound_Killed(void)
-{
-    // write this
-}
-void Sound_Explosion(void)
-{
-    // write this
+    Sound_Start(MenuSound, sizeof(MenuSound));
 }
 
-void Sound_Fastinvader1(void)
+void Sound_Select(void)
 {
+    Sound_Start(TronMenuSelect, sizeof(TronMenuSelect));
 }
-void Sound_Fastinvader2(void)
+
+void Sound_Start(void)
 {
+    Sound_Start(TronStart, sizeof(TronStart));
 }
-void Sound_Fastinvader3(void)
+
+void Sound_Success(void)
 {
+    Sound_Start(TronSuccess, sizeof(TronSuccess));
 }
-void Sound_Fastinvader4(void)
+
+void Sound_Fail(void)
 {
+    Sound_Start(TronGameFail, sizeof(TronGameFail));
 }
-void Sound_Highpitch(void)
+
+void Sound_GameWin(void)
 {
+    Sound_Start(TronGameWin, sizeof(TronGameWin));
+}
+
+void Sound_GameLose(void)
+{
+    Sound_Start(TronGameOver, sizeof(TronGameOver));
 }
