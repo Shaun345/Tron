@@ -43,6 +43,6 @@ void DAC5_Init(void);
  * @brief  Output to DAC5
  * @note this solution must be friendly
  */
-void DAC5_Out(uint32_t data);
+void DAC5_Out(const unsigned char data);
 
 #endif // __DAC5_H__
