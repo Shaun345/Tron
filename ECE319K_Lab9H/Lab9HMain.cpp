@@ -48,11 +48,14 @@ uint32_t Random(uint32_t n)
 Joystick2 axes(1, 2);
 
 int buttonInput = 0;
+int joystickPacket = 0; // Up Down Left Right
 int32_t xInput = 0;
 int32_t yInput = 0;
 // Change this to a FSM
 short gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
 bool semaphore = 0;
+
+#define threshold 65
 
 // games  engine runs at 30Hz
 void TIMG12_IRQHandler(void)
@@ -67,10 +70,12 @@ void TIMG12_IRQHandler(void)
         // Get raw data
         axes.Convert(&xInput, &yInput);
         // Convert to -100 to 100
-        // axes.Convert(&xInput, &yInput);
 
         // 2) read input switches
         buttonInput = Switch_In();
+        joystickPacket = ((yInput>threshold)<<3)|((yInput<-threshold)<<2)
+                        |((xInput>threshold)<<1)|((xInput<-threshold));
+
         // 3) move sprites
         // 4) start sounds
         // 5) set semaphore
@@ -151,7 +156,7 @@ int main(void)
             semaphore = false;
 
             // update ST7735R
-            periodic_update(buttonInput);
+            periodic_update((joystickPacket<<8) | buttonInput);
 
             // check for end game or level switch
         }

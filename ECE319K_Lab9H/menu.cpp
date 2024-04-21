@@ -137,15 +137,17 @@ void periodic_update(int input)
         lastInput = input;
         switch (input)
         {
-        case 0x04:
+        case 0x0800:
+        case 0x0004:
             up();
             break;
 
-        case 0x10:
+        case 0x0400:
+        case 0x0010:
             down();
             break;
 
-        case 0x20:
+        case 0x0020:
             changeSet();
             lasInd = currInd;
             currInd = menuFSM[currInd].next[menuFSM[currInd].highlight];
