@@ -9,9 +9,9 @@ CMD_SRCS += \
 ../mspm0g3507.cmd 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.c \
 ../TimerPeriodicIntmain.c 
 
 C_DEPS += \
@@ -39,9 +39,9 @@ C_DEPS__QUOTED += \
 "TimerPeriodicIntmain.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Timer.c" \
+"C:/ECE 319 Final Project/Tron/inc/Clock.c" \
+"C:/ECE 319 Final Project/Tron/inc/LaunchPad.c" \
+"C:/ECE 319 Final Project/Tron/inc/Timer.c" \
 "../TimerPeriodicIntmain.c" 
 
 

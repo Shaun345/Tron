@@ -9,11 +9,11 @@ CMD_SRCS += \
 ../mspm0g3507.cmd 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/ADC.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/ADC.c \
 ../ADCSWtriggerTestmain.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/JoyStick.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.c 
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/JoyStick.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.c 
 
 C_DEPS += \
 ./ADC.d \
@@ -44,10 +44,10 @@ C_DEPS__QUOTED += \
 "LaunchPad.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/ADC.c" \
+"C:/ECE 319 Final Project/Tron/inc/ADC.c" \
 "../ADCSWtriggerTestmain.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/JoyStick.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.c" 
+"C:/ECE 319 Final Project/Tron/inc/Clock.c" \
+"C:/ECE 319 Final Project/Tron/inc/JoyStick.c" \
+"C:/ECE 319 Final Project/Tron/inc/LaunchPad.c" 
 
 

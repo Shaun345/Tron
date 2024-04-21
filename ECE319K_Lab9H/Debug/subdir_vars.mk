@@ -6,20 +6,19 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.cpp \
-../Joystick2.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.cpp \
 ../LED.cpp \
 ../Lab9HMain.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/ST7735.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SlidePot.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/SPI.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/ST7735.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/SlidePot.cpp \
 ../SmallFont.cpp \
 ../Sound.cpp \
 ../Switch.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/TExaS.cpp \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Timer.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/TExaS.cpp \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.cpp \
 ../menu.cpp 
 
 CMD_SRCS += \
@@ -94,20 +93,19 @@ CPP_DEPS__QUOTED += \
 "menu.d" 
 
 CPP_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/DAC5.cpp" \
-"../Joystick2.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/Clock.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/DAC5.cpp" \
 "../LED.cpp" \
 "../Lab9HMain.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/SPI.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/ST7735.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/SlidePot.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/LaunchPad.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/SPI.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/ST7735.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/SlidePot.cpp" \
 "../SmallFont.cpp" \
 "../Sound.cpp" \
 "../Switch.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/TExaS.cpp" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Timer.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/TExaS.cpp" \
+"C:/ECE 319 Final Project/Tron/inc/Timer.cpp" \
 "../menu.cpp" 
 
 

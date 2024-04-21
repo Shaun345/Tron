@@ -9,11 +9,11 @@ CMD_SRCS += \
 ../mspm0g3507.cmd 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.c \
 ../Testermain.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/UART.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/UARTbusywait.c 
+C:/ECE\ 319\ Final\ Project/Tron/inc/UART.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/UARTbusywait.c 
 
 C_DEPS += \
 ./Clock.d \
@@ -44,10 +44,10 @@ C_DEPS__QUOTED += \
 "UARTbusywait.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.c" \
+"C:/ECE 319 Final Project/Tron/inc/Clock.c" \
+"C:/ECE 319 Final Project/Tron/inc/LaunchPad.c" \
 "../Testermain.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/UART.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/UARTbusywait.c" 
+"C:/ECE 319 Final Project/Tron/inc/UART.c" \
+"C:/ECE 319 Final Project/Tron/inc/UARTbusywait.c" 
 
 

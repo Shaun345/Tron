@@ -12,7 +12,7 @@ S_SRCS += \
 ../InputOutput.s 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c 
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.c 
 
 S_DEPS += \
 ./InputOutput.d 
@@ -35,7 +35,7 @@ S_DEPS__QUOTED += \
 "InputOutput.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" 
+"C:/ECE 319 Final Project/Tron/inc/Clock.c" 
 
 S_SRCS__QUOTED += \
 "../InputOutput.s" 

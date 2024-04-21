@@ -12,10 +12,10 @@ CMD_SRCS += \
 ../mspm0g3507.cmd 
 
 C_SRCS += \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/SPI.c \
-C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/ST7735.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/LaunchPad.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/SPI.c \
+C:/ECE\ 319\ Final\ Project/Tron/inc/ST7735.c \
 ../ST7735Rtestmain.c 
 
 C_DEPS += \
@@ -50,10 +50,10 @@ EXE_SRCS__QUOTED += \
 "../BmpConvert16.exe" 
 
 C_SRCS__QUOTED += \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/SPI.c" \
-"C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/ST7735.c" \
+"C:/ECE 319 Final Project/Tron/inc/Clock.c" \
+"C:/ECE 319 Final Project/Tron/inc/LaunchPad.c" \
+"C:/ECE 319 Final Project/Tron/inc/SPI.c" \
+"C:/ECE 319 Final Project/Tron/inc/ST7735.c" \
 "../ST7735Rtestmain.c" 
 
 
