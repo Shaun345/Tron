@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "adc.h": "c",
+        "clock.h": "c"
     }
 }

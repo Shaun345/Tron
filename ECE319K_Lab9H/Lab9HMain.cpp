@@ -20,6 +20,7 @@
 #include "Sound.h"
 #include "images/images.h"
 #include "menu.h"
+#include "Joystick2.h"
 extern "C" void __disable_irq(void);
 extern "C" void __enable_irq(void);
 extern "C" void TIMG12_IRQHandler(void);
@@ -44,13 +45,11 @@ uint32_t Random(uint32_t n)
     return (Random32() >> 16) % n;
 }
 
-SlidePot AxisX(200, 100, 1);
-SlidePot AxisY(200, 100, 2);
-
+Joystick2 axes(1, 2);
 
 int buttonInput = 0;
-int xInput = 0;
-int yInput = 0;
+int32_t xInput = 0;
+int32_t yInput = 0;
 // Change this to a FSM
 short gameState = 0; // 0 is menu 1 is game 2 is win/loss 3 is replay screen
 bool semaphore = 0;
@@ -66,11 +65,9 @@ void TIMG12_IRQHandler(void)
                                     // game engine goes here
         // 1) sample slide pot
         // Get raw data
-        xInput = AxisX.In();
-        yInput = AxisY.In();
+        axes.Convert(&xInput, &yInput);
         // Convert to -100 to 100
-        xInput = AxisX.JoystickConvert(xInput);
-        yInput = AxisX.JoystickConvert(yInput);
+        // axes.Convert(&xInput, &yInput);
 
         // 2) read input switches
         buttonInput = Switch_In();
@@ -131,8 +128,7 @@ int main(void)
     ST7735_SetRotation(1);
     // note: if you colors are weird, see different options for
     //  ST7735_InitR(INITR_REDTAB); inside ST7735_InitPrintf()
-    AxisX.Init();                                    // PA16 = ADC1 channel 1, Joystick
-    AxisX.Init();                                    // PA17 = ADC1 channel 2, Joystick
+    axes.JoyStick_Init();
     Switch_Init();                                   // initialize switches
     LED_Init();                                      // initialize LED
     Sound_Init();                                    // initialize sound
@@ -144,6 +140,7 @@ int main(void)
 
     // Start the menu
     tronMenuInit();
+    LED_On(0x07);
 
     while (1)
     {

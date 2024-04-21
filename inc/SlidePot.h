@@ -18,9 +18,6 @@ class SlidePot{ private:
   int32_t offset;
   uint32_t channel;
 
-  static uint16_t count;
-  uint16_t index;
-
 public:
   SlidePot(uint32_t m, uint32_t b, uint16_t channel); // initialize slide pot
   void Init(void);                  // initialize ADC1

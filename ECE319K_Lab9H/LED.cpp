@@ -29,20 +29,20 @@ void LED_Init(void)
 // Bit 3 IR LED
 void LED_On(uint32_t data)
 {
-    GPIOA->DOUTSET31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
-    GPIOB->DOUTSET31_0 = (0x08 & data) << 8;
+    GPIOB->DOUTSET31_0 = (0x03 & data) << 16 | (0x04 & data) << 17;
+    GPIOA->DOUTSET31_0 = (0x08 & data) << 8;
 }
 
 // data specifies which LED to turn off
 void LED_Off(uint32_t data)
 {
-    GPIOA->DOUTCLR31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
-    GPIOB->DOUTCLR31_0 = (0x08 & data) << 8;
+    GPIOB->DOUTCLR31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
+    GPIOA->DOUTCLR31_0 = (0x08 & data) << 8;
 }
 
 // data specifies which LED to toggle
 void LED_Toggle(uint32_t data)
 {
-    GPIOA->DOUTTGL31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
-    GPIOB->DOUTTGL31_0 = (0x08 & data) << 8;
+    GPIOB->DOUTTGL31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
+    GPIOA->DOUTTGL31_0 = (0x08 & data) << 8;
 }

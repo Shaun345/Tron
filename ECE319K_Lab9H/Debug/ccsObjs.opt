@@ -1,5 +1,6 @@
 "./Clock.o"
 "./DAC5.o"
+"./Joystick2.o"
 "./LED.o"
 "./Lab9HMain.o"
 "./LaunchPad.o"

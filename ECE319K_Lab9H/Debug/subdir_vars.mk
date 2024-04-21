@@ -8,6 +8,7 @@ SHELL = cmd.exe
 CPP_SRCS += \
 C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/Clock.cpp \
 C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/DAC5.cpp \
+../Joystick2.cpp \
 ../LED.cpp \
 ../Lab9HMain.cpp \
 C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/inc/LaunchPad.cpp \
@@ -27,6 +28,7 @@ CMD_SRCS += \
 OBJS += \
 ./Clock.o \
 ./DAC5.o \
+./Joystick2.o \
 ./LED.o \
 ./Lab9HMain.o \
 ./LaunchPad.o \
@@ -43,6 +45,7 @@ OBJS += \
 CPP_DEPS += \
 ./Clock.d \
 ./DAC5.d \
+./Joystick2.d \
 ./LED.d \
 ./Lab9HMain.d \
 ./LaunchPad.d \
@@ -59,6 +62,7 @@ CPP_DEPS += \
 OBJS__QUOTED += \
 "Clock.o" \
 "DAC5.o" \
+"Joystick2.o" \
 "LED.o" \
 "Lab9HMain.o" \
 "LaunchPad.o" \
@@ -75,6 +79,7 @@ OBJS__QUOTED += \
 CPP_DEPS__QUOTED += \
 "Clock.d" \
 "DAC5.d" \
+"Joystick2.d" \
 "LED.d" \
 "Lab9HMain.d" \
 "LaunchPad.d" \
@@ -91,6 +96,7 @@ CPP_DEPS__QUOTED += \
 CPP_SRCS__QUOTED += \
 "C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/Clock.cpp" \
 "C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/DAC5.cpp" \
+"../Joystick2.cpp" \
 "../LED.cpp" \
 "../Lab9HMain.cpp" \
 "C:/Users/shaun/OneDrive/Desktop/S24/ECE 319H/Tron/inc/LaunchPad.cpp" \

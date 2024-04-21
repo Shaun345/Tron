@@ -9,17 +9,17 @@
 #define ADCVREF_VDDA 0x000
 #define ADCVREF_INT 0x200
 
-uint16_t SlidePot::count = 0;
 
 uint32_t SlidePot::In(void)
 {
+    ADC0->ULLMEM.MEMCTL[0] = channel;
     ADC1->ULLMEM.CTL0 |= 0x000000001;
     ADC1->ULLMEM.CTL1 |= 0x000000100;
     uint32_t volatile delay = ADC1->ULLMEM.STATUS;
     while ((ADC1->ULLMEM.STATUS & 0x01) == 0x01)
     {
     };
-    return ADC1->ULLMEM.MEMRES[index];
+    return ADC1->ULLMEM.MEMRES[0];
 }
 
 // constructor, invoked on creation of class
@@ -33,9 +33,6 @@ SlidePot::SlidePot(uint32_t m, uint32_t b, uint16_t channel)
 
 void SlidePot::Init(void)
 {
-    index = count;
-    count++;
-
     ADC1->ULLMEM.GPRCM.RSTCTL = 0xB1000003;
     ADC1->ULLMEM.GPRCM.PWREN = 0x26000001;
     Clock_Delay(24);
@@ -44,7 +41,7 @@ void SlidePot::Init(void)
     ADC1->ULLMEM.CTL0 = 0x03010000;
     ADC1->ULLMEM.CTL1 = 0x00000000;
     ADC1->ULLMEM.CTL2 = 0x00000000;
-    ADC1->ULLMEM.MEMCTL[index] = channel;
+    ADC1->ULLMEM.MEMCTL[0] = channel;
     ADC1->ULLMEM.SCOMP0 = 0;
     ADC1->ULLMEM.CPU_INT.IMASK = 0;
 }

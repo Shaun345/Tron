@@ -43,7 +43,8 @@ Lab9HMain.o: ../Lab9HMain.cpp \
  C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Switch.h \
  C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h \
  C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/images/images.h \
- C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/menu.h
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/menu.h \
+ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Joystick2.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -130,3 +131,5 @@ C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Sound.h:
 C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/images/images.h:
 
 C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/menu.h:
+
+C:/Users/shaun/OneDrive/Desktop/S24/ECE\ 319H/Tron/ECE319K_Lab9H/Joystick2.h:
