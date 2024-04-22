@@ -29,7 +29,7 @@ uint32_t Switch_In(void)
     // Order of bits from most to least significant
     // Joystick, Right, Down, Left, Up, Select, Start
     unsigned int bIn = 0x03 & (GPIOB->DIN31_0 >> 23);
-    unsigned int aIn = 0x3C & (GPIOA->DIN31_0 >> 22);
+    unsigned int aIn = 0x7C & (GPIOA->DIN31_0 >> 22);
 
     return aIn | bIn;
 }

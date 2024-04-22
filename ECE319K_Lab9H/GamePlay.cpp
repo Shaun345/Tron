@@ -9,6 +9,9 @@
 #include "GamePlay.h"
 #include "../inc/ST7735.h"
 #include "../inc/Clock.h"
+#include "../inc/LaunchPad.h"
+#include "../inc/TExaS.h"
+#include "../inc/Timer.h"
 #include "images/images.h"
 #include "Sound.h"
 #include "LED.h"
@@ -16,6 +19,9 @@
 extern int bikeSpeed;
 extern bool abilityEnabled;
 extern int currLang;
+
+extern "C" void __disable_irq(void);
+extern "C" void __enable_irq(void);
 
 const int default_capacity = 10;
 
@@ -40,6 +46,8 @@ class Bike
     int last_direction;
     int direction;
     int lives;
+    bool slowMode = false;
+    bool slowModeCount = false;
 
     int curPos[2];
     int lastPos[2];
@@ -106,6 +114,16 @@ public:
         lives--;
         // Sound_Explosion();
         displayCrash();
+    }
+
+    void turnOffLine(bool toggle)
+    {
+        this->abilities = toggle;
+    }
+
+    void turnOnSlowmode(bool toggle)
+    {
+        this->slowMode = toggle;
     }
 
     int health()
@@ -336,11 +354,11 @@ public:
         switch (last_direction)
         {
         case DIR_LEFT:
-            xOff = 7;
+            xOff = (abilities && abilityEnabled) ? 6 : 7;
             break;
 
         case DIR_DOWN:
-            yOff = -7;
+            yOff = (abilities && abilityEnabled) ? -6 : -7;
             break;
 
         case DIR_UP:
@@ -353,48 +371,55 @@ public:
         case DIR_UP:
         case DIR_DOWN:
             ST7735_DrawBitmap(curPos[0] - 2, curPos[1], cycleSprites[direction][number], 5, 7);
+            if (abilities && abilityEnabled)
+                ST7735_DrawPixel(lastPos[0], lastPos[1] + yOff, ST7735_BLACK);
             break;
 
         case DIR_LEFT:
         case DIR_RIGHT:
             ST7735_DrawBitmap(curPos[0], curPos[1] + 2, cycleSprites[direction][number], 7, 5);
+            if (abilities && abilityEnabled)
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1], ST7735_BLACK);
             break;
         }
 
-        switch (last_direction)
+        if (!(abilities && abilityEnabled))
         {
-        case DIR_UP:
-        case DIR_DOWN:
-            ST7735_DrawPixel(lastPos[0], lastPos[1] + yOff, trailColor[0]);
-            ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] + yOff, trailColor[1]);
-            ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] + yOff, trailColor[1]);
-            ST7735_DrawPixel(lastPos[0] - 2, lastPos[1] + yOff, trailColor[2]);
-            ST7735_DrawPixel(lastPos[0] + 2, lastPos[1] + yOff, trailColor[2]);
+            switch (last_direction)
+            {
+            case DIR_UP:
+            case DIR_DOWN:
+                ST7735_DrawPixel(lastPos[0], lastPos[1] + yOff, trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] + yOff, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] + yOff, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] - 2, lastPos[1] + yOff, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + 2, lastPos[1] + yOff, trailColor[2]);
 
-            visitedMatrix[lastPos[0] + 0][lastPos[1] + yOff] = true;
-            visitedMatrix[lastPos[0] - 1][lastPos[1] + yOff] = true;
-            visitedMatrix[lastPos[0] + 1][lastPos[1] + yOff] = true;
-            visitedMatrix[lastPos[0] - 2][lastPos[1] + yOff] = true;
-            visitedMatrix[lastPos[0] + 2][lastPos[1] + yOff] = true;
-            break;
+                visitedMatrix[lastPos[0] + 0][lastPos[1] + yOff] = true;
+                visitedMatrix[lastPos[0] - 1][lastPos[1] + yOff] = true;
+                visitedMatrix[lastPos[0] + 1][lastPos[1] + yOff] = true;
+                visitedMatrix[lastPos[0] - 2][lastPos[1] + yOff] = true;
+                visitedMatrix[lastPos[0] + 2][lastPos[1] + yOff] = true;
+                break;
 
-        case DIR_LEFT:
-        case DIR_RIGHT:
-            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1], trailColor[0]);
-            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 1, trailColor[1]);
-            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 1, trailColor[1]);
-            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 2, trailColor[2]);
-            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 2, trailColor[2]);
+            case DIR_LEFT:
+            case DIR_RIGHT:
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1], trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 2, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 2, trailColor[2]);
 
-            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 0] = true;
-            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 1] = true;
-            visitedMatrix[lastPos[0] + xOff][lastPos[1] - 1] = true;
-            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 2] = true;
-            visitedMatrix[lastPos[0] + xOff][lastPos[1] - 2] = true;
-            break;
+                visitedMatrix[lastPos[0] + xOff][lastPos[1] + 0] = true;
+                visitedMatrix[lastPos[0] + xOff][lastPos[1] + 1] = true;
+                visitedMatrix[lastPos[0] + xOff][lastPos[1] - 1] = true;
+                visitedMatrix[lastPos[0] + xOff][lastPos[1] + 2] = true;
+                visitedMatrix[lastPos[0] + xOff][lastPos[1] - 2] = true;
+                break;
+            }
+
+            updateCorner(trailColor);
         }
-
-        updateCorner(trailColor);
     }
 };
 
@@ -415,6 +440,11 @@ class Gameplay
         // display background
         // display bikes
         // display countdown timer
+        ST7735_DrawFastVLine(0, 0, 110, 65289);
+        ST7735_DrawFastVLine(159, 0, 110, 65289);
+        ST7735_DrawFastHLine(0, 0, 160, 65289);
+        ST7735_DrawFastHLine(0, 110, 160, 65289);
+
         player1.firstDisplay();
         player2.firstDisplay();
 
@@ -449,6 +479,33 @@ class Gameplay
         if (player1.health() <= 0 || player2.health() <= 0)
         {
             gameDone = true;
+            __disable_irq();
+            TimerG12_IntArm(80000000 / 30, 2);
+            __enable_irq();
+        }
+    }
+
+    void updateLives(void)
+    {
+        for (int life = 0; life < 3; life++)
+        {
+            if (player1.health() > life)
+            {
+                ST7735_DrawBitmap(5 + 12 * life, 125, BlueHeart, 9, 9);
+            }
+            else
+            {
+                ST7735_FillRect(5 + 12 * life, 117, 9, 9, ST7735_BLACK);
+            }
+
+            if (player2.health() > life)
+            {
+                ST7735_DrawBitmap(145 - 12 * life, 125, RedHeart, 9, 9);
+            }
+            else
+            {
+                ST7735_FillRect(145 - 12 * life, 117, 9, 9, ST7735_BLACK);
+            }
         }
     }
 
@@ -471,7 +528,8 @@ public:
         player1 = Bike(speed, abilities, 0);
         player2 = Bike(speed, abilities, 1);
         gameDone = false;
-        countDown();
+
+        newRound();
     }
 
     void newRound()
@@ -479,6 +537,7 @@ public:
         ST7735_FillRect(0, 0, 160, 110, ST7735_BLACK);
         player1.reset();
         player2.reset();
+        updateLives();
         countDown();
     }
 
@@ -495,8 +554,8 @@ public:
                 gameOver();
                 return true;
             }
-
-            newRound();
+            else
+                newRound();
         }
         if (player2.collisions(player1))
         {
@@ -507,8 +566,8 @@ public:
                 gameOver();
                 return true;
             }
-
-            newRound();
+            else
+                newRound();
         }
         player1.display();
         player2.display();
@@ -519,14 +578,23 @@ public:
     {
         return gameDone;
     }
+
+    void toggleAbilities(bool p1, bool p2)
+    {
+        player1.turnOffLine(p1);
+        player2.turnOffLine(p2);
+    }
 };
 
 Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
 
 void gameInit(void)
 {
+    __disable_irq();
+    TimerG12_IntArm(80000000 / (15 * (bikeSpeed + 1)), 2);
+    __enable_irq();
+
     ST7735_FillScreen(ST7735_BLACK);
-    ST7735_FillRect(0, 110, 160, 18, 65289);
     gameRunner.reset();
 }
 
@@ -534,6 +602,7 @@ void gameUpdate(int input)
 {
     // gameRunner.update(0x000F & (input >> 8), input >> 12);
     gameRunner.update(0x000F & (input >> 8), 0);
+    gameRunner.toggleAbilities((input & 0x0020) >> 5, (input & 0x1000) >> 12);
 }
 
 bool gameFinished()
