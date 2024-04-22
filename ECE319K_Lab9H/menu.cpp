@@ -51,14 +51,14 @@ string langText[2][4] = {{"English", "German", "Back"},
                          {"Englisch", "Deutsch", "Zuruck"}};
 int langChange[] = {0, 0, 0};
 
-string settText[2][4] = {{"Color:", "Speed:", "Special:", "Back"},
-                         {"Farbe:", "Tempo:", "Spezial:", "Zuruck"}};
-int settChange[] = {2, 2, 2, 0};
+string settText[2][4] = {{"Speed:", "Special:", "Back"},
+                         {"Tempo:", "Spezial:", "Zuruck"}};
+int settChange[] = {2, 2, 0};
 
 Menu menuFSM[] = {
 Menu(mainText, 3, mainChange),
 Menu(langText, 3, langChange),
-Menu(settText, 4, settChange)};
+Menu(settText, 3, settChange)};
 
 int lasInd = 1;
 int currInd = 0;
@@ -94,8 +94,8 @@ void menu_update()
     }
     if (currInd == 2)
     {
-        ST7735_DrawString(col + 8, row + off, speeds[bikeSpeed - 1], 65289);
-        ST7735_DrawString(col + 8, row + off + off, abilityEnabled ? "T" : "F", 65289);
+        ST7735_DrawString(col + 8, row, speeds[bikeSpeed - 1], 65289);
+        ST7735_DrawString(col + 8, row + off, abilityEnabled ? "T" : "F", 65289);
     }
 }
 
@@ -120,11 +120,9 @@ void changeSet()
         switch (menuFSM[currInd].highlight)
         {
         case 0:
-            break;
-        case 1:
             bikeSpeed = ++bikeSpeed > 3 ? 1 : bikeSpeed;
             break;
-        case 2:
+        case 1:
             abilityEnabled = !abilityEnabled;
             break;
 
