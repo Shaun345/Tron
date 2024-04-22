@@ -80,32 +80,9 @@ void Sound_Menu(void)
     Sound_Start(MenuSound, sizeof(MenuSound));
 }
 
-void Sound_Explosion(void)
-{
-    Sound_Start(explosion, sizeof(explosion));
-}
 
 void Sound_Select(void)
 {
     Sound_Start(TronMenuSelect, sizeof(TronMenuSelect));
 }
 
-void Sound_StartGame(void)
-{
-    Sound_Start(TronStart, sizeof(TronStart));
-}
-
-void Sound_Success(void)
-{
-    Sound_Start(TronSuccess, sizeof(TronSuccess));
-}
-
-void Sound_Fail(void)
-{
-    Sound_Start(TronGameFail, sizeof(TronGameFail));
-}
-
-void Sound_GameWin(void)
-{
-    Sound_Start(TronGameWin, sizeof(TronGameWin));
-}

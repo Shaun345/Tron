@@ -13,8 +13,8 @@
 #include "../inc/TExaS.h"
 #include "../inc/Timer.h"
 #include "../inc/FIFO2.h"
-#include "UART2.h"
-#include "IRxmt.h"
+//#include "UART2.h"
+//#include "IRxmt.h"
 #include "images/images.h"
 #include "Sound.h"
 #include "LED.h"
@@ -22,6 +22,7 @@
 extern int bikeSpeed;
 extern bool abilityEnabled;
 extern int currLang;
+extern bool host;
 
 extern "C" void __disable_irq(void);
 extern "C" void __enable_irq(void);
@@ -520,28 +521,16 @@ public:
         this->speed = speed;
         this->language = language;
         this->abilities = abilities;
-        if (host) {
-            player1 = Bike(speed, abilities, 0);
-            player2 = Bike(speed, abilities, 1);
-        }
-        else {
-            player1 = Bike(speed, abilities, 1);
-            player2 = Bike(speed, abilities, 0);
-        }
+        player1 = Bike(speed, abilities, 0);
+        player2 = Bike(speed, abilities, 1);
     }
 
     void reset()
     {
         delete &player1;
         delete &player2;
-        if (host) {
-            player1 = Bike(speed, abilities, 0);
-            player2 = Bike(speed, abilities, 1);
-        }
-        else {
-            player1 = Bike(speed, abilities, 1);
-            player2 = Bike(speed, abilities, 0);
-        }
+        player1 = Bike(speed, abilities, 0);
+        player2 = Bike(speed, abilities, 1);
         gameDone = false;
 
         newRound();
@@ -601,15 +590,16 @@ public:
     }
 
     int getPacket() {
-        int packet;
-        {
-                do
-            {
-                packet = UART2_InChar();
-            }
-            while ((packet&(1<<7)) != (1<<7));
-            return packet &= ~(1<<7);
-        }
+//        int packet;
+//        {
+//                do
+//            {
+//                packet = UART2_InChar();
+//            }
+//            while ((packet&(1<<7)) != (1<<7));
+//            return packet &= ~(1<<7);
+//        }
+        return 0;
     }
 };
 
