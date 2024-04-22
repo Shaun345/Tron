@@ -14,6 +14,9 @@
 #include "../inc/Timer.h"
 #include "../inc/SlidePot.h"
 #include "../inc/DAC5.h"
+#include "../inc/FIFO2.h"
+#include "UART2.h"
+#include "IRxmt.h"
 #include "SmallFont.h"
 #include "LED.h"
 #include "Switch.h"
@@ -69,7 +72,7 @@ uint32_t Random(uint32_t n)
 Joystick2 axes(1, 2);
 
 int buttonInput = 0;
-int joystickPacket = 0; // Up Down Left Right
+uint8_t joystickPacket = 0; // Up Down Left Right
 int32_t xInput = 0;
 int32_t yInput = 0;
 // Change this to a FSM
@@ -98,7 +101,9 @@ void TIMG12_IRQHandler(void)
 
         // 3) move sprites
         // 4) start sounds
-        // 5) set semaphore
+        // 5) transmit UART data
+        IRxmt_OutChar(joystickPacket |= 0x80);
+        // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
         GPIOB->DOUTTGL31_0 = GREEN; // toggle PB27 (minimally intrusive debugging)
@@ -123,6 +128,8 @@ int main(void)
     Switch_Init();                                   // initialize switches
     LED_Init();                                      // initialize LED
     Sound_Init();                                    // initialize sound
+    UART2_Init();                                    // initialize Receiving
+    IRxmt_Init();                                    // initialize Transmitting
     TExaS_Init(0, 0, &TExaS_LaunchPadLogicPB27PB26); // PB27 and PB26
                                                      // initialize interrupts on TimerG12 at 30 Hz
     TimerG12_IntArm(80000000 / 30, 2);

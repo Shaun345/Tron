@@ -12,6 +12,9 @@
 #include "../inc/LaunchPad.h"
 #include "../inc/TExaS.h"
 #include "../inc/Timer.h"
+#include "../inc/FIFO2.h"
+#include "UART2.h"
+#include "IRxmt.h"
 #include "images/images.h"
 #include "Sound.h"
 #include "LED.h"
@@ -517,16 +520,28 @@ public:
         this->speed = speed;
         this->language = language;
         this->abilities = abilities;
-        player1 = Bike(speed, abilities, 0);
-        player2 = Bike(speed, abilities, 1);
+        if (host) {
+            player1 = Bike(speed, abilities, 0);
+            player2 = Bike(speed, abilities, 1);
+        }
+        else {
+            player1 = Bike(speed, abilities, 1);
+            player2 = Bike(speed, abilities, 0);
+        }
     }
 
     void reset()
     {
         delete &player1;
         delete &player2;
-        player1 = Bike(speed, abilities, 0);
-        player2 = Bike(speed, abilities, 1);
+        if (host) {
+            player1 = Bike(speed, abilities, 0);
+            player2 = Bike(speed, abilities, 1);
+        }
+        else {
+            player1 = Bike(speed, abilities, 1);
+            player2 = Bike(speed, abilities, 0);
+        }
         gameDone = false;
 
         newRound();
@@ -584,6 +599,18 @@ public:
         player1.turnOffLine(p1);
         player2.turnOffLine(p2);
     }
+
+    int getPacket() {
+        int packet;
+        {
+                do
+            {
+                packet = UART2_InChar();
+            }
+            while ((packet&(1<<7)) != (1<<7));
+            return packet &= ~(1<<7);
+        }
+    }
 };
 
 Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
@@ -601,7 +628,13 @@ void gameInit(void)
 void gameUpdate(int input)
 {
     // gameRunner.update(0x000F & (input >> 8), input >> 12);
-    gameRunner.update(0x000F & (input >> 8), 0);
+    if (host) {
+        gameRunner.update(0x000F & (input >> 8), gameRunner.getPacket());
+    }
+    else {
+        gameRunner.update(gameRunner.getPacket(), 0x000F & (input >> 8));
+
+    }
     gameRunner.toggleAbilities((input & 0x0020) >> 5, (input & 0x1000) >> 12);
 }
 
