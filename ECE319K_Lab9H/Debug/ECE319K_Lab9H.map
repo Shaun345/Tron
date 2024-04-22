@@ -1,17 +1,17 @@
 ******************************************************************************
             TI ARM Clang Linker PC v3.2.1                      
 ******************************************************************************
->> Linked Mon Apr 22 00:52:25 2024
+>> Linked Mon Apr 22 03:47:56 2024
 
 OUTPUT FILE NAME:   <ECE319K_Lab9H.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000135b5
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00013b61
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00020000  00013ba0  0000c460  R  X
+  FLASH                 00000000   00020000  00014150  0000beb0  R  X
   SRAM                  20200000   00008000  000050ed  00002f13  RW X
   BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
   BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
@@ -21,12 +21,12 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00013ba0   00013ba0    r-x
+00000000    00000000    00014150   00014150    r-x
   00000000    00000000    000000c0   000000c0    r-- .intvecs
   000000c0    000000c0    0000f7c0   0000f7c0    r-- .rodata
-  0000f880    0000f880    00004210   00004210    r-x .text
-  00013a90    00013a90    00000010   00000010    r-- .init_array
-  00013aa0    00013aa0    00000100   00000100    r-- .cinit
+  0000f880    0000f880    000047c0   000047c0    r-x .text
+  00014040    00014040    00000010   00000010    r-- .init_array
+  00014050    00014050    00000100   00000100    r-- .cinit
 20200000    20200000    00004ef0   00000000    rw-
   20200000    20200000    00004728   00000000    rw- .bss
   20204728    20204728    000005c5   00000000    rw- .data
@@ -45,220 +45,223 @@ section   page    origin      length       input sections
 
 .binit     0    00000000    00000000     
 
-.text      0    0000f880    00004210     
-                  0000f880    00000290     GamePlay.o (.text._ZN4Bike7displayEv)
-                  0000fb10    00000210     ST7735.o (.text._Z17ST7735_DrawBitmapssPKtss)
-                  0000fd20    000001b4     Clock.o (.text._Z15Clock_Init80MHzi)
-                  0000fed4    000001a0     ST7735.o (.text._Z16ST7735_DrawCharSsscssh)
-                  00010074    00000178     menu.o (.text._Z11menu_updatev)
-                  000101ec    00000172     GamePlay.o (.text._ZN8Gameplay6updateEii)
-                  0001035e    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
-                  00010360    00000160     libc.a : fopen.c.obj (.text._openfile)
-                  000104c0    0000012c            : memory.c.obj (.text.aligned_alloc)
-                  000105ec    00000128     TExaS.o (.text._Z8ADC_InitP10ADC12_Regsjj)
-                  00010714    00000128     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_)
-                  0001083c    0000011e     GamePlay.o (.text._ZN4Bike14updateLocationEi)
-                  0001095a    00000002     libc.a : _lock.c.obj (.text._nop)
-                  0001095c    00000118     ST7735.o (.text._Z15ST7735_FillRectsssst)
-                  00010a74    00000100     menu.o (.text._Z20periodic_menu_updatei)
-                  00010b74    000000fc     GamePlay.o (.text._ZN8Gameplay9countDownEv)
-                  00010c70    000000f8     SPI.o (.text._Z8SPI_Initv)
-                  00010d68    000000f4     ST7735.o (.text._Z18ST7735_SetRotationh)
-                  00010e5c    000000f4     menu.o (.text._Z2upv)
-                  00010f50    000000ec     libsysbm.a : add_device.c.obj (.text.add_device)
-                  0001103c    000000ec     libc.a : memory.c.obj (.text.free)
-                  00011128    000000e8     TExaS.o (.text._Z9UART_Initv)
-                  00011210    000000dc     libc.a : setvbuf.c.obj (.text.setvbuf)
-                  000112ec    000000d8     Lab9HMain.o (.text.TIMG12_IRQHandler)
-                  000113c4    000000d0     ST7735.o (.text._Z14ST7735_OutCharc)
-                  00011494    000000cc     menu.o (.text._Z4downv)
-                  00011560    000000c8     menu.o (.text._Z9changeSetv)
-                  00011628    000000bc     Lab9HMain.o (.text.main)
-                  000116e4    000000b4     menu.o (.text.__cxx_global_var_init.5)
-                  00011798    000000b0     menu.o (.text.__cxx_global_var_init)
-                  00011848    000000a8     Timer.o (.text._Z14TimerG7_IntArmtjj)
-                  000118f0    000000a8     libsysbm.a : open.c.obj (.text.open)
-                  00011998    000000a2     ST7735.o (.text._ZL11commandListPKh)
-                  00011a3a    00000002     --HOLE-- [fill = 0]
-                  00011a3c    000000a0     ST7735.o (.text._Z17ST7735_InitPrintfv)
-                  00011adc    000000a0     menu.o (.text._ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi)
-                  00011b7c    0000009c     libc.a : aeabi_atexit.c.obj (.text.atexit_register)
-                  00011c18    00000098     ST7735.o (.text._Z12ST7735_InitR10initRFlags)
-                  00011cb0    00000098     GamePlay.o (.text._ZN4Bike12displayCrashEv)
-                  00011d48    00000098     Joystick2.o (.text._ZN9Joystick213JoyStick_InitEv)
-                  00011de0    00000094     Timer.o (.text._Z15TimerG12_IntArmjj)
-                  00011e74    00000094     GamePlay.o (.text._ZN8Gameplay5resetEv)
-                  00011f08    00000092     GamePlay.o (.text._ZN8GameplayC2Eiib)
-                  00011f9a    00000002     --HOLE-- [fill = 0]
-                  00011f9c    00000090     menu.o (.text.__cxx_global_var_init.13)
-                  0001202c    0000008a     GamePlay.o (.text._ZN4Bike10collisionsES_)
-                  000120b6    00000002     --HOLE-- [fill = 0]
-                  000120b8    00000088     ST7735.o (.text._ZL13setAddrWindowhhhh)
-                  00012140    00000084     ST7735.o (.text._Z17ST7735_DrawStringttPKcs)
-                  000121c4    0000007c     LaunchPad.o (.text._Z14LaunchPad_Initv)
-                  00012240    0000007c     GamePlay.o (.text._ZN4Bike8newPointEii)
-                  000122bc    0000007c     libc.a : fclose.c.obj (.text.__TI_closefile)
-                  00012338    00000078            : copy_decompress_lzss.c.obj (.text:decompress:lzss)
-                  000123b0    00000070     ST7735.o (.text._Z16ST7735_DrawPixelsst)
-                  00012420    0000006c     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
-                  0001248c    0000006c                : hostrename.c.obj (.text.HOSTrename)
-                  000124f8    0000006c     Joystick2.o (.text._ZN9Joystick27ConvertEPiS0_)
-                  00012564    0000006c     libc.a : aeabi_atexit.c.obj (.text.__cxa_finalize)
-                  000125d0    00000068            : getdevice.c.obj (.text.getdevice)
-                  00012638    00000064     menu.o (.text.__cxx_global_var_init.21)
-                  0001269c    00000064     libc.a : memory.c.obj (.text.split)
-                  00012700    00000060     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
-                  00012760    00000058                : hostread.c.obj (.text.HOSTread)
-                  000127b8    00000058                : hostwrite.c.obj (.text.HOSTwrite)
-                  00012810    00000058     TExaS.o (.text._Z10TExaS_InitP10ADC12_RegsjPFhvE)
-                  00012868    00000058     Switch.o (.text._Z11Switch_Initv)
-                  000128c0    00000056     libclang_rt.builtins.a : aeabi_idivmod.S.obj (.text.__aeabi_idivmod)
-                  00012916    00000002     --HOLE-- [fill = 0]
-                  00012918    00000054     Sound.o (.text._Z10Sound_Initv)
-                  0001296c    00000054     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj)
-                  000129c0    00000054     libc++abi.a : stdlib_new_delete.cpp.obj (.text._Znwj)
-                  00012a14    00000054     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit)
-                  00012a68    00000052            : fflush.c.obj (.text.__TI_doflush)
-                  00012aba    00000002     --HOLE-- [fill = 0]
-                  00012abc    00000050     libsysbm.a : close.c.obj (.text.close)
-                  00012b0c    00000048                : hostclose.c.obj (.text.HOSTclose)
-                  00012b54    00000048                : hostunlink.c.obj (.text.HOSTunlink)
-                  00012b9c    00000048     SPI.o (.text._Z14SPI_OutCommandc)
-                  00012be4    00000044     Sound.o (.text.SysTick_Handler)
-                  00012c28    00000044     Sound.o (.text._Z11Sound_StartPKhj)
-                  00012c6c    00000044     LED.o (.text._Z8LED_Initv)
-                  00012cb0    00000044     GamePlay.o (.text._ZN4Bike5resetEv)
-                  00012cf4    00000040     TExaS.o (.text.TIMG7_IRQHandler)
-                  00012d34    00000040     SPI.o (.text._Z9SPI_Resetv)
-                  00012d74    00000040     GamePlay.o (.text._ZN4Bike12firstDisplayEv)
-                  00012db4    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
-                  00012df4    00000040     libc.a : fopen.c.obj (.text._search_fp)
-                  00012e34    0000003e     GamePlay.o (.text._ZN4BikeC2Eibb)
-                  00012e72    00000002     --HOLE-- [fill = 0]
-                  00012e74    0000003c     DAC5.o (.text._Z9DAC5_Initv)
-                  00012eb0    0000003c     GamePlay.o (.text.__cxx_global_var_init.1)
-                  00012eec    0000003c     GamePlay.o (.text.__cxx_global_var_init)
-                  00012f28    00000038     SPI.o (.text._Z11SPI_OutDatac)
-                  00012f60    00000038     LaunchPad.o (.text._Z15ActivatePortA_Bv)
-                  00012f98    00000038     libc.a : getdevice.c.obj (.text.finddevice)
-                  00012fd0    00000034     ST7735.o (.text._Z12ST7735_writeiPKcj)
-                  00013004    00000034     Clock.o (.text._Z14Clock_Delay1msj)
-                  00013038    00000034     ST7735.o (.text._Z16ST7735_SetCursorjj)
-                  0001306c    00000034     libc.a : fopen.c.obj (.text.__TI_cleanup)
-                  000130a0    00000034     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
-                  000130d4    00000034                : trgmsg.c.obj (.text.__TI_writemsg)
-                  00013108    00000034     libc.a : exit.c.obj (.text.exit)
-                  0001313c    00000034            : fopen.c.obj (.text.freopen)
-                  00013170    00000032     ST7735.o (.text._Z15ST7735_Color565hhh)
-                  000131a2    00000032     GamePlay.o (.text._ZN8Gameplay8newRoundEv)
-                  000131d4    00000032     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc)
-                  00013206    00000002     --HOLE-- [fill = 0]
-                  00013208    00000030     LED.o (.text._Z6LED_Onj)
-                  00013238    00000030     LED.o (.text._Z7LED_Offj)
-                  00013268    00000030     GamePlay.o (.text._Z8gameInitv)
-                  00013298    00000030     ST7735.o (.text._ZL10commonInitPKh)
-                  000132c8    00000030     GamePlay.o (.text._ZN8Gameplay8gameOverEv)
-                  000132f8    00000030     menu.o (.text.__cxx_global_array_dtor.22)
-                  00013328    00000030     libc.a : fopen.c.obj (.text.fopen)
-                  00013358    0000002e     menu.o (.text._ZN4MenuD2Ev)
-                  00013386    0000002e     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev)
-                  000133b4    0000002c     menu.o (.text._Z12tronMenuInitv)
-                  000133e0    0000002c     ST7735.o (.text._Z17ST7735_FillScreent)
-                  0001340c    0000002c     Switch.o (.text._Z9Switch_Inv)
-                  00013438    0000002c     menu.o (.text.__cxx_global_array_dtor.12)
-                  00013464    0000002c     menu.o (.text.__cxx_global_array_dtor.20)
-                  00013490    0000002c     menu.o (.text.__cxx_global_array_dtor)
-                  000134bc    0000002c     GamePlay.o (.text.__cxx_global_var_init.2)
-                  000134e8    0000002c     libsysbm.a : unlink.c.obj (.text.unlink)
-                  00013514    00000028     TExaS.o (.text._Z9ADC_StartP10ADC12_Regs)
-                  0001353c    00000028     libc.a : memory.c.obj (.text.free_list_insert)
-                  00013564    00000028            : memmov.c.obj (.text.memmove)
-                  0001358c    00000028     libsysbm.a : write.c.obj (.text.write)
-                  000135b4    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
-                  000135dc    00000026     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev)
-                  00013602    00000002     --HOLE-- [fill = 0]
-                  00013604    00000024     DAC5.o (.text._Z8DAC5_Outh)
-                  00013628    00000024     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev)
-                  0001364c    00000022     ST7735.o (.text._Z20ST7735_InvertDisplayi)
-                  0001366e    00000002     --HOLE-- [fill = 0]
-                  00013670    00000020     Sound.o (.text._Z14SysTick_IntArmjj)
-                  00013690    0000001e     ST7735.o (.text._ZL9pushColort)
-                  000136ae    0000001e     menu.o (.text._ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_)
-                  000136cc    0000001c     GamePlay.o (.text._Z10gameUpdatei)
-                  000136e8    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
-                  00013704    00000016     ST7735.o (.text._Z11ST7735_openPKcji)
-                  0001371a    00000016     ST7735.o (.text._Z11ST7735_readiPcj)
-                  00013730    00000016     GamePlay.o (.text._ZN4Bike5crashEv)
-                  00013746    00000016     Joystick2.o (.text._ZN9Joystick2C2Ejj)
-                  0001375c    00000016     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev)
-                  00013772    00000016     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev)
-                  00013788    00000014     menu.o (.text._GLOBAL__sub_I_menu.cpp)
-                  0001379c    00000014     Sound.o (.text._Z10Sound_Menuv)
-                  000137b0    00000014     Sound.o (.text._Z12Sound_Selectv)
-                  000137c4    00000014     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev)
-                  000137d8    00000014     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev)
-                  000137ec    00000014     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE)
-                  00013800    00000014     menu.o (.text._ZNSt3__19allocatorIcEC2B6v15007Ev)
-                  00013814    00000014     libc.a : aeabi_atexit.c.obj (.text.__cxa_atexit)
-                  00013828    00000014     Lab9HMain.o (.text.__cxx_global_var_init)
-                  0001383c    00000012     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev)
-                  0001384e    00000012     libsysbm.a : hostrename.c.obj (.text.strcpy)
-                  00013860    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
-                  00013872    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
-                  00013884    00000010     GamePlay.o (.text._GLOBAL__sub_I_GamePlay.cpp)
-                  00013894    00000010     menu.o (.text._Z10menuIsDonev)
-                  000138a4    00000010     Clock.o (.text._Z11Clock_Delayj)
-                  000138b4    00000010     GamePlay.o (.text._Z12gameFinishedv)
-                  000138c4    00000010     Lab9HMain.o (.text._Z28TExaS_LaunchPadLogicPB27PB26v)
-                  000138d4    00000010     GamePlay.o (.text._ZN8Gameplay10isGameOverEv)
-                  000138e4    00000010     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev)
-                  000138f4    00000010     menu.o (.text._ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev)
-                  00013904    00000010     menu.o (.text._ZNSt3__111char_traitsIcE6lengthEPKc)
-                  00013914    00000010     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev)
-                  00013924    00000010     menu.o (.text._ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev)
-                  00013934    00000010     libc.a : copy_zero_init.c.obj (.text:decompress:ZI)
-                  00013944    0000000e            : memory.c.obj (.text.OUTLINED_FUNCTION_0)
-                  00013952    0000000e     ST7735.o (.text._Z12ST7735_lseekili)
-                  00013960    0000000e     libc.a : strlen.c.obj (.text.strlen)
-                  0001396e    0000000e     libsysbm.a : hostrename.c.obj (.text.strlen)
-                  0001397c    0000000e     libc.a : memset16.S.obj (.text:TI_memset_small)
-                  0001398a    00000002     --HOLE-- [fill = 0]
-                  0001398c    0000000c     Clock.o (.text._Z10Clock_Freqv)
-                  00013998    0000000c     Sound.o (.text._Z10Sound_Stopv)
-                  000139a4    0000000c     ST7735.o (.text._Z13ST7735_renamePKcS0_)
-                  000139b0    0000000c     GamePlay.o (.text._ZN4Bike6healthEv)
-                  000139bc    0000000c     libc++abi.a : cxa_handlers.cpp.obj (.text._ZSt15get_new_handlerv)
-                  000139c8    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
-                  000139d4    0000000c     libc.a : memory.c.obj (.text.malloc)
-                  000139e0    0000000a     ST7735.o (.text._Z12ST7735_closei)
-                  000139ea    0000000a     ST7735.o (.text._Z13ST7735_unlinkPKc)
-                  000139f4    0000000a     Lab9HMain.o (.text._Z8PLL_Initv)
-                  000139fe    0000000a     GamePlay.o (.text._ZN4BikeC2Ev)
-                  00013a08    0000000a     menu.o (.text._ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev)
-                  00013a12    0000000a     menu.o (.text._ZNSt3__112__to_addressB6v15007IKcEEPT_S3_)
-                  00013a1c    0000000a     menu.o (.text._ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_)
-                  00013a26    0000000a     menu.o (.text._ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev)
-                  00013a30    0000000a     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev)
-                  00013a3a    0000000a     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE)
-                  00013a44    00000008     Lab9HMain.o (.text._GLOBAL__sub_I_Lab9HMain.cpp)
-                  00013a4c    00000008     menu.o (.text._ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_)
-                  00013a54    00000008     libc++abi.a : stdlib_new_delete.cpp.obj (.text._ZdlPv)
-                  00013a5c    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
-                  00013a64    00000008                            : aeabi_memmove.S.obj (.text.__aeabi_memmove)
-                  00013a6c    00000008     libc.a : aeabi_atexit.c.obj (.text.__cxa_ia64_exit)
-                  00013a74    00000008     libsysbm.a : remove.c.obj (.text.remove)
-                  00013a7c    00000004     startup_mspm0g3507_ticlang.o (.text.Default_Handler)
-                  00013a80    00000004     startup_mspm0g3507_ticlang.o (.text.HardFault_Handler)
-                  00013a84    00000004     startup_mspm0g3507_ticlang.o (.text.Reset_Handler)
-                  00013a88    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
-                  00013a8c    00000004            : exit.c.obj (.text:abort)
+.text      0    0000f880    000047c0     
+                  0000f880    000004a4     GamePlay.o (.text._ZN4Bike12updateCornerEPKt)
+                  0000fd24    000002c0     GamePlay.o (.text._ZN4Bike7displayEv)
+                  0000ffe4    00000210     ST7735.o (.text._Z17ST7735_DrawBitmapssPKtss)
+                  000101f4    000001b4     Clock.o (.text._Z15Clock_Init80MHzi)
+                  000103a8    000001a0     ST7735.o (.text._Z16ST7735_DrawCharSsscssh)
+                  00010548    000001a0     GamePlay.o (.text._ZN4Bike14updateLocationEi)
+                  000106e8    00000178     menu.o (.text._Z11menu_updatev)
+                  00010860    00000172     GamePlay.o (.text._ZN8Gameplay6updateEii)
+                  000109d2    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  000109d4    00000160     libc.a : fopen.c.obj (.text._openfile)
+                  00010b34    0000012c            : memory.c.obj (.text.aligned_alloc)
+                  00010c60    00000128     TExaS.o (.text._Z8ADC_InitP10ADC12_Regsjj)
+                  00010d88    00000128     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_)
+                  00010eb0    00000118     ST7735.o (.text._Z15ST7735_FillRectsssst)
+                  00010fc8    00000100     menu.o (.text._Z20periodic_menu_updatei)
+                  000110c8    000000fc     GamePlay.o (.text._ZN8Gameplay9countDownEv)
+                  000111c4    000000f8     SPI.o (.text._Z8SPI_Initv)
+                  000112bc    000000f4     ST7735.o (.text._Z18ST7735_SetRotationh)
+                  000113b0    000000f4     menu.o (.text._Z2upv)
+                  000114a4    000000ec     libsysbm.a : add_device.c.obj (.text.add_device)
+                  00011590    000000ec     libc.a : memory.c.obj (.text.free)
+                  0001167c    000000e8     TExaS.o (.text._Z9UART_Initv)
+                  00011764    000000dc     libc.a : setvbuf.c.obj (.text.setvbuf)
+                  00011840    000000d8     Lab9HMain.o (.text.TIMG12_IRQHandler)
+                  00011918    000000d0     ST7735.o (.text._Z14ST7735_OutCharc)
+                  000119e8    000000cc     menu.o (.text._Z4downv)
+                  00011ab4    000000c8     menu.o (.text._Z9changeSetv)
+                  00011b7c    000000bc     Lab9HMain.o (.text.main)
+                  00011c38    000000b4     menu.o (.text.__cxx_global_var_init.5)
+                  00011cec    000000b0     menu.o (.text.__cxx_global_var_init)
+                  00011d9c    000000a8     Timer.o (.text._Z14TimerG7_IntArmtjj)
+                  00011e44    000000a8     libsysbm.a : open.c.obj (.text.open)
+                  00011eec    000000a2     ST7735.o (.text._ZL11commandListPKh)
+                  00011f8e    00000002     libc.a : _lock.c.obj (.text._nop)
+                  00011f90    000000a0     ST7735.o (.text._Z17ST7735_InitPrintfv)
+                  00012030    000000a0     menu.o (.text._ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi)
+                  000120d0    0000009c     libc.a : aeabi_atexit.c.obj (.text.atexit_register)
+                  0001216c    00000098     ST7735.o (.text._Z12ST7735_InitR10initRFlags)
+                  00012204    00000098     GamePlay.o (.text._ZN4Bike12displayCrashEv)
+                  0001229c    00000098     Joystick2.o (.text._ZN9Joystick213JoyStick_InitEv)
+                  00012334    00000094     Timer.o (.text._Z15TimerG12_IntArmjj)
+                  000123c8    00000094     GamePlay.o (.text._ZN8Gameplay5resetEv)
+                  0001245c    00000092     GamePlay.o (.text._ZN8GameplayC2Eiib)
+                  000124ee    00000002     --HOLE-- [fill = 0]
+                  000124f0    00000090     menu.o (.text.__cxx_global_var_init.13)
+                  00012580    0000008a     GamePlay.o (.text._ZN4Bike10collisionsES_)
+                  0001260a    00000002     --HOLE-- [fill = 0]
+                  0001260c    00000088     ST7735.o (.text._ZL13setAddrWindowhhhh)
+                  00012694    00000084     ST7735.o (.text._Z17ST7735_DrawStringttPKcs)
+                  00012718    0000007c     LaunchPad.o (.text._Z14LaunchPad_Initv)
+                  00012794    0000007c     GamePlay.o (.text._ZN4Bike8newPointEii)
+                  00012810    0000007c     libc.a : fclose.c.obj (.text.__TI_closefile)
+                  0001288c    00000078            : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00012904    00000070     ST7735.o (.text._Z16ST7735_DrawPixelsst)
+                  00012974    0000006c     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
+                  000129e0    0000006c                : hostrename.c.obj (.text.HOSTrename)
+                  00012a4c    0000006c     Joystick2.o (.text._ZN9Joystick27ConvertEPiS0_)
+                  00012ab8    0000006c     libc.a : aeabi_atexit.c.obj (.text.__cxa_finalize)
+                  00012b24    00000068            : getdevice.c.obj (.text.getdevice)
+                  00012b8c    00000064     menu.o (.text.__cxx_global_var_init.21)
+                  00012bf0    00000064     libc.a : memory.c.obj (.text.split)
+                  00012c54    00000060     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
+                  00012cb4    00000058                : hostread.c.obj (.text.HOSTread)
+                  00012d0c    00000058                : hostwrite.c.obj (.text.HOSTwrite)
+                  00012d64    00000058     TExaS.o (.text._Z10TExaS_InitP10ADC12_RegsjPFhvE)
+                  00012dbc    00000058     Switch.o (.text._Z11Switch_Initv)
+                  00012e14    00000056     GamePlay.o (.text._ZN4Bike5clearEv)
+                  00012e6a    00000002     --HOLE-- [fill = 0]
+                  00012e6c    00000056     libclang_rt.builtins.a : aeabi_idivmod.S.obj (.text.__aeabi_idivmod)
+                  00012ec2    00000002     --HOLE-- [fill = 0]
+                  00012ec4    00000054     Sound.o (.text._Z10Sound_Initv)
+                  00012f18    00000054     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj)
+                  00012f6c    00000054     libc++abi.a : stdlib_new_delete.cpp.obj (.text._Znwj)
+                  00012fc0    00000054     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit)
+                  00013014    00000052            : fflush.c.obj (.text.__TI_doflush)
+                  00013066    00000002     --HOLE-- [fill = 0]
+                  00013068    00000050     libsysbm.a : close.c.obj (.text.close)
+                  000130b8    00000048                : hostclose.c.obj (.text.HOSTclose)
+                  00013100    00000048                : hostunlink.c.obj (.text.HOSTunlink)
+                  00013148    00000048     SPI.o (.text._Z14SPI_OutCommandc)
+                  00013190    00000044     Sound.o (.text.SysTick_Handler)
+                  000131d4    00000044     Sound.o (.text._Z11Sound_StartPKhj)
+                  00013218    00000044     LED.o (.text._Z8LED_Initv)
+                  0001325c    00000044     GamePlay.o (.text._ZN4Bike5resetEv)
+                  000132a0    00000040     TExaS.o (.text.TIMG7_IRQHandler)
+                  000132e0    00000040     SPI.o (.text._Z9SPI_Resetv)
+                  00013320    00000040     GamePlay.o (.text._ZN4Bike12firstDisplayEv)
+                  00013360    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  000133a0    00000040     libc.a : fopen.c.obj (.text._search_fp)
+                  000133e0    0000003e     GamePlay.o (.text._ZN4BikeC2Eibb)
+                  0001341e    00000002     --HOLE-- [fill = 0]
+                  00013420    0000003c     DAC5.o (.text._Z9DAC5_Initv)
+                  0001345c    0000003c     GamePlay.o (.text.__cxx_global_var_init.1)
+                  00013498    0000003c     GamePlay.o (.text.__cxx_global_var_init)
+                  000134d4    00000038     SPI.o (.text._Z11SPI_OutDatac)
+                  0001350c    00000038     LaunchPad.o (.text._Z15ActivatePortA_Bv)
+                  00013544    00000038     libc.a : getdevice.c.obj (.text.finddevice)
+                  0001357c    00000034     ST7735.o (.text._Z12ST7735_writeiPKcj)
+                  000135b0    00000034     Clock.o (.text._Z14Clock_Delay1msj)
+                  000135e4    00000034     ST7735.o (.text._Z16ST7735_SetCursorjj)
+                  00013618    00000034     libc.a : fopen.c.obj (.text.__TI_cleanup)
+                  0001364c    00000034     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
+                  00013680    00000034                : trgmsg.c.obj (.text.__TI_writemsg)
+                  000136b4    00000034     libc.a : exit.c.obj (.text.exit)
+                  000136e8    00000034            : fopen.c.obj (.text.freopen)
+                  0001371c    00000032     ST7735.o (.text._Z15ST7735_Color565hhh)
+                  0001374e    00000032     GamePlay.o (.text._ZN8Gameplay8newRoundEv)
+                  00013780    00000032     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc)
+                  000137b2    00000002     --HOLE-- [fill = 0]
+                  000137b4    00000030     LED.o (.text._Z6LED_Onj)
+                  000137e4    00000030     LED.o (.text._Z7LED_Offj)
+                  00013814    00000030     GamePlay.o (.text._Z8gameInitv)
+                  00013844    00000030     ST7735.o (.text._ZL10commonInitPKh)
+                  00013874    00000030     GamePlay.o (.text._ZN8Gameplay8gameOverEv)
+                  000138a4    00000030     menu.o (.text.__cxx_global_array_dtor.22)
+                  000138d4    00000030     libc.a : fopen.c.obj (.text.fopen)
+                  00013904    0000002e     menu.o (.text._ZN4MenuD2Ev)
+                  00013932    0000002e     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev)
+                  00013960    0000002c     menu.o (.text._Z12tronMenuInitv)
+                  0001398c    0000002c     ST7735.o (.text._Z17ST7735_FillScreent)
+                  000139b8    0000002c     Switch.o (.text._Z9Switch_Inv)
+                  000139e4    0000002c     menu.o (.text.__cxx_global_array_dtor.12)
+                  00013a10    0000002c     menu.o (.text.__cxx_global_array_dtor.20)
+                  00013a3c    0000002c     menu.o (.text.__cxx_global_array_dtor)
+                  00013a68    0000002c     GamePlay.o (.text.__cxx_global_var_init.2)
+                  00013a94    0000002c     libsysbm.a : unlink.c.obj (.text.unlink)
+                  00013ac0    00000028     TExaS.o (.text._Z9ADC_StartP10ADC12_Regs)
+                  00013ae8    00000028     libc.a : memory.c.obj (.text.free_list_insert)
+                  00013b10    00000028            : memmov.c.obj (.text.memmove)
+                  00013b38    00000028     libsysbm.a : write.c.obj (.text.write)
+                  00013b60    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  00013b88    00000026     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev)
+                  00013bae    00000002     --HOLE-- [fill = 0]
+                  00013bb0    00000024     DAC5.o (.text._Z8DAC5_Outh)
+                  00013bd4    00000024     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev)
+                  00013bf8    00000022     ST7735.o (.text._Z20ST7735_InvertDisplayi)
+                  00013c1a    00000002     --HOLE-- [fill = 0]
+                  00013c1c    00000020     Sound.o (.text._Z14SysTick_IntArmjj)
+                  00013c3c    0000001e     ST7735.o (.text._ZL9pushColort)
+                  00013c5a    0000001e     menu.o (.text._ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_)
+                  00013c78    0000001c     GamePlay.o (.text._Z10gameUpdatei)
+                  00013c94    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
+                  00013cb0    00000016     ST7735.o (.text._Z11ST7735_openPKcji)
+                  00013cc6    00000016     ST7735.o (.text._Z11ST7735_readiPcj)
+                  00013cdc    00000016     GamePlay.o (.text._ZN4Bike5crashEv)
+                  00013cf2    00000016     Joystick2.o (.text._ZN9Joystick2C2Ejj)
+                  00013d08    00000016     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev)
+                  00013d1e    00000016     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev)
+                  00013d34    00000014     menu.o (.text._GLOBAL__sub_I_menu.cpp)
+                  00013d48    00000014     Sound.o (.text._Z10Sound_Menuv)
+                  00013d5c    00000014     Sound.o (.text._Z12Sound_Selectv)
+                  00013d70    00000014     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev)
+                  00013d84    00000014     libc++.a : string.cpp.obj (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev)
+                  00013d98    00000014     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE)
+                  00013dac    00000014     menu.o (.text._ZNSt3__19allocatorIcEC2B6v15007Ev)
+                  00013dc0    00000014     libc.a : aeabi_atexit.c.obj (.text.__cxa_atexit)
+                  00013dd4    00000014     Lab9HMain.o (.text.__cxx_global_var_init)
+                  00013de8    00000012     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev)
+                  00013dfa    00000012     libsysbm.a : hostrename.c.obj (.text.strcpy)
+                  00013e0c    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  00013e1e    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  00013e30    00000010     GamePlay.o (.text._GLOBAL__sub_I_GamePlay.cpp)
+                  00013e40    00000010     menu.o (.text._Z10menuIsDonev)
+                  00013e50    00000010     Clock.o (.text._Z11Clock_Delayj)
+                  00013e60    00000010     GamePlay.o (.text._Z12gameFinishedv)
+                  00013e70    00000010     Lab9HMain.o (.text._Z28TExaS_LaunchPadLogicPB27PB26v)
+                  00013e80    00000010     GamePlay.o (.text._ZN8Gameplay10isGameOverEv)
+                  00013e90    00000010     menu.o (.text._ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev)
+                  00013ea0    00000010     menu.o (.text._ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev)
+                  00013eb0    00000010     menu.o (.text._ZNSt3__111char_traitsIcE6lengthEPKc)
+                  00013ec0    00000010     menu.o (.text._ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev)
+                  00013ed0    00000010     menu.o (.text._ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev)
+                  00013ee0    00000010     libc.a : copy_zero_init.c.obj (.text:decompress:ZI)
+                  00013ef0    0000000e            : memory.c.obj (.text.OUTLINED_FUNCTION_0)
+                  00013efe    0000000e     ST7735.o (.text._Z12ST7735_lseekili)
+                  00013f0c    0000000e     libc.a : strlen.c.obj (.text.strlen)
+                  00013f1a    0000000e     libsysbm.a : hostrename.c.obj (.text.strlen)
+                  00013f28    0000000e     libc.a : memset16.S.obj (.text:TI_memset_small)
+                  00013f36    00000002     --HOLE-- [fill = 0]
+                  00013f38    0000000c     Clock.o (.text._Z10Clock_Freqv)
+                  00013f44    0000000c     Sound.o (.text._Z10Sound_Stopv)
+                  00013f50    0000000c     ST7735.o (.text._Z13ST7735_renamePKcS0_)
+                  00013f5c    0000000c     GamePlay.o (.text._ZN4Bike6healthEv)
+                  00013f68    0000000c     libc++abi.a : cxa_handlers.cpp.obj (.text._ZSt15get_new_handlerv)
+                  00013f74    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  00013f80    0000000c     libc.a : memory.c.obj (.text.malloc)
+                  00013f8c    0000000a     ST7735.o (.text._Z12ST7735_closei)
+                  00013f96    0000000a     ST7735.o (.text._Z13ST7735_unlinkPKc)
+                  00013fa0    0000000a     Lab9HMain.o (.text._Z8PLL_Initv)
+                  00013faa    0000000a     GamePlay.o (.text._ZN4BikeC2Ev)
+                  00013fb4    0000000a     menu.o (.text._ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev)
+                  00013fbe    0000000a     menu.o (.text._ZNSt3__112__to_addressB6v15007IKcEEPT_S3_)
+                  00013fc8    0000000a     menu.o (.text._ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_)
+                  00013fd2    0000000a     menu.o (.text._ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev)
+                  00013fdc    0000000a     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev)
+                  00013fe6    0000000a     menu.o (.text._ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE)
+                  00013ff0    00000008     Lab9HMain.o (.text._GLOBAL__sub_I_Lab9HMain.cpp)
+                  00013ff8    00000008     menu.o (.text._ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_)
+                  00014000    00000008     libc++abi.a : stdlib_new_delete.cpp.obj (.text._ZdlPv)
+                  00014008    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  00014010    00000008                            : aeabi_memmove.S.obj (.text.__aeabi_memmove)
+                  00014018    00000008     libc.a : aeabi_atexit.c.obj (.text.__cxa_ia64_exit)
+                  00014020    00000008     libsysbm.a : remove.c.obj (.text.remove)
+                  00014028    00000004     startup_mspm0g3507_ticlang.o (.text.Default_Handler)
+                  0001402c    00000004     startup_mspm0g3507_ticlang.o (.text.HardFault_Handler)
+                  00014030    00000004     startup_mspm0g3507_ticlang.o (.text.Reset_Handler)
+                  00014034    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00014038    00000004            : exit.c.obj (.text:abort)
+                  0001403c    00000004     --HOLE-- [fill = 0]
 
-.cinit     0    00013aa0    00000100     
-                  00013aa0    000000d8     (.cinit..data.load) [load image, compression = lzss]
-                  00013b78    0000000c     (__TI_handler_table)
-                  00013b84    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00013b8c    00000010     (__TI_cinit_table)
-                  00013b9c    00000004     --HOLE-- [fill = 0]
+.cinit     0    00014050    00000100     
+                  00014050    000000da     (.cinit..data.load) [load image, compression = lzss]
+                  0001412a    00000002     --HOLE-- [fill = 0]
+                  0001412c    0000000c     (__TI_handler_table)
+                  00014138    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00014140    00000010     (__TI_cinit_table)
 
 .rodata    0    000000c0    0000f7c0     
                   000000c0    0000a000     menu.o (.rodata._ZL13tron_menu_img)
@@ -315,11 +318,11 @@ section   page    origin      length       input sections
                   0000f87d    00000003     --HOLE-- [fill = 0]
 
 .init_array 
-*          0    00013a90    00000010     
-                  00013a90    00000004     menu.o (.init_array)
-                  00013a94    00000004     Lab9HMain.o (.init_array)
-                  00013a98    00000004     GamePlay.o (.init_array)
-                  00013a9c    00000004     --HOLE-- [fill = 0]
+*          0    00014040    00000010     
+                  00014040    00000004     menu.o (.init_array)
+                  00014044    00000004     Lab9HMain.o (.init_array)
+                  00014048    00000004     GamePlay.o (.init_array)
+                  0001404c    00000004     --HOLE-- [fill = 0]
 
 .bss       0    20200000    00004728     UNINITIALIZED
                   20200000    000044c0     GamePlay.o (.bss.visitedMatrix)
@@ -413,7 +416,7 @@ MODULE SUMMARY
        ------                         ----    -------   -------
     .\
        menu.o                         2816    41103     734    
-       GamePlay.o                     2896    10892     17764  
+       GamePlay.o                     4348    10892     17764  
        Sound.o                        304     9984      20     
        ST7735.o                       2930    1449      18     
        TExaS.o                        720     0         8      
@@ -427,7 +430,7 @@ MODULE SUMMARY
        Switch.o                       132     0         0      
        DAC5.o                         96      0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         12250   63432     18617  
+       Total:                         13702   63432     18617  
                                                                
     .\ticlang\
        startup_mspm0g3507_ticlang.o   12      192       0      
@@ -501,21 +504,21 @@ MODULE SUMMARY
                                                                
        Heap:                          0       0         512    
        Stack:                         0       0         512    
-       Linker Generated:              0       252       0      
+       Linker Generated:              0       254       0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   16892   63876     20712  
+       Grand Total:                   18344   63878     20712  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00013b8c records: 2, size/record: 8, table size: 16
-	.data: load addr=00013aa0, load size=000000d8 bytes, run addr=20204728, run size=000005c5 bytes, compression=lzss
-	.bss: load addr=00013b84, load size=00000008 bytes, run addr=20200000, run size=00004728 bytes, compression=zero_init
+__TI_cinit_table @ 00014140 records: 2, size/record: 8, table size: 16
+	.data: load addr=00014050, load size=000000da bytes, run addr=20204728, run size=000005c5 bytes, compression=lzss
+	.bss: load addr=00014138, load size=00000008 bytes, run addr=20200000, run size=00004728 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00013b78 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 0001412c records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -525,173 +528,175 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                                                                                                                                            
 -------   ----                                                                                                                                            
-00013a7d  ADC0_IRQHandler                                                                                                                                 
-00013a7d  ADC1_IRQHandler                                                                                                                                 
-00013a7d  AES_IRQHandler                                                                                                                                  
+00014029  ADC0_IRQHandler                                                                                                                                 
+00014029  ADC1_IRQHandler                                                                                                                                 
+00014029  AES_IRQHandler                                                                                                                                  
 20204c78  BusFreq                                                                                                                                         
-00013a8c  C$$EXIT                                                                                                                                         
-00013101  C$$IO$$                                                                                                                                         
-00013a7d  CANFD0_IRQHandler                                                                                                                               
-00013a7d  DAC0_IRQHandler                                                                                                                                 
-00013a7d  DMA_IRQHandler                                                                                                                                  
-00013a7d  Default_Handler                                                                                                                                 
-00013a7d  GROUP0_IRQHandler                                                                                                                               
-00013a7d  GROUP1_IRQHandler                                                                                                                               
-00012b0d  HOSTclose                                                                                                                                       
-00012421  HOSTlseek                                                                                                                                       
-00012701  HOSTopen                                                                                                                                        
-00012761  HOSTread                                                                                                                                        
-0001248d  HOSTrename                                                                                                                                      
-00012b55  HOSTunlink                                                                                                                                      
-000127b9  HOSTwrite                                                                                                                                       
-00013a81  HardFault_Handler                                                                                                                               
-00013a7d  I2C0_IRQHandler                                                                                                                                 
-00013a7d  I2C1_IRQHandler                                                                                                                                 
+00014038  C$$EXIT                                                                                                                                         
+000136ad  C$$IO$$                                                                                                                                         
+00014029  CANFD0_IRQHandler                                                                                                                               
+00014029  DAC0_IRQHandler                                                                                                                                 
+00014029  DMA_IRQHandler                                                                                                                                  
+00014029  Default_Handler                                                                                                                                 
+00014029  GROUP0_IRQHandler                                                                                                                               
+00014029  GROUP1_IRQHandler                                                                                                                               
+000130b9  HOSTclose                                                                                                                                       
+00012975  HOSTlseek                                                                                                                                       
+00012c55  HOSTopen                                                                                                                                        
+00012cb5  HOSTread                                                                                                                                        
+000129e1  HOSTrename                                                                                                                                      
+00013101  HOSTunlink                                                                                                                                      
+00012d0d  HOSTwrite                                                                                                                                       
+0001402d  HardFault_Handler                                                                                                                               
+00014029  I2C0_IRQHandler                                                                                                                                 
+00014029  I2C1_IRQHandler                                                                                                                                 
 20204be0  MainFSM                                                                                                                                         
-00013a7d  NMI_Handler                                                                                                                                     
-00013a7d  PendSV_Handler                                                                                                                                  
-00013a7d  RTC_IRQHandler                                                                                                                                  
-00013a85  Reset_Handler                                                                                                                                   
-00013a90  SHT$$INIT_ARRAY$$Base                                                                                                                           
-00013a9c  SHT$$INIT_ARRAY$$Limit                                                                                                                          
-00013a7d  SPI0_IRQHandler                                                                                                                                 
-00013a7d  SPI1_IRQHandler                                                                                                                                 
-00013a7d  SVC_Handler                                                                                                                                     
+00014029  NMI_Handler                                                                                                                                     
+00014029  PendSV_Handler                                                                                                                                  
+00014029  RTC_IRQHandler                                                                                                                                  
+00014031  Reset_Handler                                                                                                                                   
+00014040  SHT$$INIT_ARRAY$$Base                                                                                                                           
+0001404c  SHT$$INIT_ARRAY$$Limit                                                                                                                          
+00014029  SPI0_IRQHandler                                                                                                                                 
+00014029  SPI1_IRQHandler                                                                                                                                 
+00014029  SVC_Handler                                                                                                                                     
 20204cdc  StTextColor                                                                                                                                     
 20204c7c  StX                                                                                                                                             
 20204c80  StY                                                                                                                                             
-00012be5  SysTick_Handler                                                                                                                                 
+00013191  SysTick_Handler                                                                                                                                 
 20204710  TExaSLogic                                                                                                                                      
 20204714  TExaSadc                                                                                                                                        
-00013a7d  TIMA0_IRQHandler                                                                                                                                
-00013a7d  TIMA1_IRQHandler                                                                                                                                
-00013a7d  TIMG0_IRQHandler                                                                                                                                
-000112ed  TIMG12_IRQHandler                                                                                                                               
-00013a7d  TIMG6_IRQHandler                                                                                                                                
-00012cf5  TIMG7_IRQHandler                                                                                                                                
-00013a7d  TIMG8_IRQHandler                                                                                                                                
-00013861  TI_memcpy_small                                                                                                                                 
-0001397d  TI_memset_small                                                                                                                                 
-00013a7d  UART0_IRQHandler                                                                                                                                
-00013a7d  UART1_IRQHandler                                                                                                                                
-00013a7d  UART2_IRQHandler                                                                                                                                
-00013a7d  UART3_IRQHandler                                                                                                                                
+00014029  TIMA0_IRQHandler                                                                                                                                
+00014029  TIMA1_IRQHandler                                                                                                                                
+00014029  TIMG0_IRQHandler                                                                                                                                
+00011841  TIMG12_IRQHandler                                                                                                                               
+00014029  TIMG6_IRQHandler                                                                                                                                
+000132a1  TIMG7_IRQHandler                                                                                                                                
+00014029  TIMG8_IRQHandler                                                                                                                                
+00013e0d  TI_memcpy_small                                                                                                                                 
+00013f29  TI_memset_small                                                                                                                                 
+00014029  UART0_IRQHandler                                                                                                                                
+00014029  UART1_IRQHandler                                                                                                                                
+00014029  UART2_IRQHandler                                                                                                                                
+00014029  UART3_IRQHandler                                                                                                                                
 202044c0  _CIOBUF_                                                                                                                                        
-0001398d  _Z10Clock_Freqv                                                                                                                                 
-00012919  _Z10Sound_Initv                                                                                                                                 
-0001379d  _Z10Sound_Menuv                                                                                                                                 
-00013999  _Z10Sound_Stopv                                                                                                                                 
-00012811  _Z10TExaS_InitP10ADC12_RegsjPFhvE                                                                                                               
-000136cd  _Z10gameUpdatei                                                                                                                                 
-00013895  _Z10menuIsDonev                                                                                                                                 
-000138a5  _Z11Clock_Delayj                                                                                                                                
-00012f29  _Z11SPI_OutDatac                                                                                                                                
-00013705  _Z11ST7735_openPKcji                                                                                                                            
-0001371b  _Z11ST7735_readiPcj                                                                                                                             
-00012c29  _Z11Sound_StartPKhj                                                                                                                             
-00012869  _Z11Switch_Initv                                                                                                                                
-00010075  _Z11menu_updatev                                                                                                                                
-00011c19  _Z12ST7735_InitR10initRFlags                                                                                                                    
-000139e1  _Z12ST7735_closei                                                                                                                               
-00013953  _Z12ST7735_lseekili                                                                                                                             
-00012fd1  _Z12ST7735_writeiPKcj                                                                                                                           
-000137b1  _Z12Sound_Selectv                                                                                                                               
-000138b5  _Z12gameFinishedv                                                                                                                               
-000133b5  _Z12tronMenuInitv                                                                                                                               
-000139a5  _Z13ST7735_renamePKcS0_                                                                                                                         
-000139eb  _Z13ST7735_unlinkPKc                                                                                                                            
-00013005  _Z14Clock_Delay1msj                                                                                                                             
-000121c5  _Z14LaunchPad_Initv                                                                                                                             
-00012b9d  _Z14SPI_OutCommandc                                                                                                                             
-000113c5  _Z14ST7735_OutCharc                                                                                                                             
-00013671  _Z14SysTick_IntArmjj                                                                                                                            
-00011849  _Z14TimerG7_IntArmtjj                                                                                                                           
-00012f61  _Z15ActivatePortA_Bv                                                                                                                            
-0000fd21  _Z15Clock_Init80MHzi                                                                                                                            
-00013171  _Z15ST7735_Color565hhh                                                                                                                          
-0001095d  _Z15ST7735_FillRectsssst                                                                                                                        
-00011de1  _Z15TimerG12_IntArmjj                                                                                                                           
-0000fed5  _Z16ST7735_DrawCharSsscssh                                                                                                                      
-000123b1  _Z16ST7735_DrawPixelsst                                                                                                                         
-00013039  _Z16ST7735_SetCursorjj                                                                                                                          
-0000fb11  _Z17ST7735_DrawBitmapssPKtss                                                                                                                    
-00012141  _Z17ST7735_DrawStringttPKcs                                                                                                                     
-000133e1  _Z17ST7735_FillScreent                                                                                                                          
-00011a3d  _Z17ST7735_InitPrintfv                                                                                                                          
-00010d69  _Z18ST7735_SetRotationh                                                                                                                         
-0001364d  _Z20ST7735_InvertDisplayi                                                                                                                       
-00010a75  _Z20periodic_menu_updatei                                                                                                                       
-000138c5  _Z28TExaS_LaunchPadLogicPB27PB26v                                                                                                               
-00010e5d  _Z2upv                                                                                                                                          
-00011495  _Z4downv                                                                                                                                        
-00013209  _Z6LED_Onj                                                                                                                                      
-00013239  _Z7LED_Offj                                                                                                                                     
-000105ed  _Z8ADC_InitP10ADC12_Regsjj                                                                                                                      
-00013605  _Z8DAC5_Outh                                                                                                                                    
-00012c6d  _Z8LED_Initv                                                                                                                                    
-000139f5  _Z8PLL_Initv                                                                                                                                    
-00010c71  _Z8SPI_Initv                                                                                                                                    
-00013269  _Z8gameInitv                                                                                                                                    
-00013515  _Z9ADC_StartP10ADC12_Regs                                                                                                                       
-00012e75  _Z9DAC5_Initv                                                                                                                                   
-00012d35  _Z9SPI_Resetv                                                                                                                                   
-0001340d  _Z9Switch_Inv                                                                                                                                   
-00011129  _Z9UART_Initv                                                                                                                                   
-00011561  _Z9changeSetv                                                                                                                                   
-0001202d  _ZN4Bike10collisionsES_                                                                                                                         
-00011cb1  _ZN4Bike12displayCrashEv                                                                                                                        
-00012d75  _ZN4Bike12firstDisplayEv                                                                                                                        
-0001083d  _ZN4Bike14updateLocationEi                                                                                                                      
-00013731  _ZN4Bike5crashEv                                                                                                                                
-00012cb1  _ZN4Bike5resetEv                                                                                                                                
-000139b1  _ZN4Bike6healthEv                                                                                                                               
-0000f881  _ZN4Bike7displayEv                                                                                                                              
-00012241  _ZN4Bike8newPointEii                                                                                                                            
-00012e35  _ZN4BikeC2Eibb                                                                                                                                  
-000139ff  _ZN4BikeC2Ev                                                                                                                                    
-00011add  _ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi                                                             
-00013359  _ZN4MenuD2Ev                                                                                                                                    
-000138d5  _ZN8Gameplay10isGameOverEv                                                                                                                      
-00011e75  _ZN8Gameplay5resetEv                                                                                                                            
-000101ed  _ZN8Gameplay6updateEii                                                                                                                          
-000132c9  _ZN8Gameplay8gameOverEv                                                                                                                         
-000131a3  _ZN8Gameplay8newRoundEv                                                                                                                         
-00010b75  _ZN8Gameplay9countDownEv                                                                                                                        
-00011f09  _ZN8GameplayC2Eiib                                                                                                                              
-00011d49  _ZN9Joystick213JoyStick_InitEv                                                                                                                  
-000124f9  _ZN9Joystick27ConvertEPiS0_                                                                                                                     
-00013747  _ZN9Joystick2C1Ejj                                                                                                                              
-00013747  _ZN9Joystick2C2Ejj                                                                                                                              
-00013387  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev                                                       
-0001383d  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev                                                  
-0001375d  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev                                                 
-000137c5  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev                                                                 
-000138e5  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev                                                                
-00013773  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev                                                            
-000138f5  _ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                              
-00013a09  _ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                    
-00013905  _ZNSt3__111char_traitsIcE6lengthEPKc                                                                                                            
-00013a13  _ZNSt3__112__to_addressB6v15007IKcEEPT_S3_                                                                                                      
-00013915  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev                                                       
-0001296d  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj                                                                     
-000135dd  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev                                                                
-00013629  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev                                                                     
-000131d5  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc                                                               
-000137d9  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev                                                                             
-000137d9  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev                                                                             
-00010715  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_                                                                         
-00013a1d  _ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_                                                                                         
-00013a27  _ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev                                                                                  
-00013925  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                               
-000136af  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_
-00013a4d  _ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_                                         
-00013a31  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                     
-00013a3b  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE  
-000137ed  _ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE                                                 
-00013801  _ZNSt3__19allocatorIcEC2B6v15007Ev                                                                                                              
-000139bd  _ZSt15get_new_handlerv                                                                                                                          
-00013a55  _ZdlPv                                                                                                                                          
-000129c1  _Znwj                                                                                                                                           
+00013f39  _Z10Clock_Freqv                                                                                                                                 
+00012ec5  _Z10Sound_Initv                                                                                                                                 
+00013d49  _Z10Sound_Menuv                                                                                                                                 
+00013f45  _Z10Sound_Stopv                                                                                                                                 
+00012d65  _Z10TExaS_InitP10ADC12_RegsjPFhvE                                                                                                               
+00013c79  _Z10gameUpdatei                                                                                                                                 
+00013e41  _Z10menuIsDonev                                                                                                                                 
+00013e51  _Z11Clock_Delayj                                                                                                                                
+000134d5  _Z11SPI_OutDatac                                                                                                                                
+00013cb1  _Z11ST7735_openPKcji                                                                                                                            
+00013cc7  _Z11ST7735_readiPcj                                                                                                                             
+000131d5  _Z11Sound_StartPKhj                                                                                                                             
+00012dbd  _Z11Switch_Initv                                                                                                                                
+000106e9  _Z11menu_updatev                                                                                                                                
+0001216d  _Z12ST7735_InitR10initRFlags                                                                                                                    
+00013f8d  _Z12ST7735_closei                                                                                                                               
+00013eff  _Z12ST7735_lseekili                                                                                                                             
+0001357d  _Z12ST7735_writeiPKcj                                                                                                                           
+00013d5d  _Z12Sound_Selectv                                                                                                                               
+00013e61  _Z12gameFinishedv                                                                                                                               
+00013961  _Z12tronMenuInitv                                                                                                                               
+00013f51  _Z13ST7735_renamePKcS0_                                                                                                                         
+00013f97  _Z13ST7735_unlinkPKc                                                                                                                            
+000135b1  _Z14Clock_Delay1msj                                                                                                                             
+00012719  _Z14LaunchPad_Initv                                                                                                                             
+00013149  _Z14SPI_OutCommandc                                                                                                                             
+00011919  _Z14ST7735_OutCharc                                                                                                                             
+00013c1d  _Z14SysTick_IntArmjj                                                                                                                            
+00011d9d  _Z14TimerG7_IntArmtjj                                                                                                                           
+0001350d  _Z15ActivatePortA_Bv                                                                                                                            
+000101f5  _Z15Clock_Init80MHzi                                                                                                                            
+0001371d  _Z15ST7735_Color565hhh                                                                                                                          
+00010eb1  _Z15ST7735_FillRectsssst                                                                                                                        
+00012335  _Z15TimerG12_IntArmjj                                                                                                                           
+000103a9  _Z16ST7735_DrawCharSsscssh                                                                                                                      
+00012905  _Z16ST7735_DrawPixelsst                                                                                                                         
+000135e5  _Z16ST7735_SetCursorjj                                                                                                                          
+0000ffe5  _Z17ST7735_DrawBitmapssPKtss                                                                                                                    
+00012695  _Z17ST7735_DrawStringttPKcs                                                                                                                     
+0001398d  _Z17ST7735_FillScreent                                                                                                                          
+00011f91  _Z17ST7735_InitPrintfv                                                                                                                          
+000112bd  _Z18ST7735_SetRotationh                                                                                                                         
+00013bf9  _Z20ST7735_InvertDisplayi                                                                                                                       
+00010fc9  _Z20periodic_menu_updatei                                                                                                                       
+00013e71  _Z28TExaS_LaunchPadLogicPB27PB26v                                                                                                               
+000113b1  _Z2upv                                                                                                                                          
+000119e9  _Z4downv                                                                                                                                        
+000137b5  _Z6LED_Onj                                                                                                                                      
+000137e5  _Z7LED_Offj                                                                                                                                     
+00010c61  _Z8ADC_InitP10ADC12_Regsjj                                                                                                                      
+00013bb1  _Z8DAC5_Outh                                                                                                                                    
+00013219  _Z8LED_Initv                                                                                                                                    
+00013fa1  _Z8PLL_Initv                                                                                                                                    
+000111c5  _Z8SPI_Initv                                                                                                                                    
+00013815  _Z8gameInitv                                                                                                                                    
+00013ac1  _Z9ADC_StartP10ADC12_Regs                                                                                                                       
+00013421  _Z9DAC5_Initv                                                                                                                                   
+000132e1  _Z9SPI_Resetv                                                                                                                                   
+000139b9  _Z9Switch_Inv                                                                                                                                   
+0001167d  _Z9UART_Initv                                                                                                                                   
+00011ab5  _Z9changeSetv                                                                                                                                   
+00012581  _ZN4Bike10collisionsES_                                                                                                                         
+00012205  _ZN4Bike12displayCrashEv                                                                                                                        
+00013321  _ZN4Bike12firstDisplayEv                                                                                                                        
+0000f881  _ZN4Bike12updateCornerEPKt                                                                                                                      
+00010549  _ZN4Bike14updateLocationEi                                                                                                                      
+00012e15  _ZN4Bike5clearEv                                                                                                                                
+00013cdd  _ZN4Bike5crashEv                                                                                                                                
+0001325d  _ZN4Bike5resetEv                                                                                                                                
+00013f5d  _ZN4Bike6healthEv                                                                                                                               
+0000fd25  _ZN4Bike7displayEv                                                                                                                              
+00012795  _ZN4Bike8newPointEii                                                                                                                            
+000133e1  _ZN4BikeC2Eibb                                                                                                                                  
+00013fab  _ZN4BikeC2Ev                                                                                                                                    
+00012031  _ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi                                                             
+00013905  _ZN4MenuD2Ev                                                                                                                                    
+00013e81  _ZN8Gameplay10isGameOverEv                                                                                                                      
+000123c9  _ZN8Gameplay5resetEv                                                                                                                            
+00010861  _ZN8Gameplay6updateEii                                                                                                                          
+00013875  _ZN8Gameplay8gameOverEv                                                                                                                         
+0001374f  _ZN8Gameplay8newRoundEv                                                                                                                         
+000110c9  _ZN8Gameplay9countDownEv                                                                                                                        
+0001245d  _ZN8GameplayC2Eiib                                                                                                                              
+0001229d  _ZN9Joystick213JoyStick_InitEv                                                                                                                  
+00012a4d  _ZN9Joystick27ConvertEPiS0_                                                                                                                     
+00013cf3  _ZN9Joystick2C1Ejj                                                                                                                              
+00013cf3  _ZN9Joystick2C2Ejj                                                                                                                              
+00013933  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev                                                       
+00013de9  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev                                                  
+00013d09  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev                                                 
+00013d71  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev                                                                 
+00013e91  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev                                                                
+00013d1f  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev                                                            
+00013ea1  _ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                              
+00013fb5  _ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                    
+00013eb1  _ZNSt3__111char_traitsIcE6lengthEPKc                                                                                                            
+00013fbf  _ZNSt3__112__to_addressB6v15007IKcEEPT_S3_                                                                                                      
+00013ec1  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev                                                       
+00012f19  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj                                                                     
+00013b89  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev                                                                
+00013bd5  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev                                                                     
+00013781  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc                                                               
+00013d85  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev                                                                             
+00013d85  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev                                                                             
+00010d89  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_                                                                         
+00013fc9  _ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_                                                                                         
+00013fd3  _ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev                                                                                  
+00013ed1  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                               
+00013c5b  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_
+00013ff9  _ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_                                         
+00013fdd  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                     
+00013fe7  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE  
+00013d99  _ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE                                                 
+00013dad  _ZNSt3__19allocatorIcEC2B6v15007Ev                                                                                                              
+00013f69  _ZSt15get_new_handlerv                                                                                                                          
+00014001  _ZdlPv                                                                                                                                          
+00012f6d  _Znwj                                                                                                                                           
 202044c0  __CIOBUF_                                                                                                                                       
 20208000  __STACK_END                                                                                                                                     
 00000200  __STACK_SIZE                                                                                                                                    
@@ -705,46 +710,46 @@ address   name
 00000000  __TI_ATRegion2_region_sz                                                                                                                        
 00000000  __TI_ATRegion2_src_addr                                                                                                                         
 00000000  __TI_ATRegion2_trg_addr                                                                                                                         
-00013b8c  __TI_CINIT_Base                                                                                                                                 
-00013b9c  __TI_CINIT_Limit                                                                                                                                
-00013b9c  __TI_CINIT_Warm                                                                                                                                 
-00013b78  __TI_Handler_Table_Base                                                                                                                         
-00013b84  __TI_Handler_Table_Limit                                                                                                                        
-00012a15  __TI_auto_init_nobinit                                                                                                                          
-0001306d  __TI_cleanup                                                                                                                                    
+00014140  __TI_CINIT_Base                                                                                                                                 
+00014150  __TI_CINIT_Limit                                                                                                                                
+00014150  __TI_CINIT_Warm                                                                                                                                 
+0001412c  __TI_Handler_Table_Base                                                                                                                         
+00014138  __TI_Handler_Table_Limit                                                                                                                        
+00012fc1  __TI_auto_init_nobinit                                                                                                                          
+00013619  __TI_cleanup                                                                                                                                    
 20204c5c  __TI_cleanup_ptr                                                                                                                                
-000122bd  __TI_closefile                                                                                                                                  
-00012339  __TI_decompress_lzss                                                                                                                            
-00013873  __TI_decompress_none                                                                                                                            
-00012a69  __TI_doflush                                                                                                                                    
+00012811  __TI_closefile                                                                                                                                  
+0001288d  __TI_decompress_lzss                                                                                                                            
+00013e1f  __TI_decompress_none                                                                                                                            
+00013015  __TI_doflush                                                                                                                                    
 20204c60  __TI_dtors_ptr                                                                                                                                  
 20204c84  __TI_ft_end                                                                                                                                     
 ffffffff  __TI_pprof_out_hndl                                                                                                                             
 ffffffff  __TI_prof_data_size                                                                                                                             
 ffffffff  __TI_prof_data_start                                                                                                                            
-000130a1  __TI_readmsg                                                                                                                                    
+0001364d  __TI_readmsg                                                                                                                                    
 00000000  __TI_static_base__                                                                                                                              
 202045e0  __TI_tmpnams                                                                                                                                    
-000130d5  __TI_writemsg                                                                                                                                   
-00013935  __TI_zero_init                                                                                                                                  
-000128c1  __aeabi_idiv                                                                                                                                    
-0001035f  __aeabi_idiv0                                                                                                                                   
-000128c1  __aeabi_idivmod                                                                                                                                 
-000139c9  __aeabi_memclr                                                                                                                                  
-000139c9  __aeabi_memclr4                                                                                                                                 
-000139c9  __aeabi_memclr8                                                                                                                                 
-00013a5d  __aeabi_memcpy                                                                                                                                  
-00013a5d  __aeabi_memcpy4                                                                                                                                 
-00013a5d  __aeabi_memcpy8                                                                                                                                 
-00013a65  __aeabi_memmove                                                                                                                                 
-00013a65  __aeabi_memmove4                                                                                                                                
-00013a65  __aeabi_memmove8                                                                                                                                
-00012db5  __aeabi_uidiv                                                                                                                                   
-00012db5  __aeabi_uidivmod                                                                                                                                
+00013681  __TI_writemsg                                                                                                                                   
+00013ee1  __TI_zero_init                                                                                                                                  
+00012e6d  __aeabi_idiv                                                                                                                                    
+000109d3  __aeabi_idiv0                                                                                                                                   
+00012e6d  __aeabi_idivmod                                                                                                                                 
+00013f75  __aeabi_memclr                                                                                                                                  
+00013f75  __aeabi_memclr4                                                                                                                                 
+00013f75  __aeabi_memclr8                                                                                                                                 
+00014009  __aeabi_memcpy                                                                                                                                  
+00014009  __aeabi_memcpy4                                                                                                                                 
+00014009  __aeabi_memcpy8                                                                                                                                 
+00014011  __aeabi_memmove                                                                                                                                 
+00014011  __aeabi_memmove4                                                                                                                                
+00014011  __aeabi_memmove8                                                                                                                                
+00013361  __aeabi_uidiv                                                                                                                                   
+00013361  __aeabi_uidivmod                                                                                                                                
 ffffffff  __binit__                                                                                                                                       
-00013815  __cxa_atexit                                                                                                                                    
-00012565  __cxa_finalize                                                                                                                                  
-00013a6d  __cxa_ia64_exit                                                                                                                                 
+00013dc1  __cxa_atexit                                                                                                                                    
+00012ab9  __cxa_finalize                                                                                                                                  
+00014019  __cxa_ia64_exit                                                                                                                                 
 20204c88  __cxa_new_handler                                                                                                                               
 20204c8c  __dso_handle                                                                                                                                    
 UNDEFED   __mpu_init                                                                                                                                      
@@ -753,25 +758,25 @@ UNDEFED   __mpu_init
 20200000  __start___llvm_prf_cnts                                                                                                                         
 20200000  __stop___llvm_prf_bits                                                                                                                          
 20200000  __stop___llvm_prf_cnts                                                                                                                          
-000135b5  _c_int00_noargs                                                                                                                                 
+00013b61  _c_int00_noargs                                                                                                                                 
 20204980  _device                                                                                                                                         
 20204890  _ftable                                                                                                                                         
 20204c90  _lock                                                                                                                                           
-0001095b  _nop                                                                                                                                            
+00011f8f  _nop                                                                                                                                            
 20204b90  _stream                                                                                                                                         
 20204cf0  _sys_memory                                                                                                                                     
 UNDEFED   _system_post_cinit                                                                                                                              
-00013a89  _system_pre_init                                                                                                                                
+00014035  _system_pre_init                                                                                                                                
 20204c94  _unlock                                                                                                                                         
 20204ce2  abilityEnabled                                                                                                                                  
-00013a8d  abort                                                                                                                                           
-00010f51  add_device                                                                                                                                      
-000104c1  aligned_alloc                                                                                                                                   
+00014039  abort                                                                                                                                           
+000114a5  add_device                                                                                                                                      
+00010b35  aligned_alloc                                                                                                                                   
 20204c64  axes                                                                                                                                            
 20204c98  bikeSpeed                                                                                                                                       
 ffffffff  binit                                                                                                                                           
 20204c9c  buttonInput                                                                                                                                     
-00012abd  close                                                                                                                                           
+00013069  close                                                                                                                                           
 20204ca0  col                                                                                                                                             
 2020471c  curSound                                                                                                                                        
 20204ca4  currInd                                                                                                                                         
@@ -779,13 +784,13 @@ ffffffff  binit
 20204cac  currState                                                                                                                                       
 20204c08  cycleSprites                                                                                                                                    
 20204ce3  done                                                                                                                                            
-00013109  exit                                                                                                                                            
-00012f99  finddevice                                                                                                                                      
-00013329  fopen                                                                                                                                           
-0001103d  free                                                                                                                                            
-0001313d  freopen                                                                                                                                         
+000136b5  exit                                                                                                                                            
+00013545  finddevice                                                                                                                                      
+000138d5  fopen                                                                                                                                           
+00011591  free                                                                                                                                            
+000136e9  freopen                                                                                                                                         
 202049f8  gameRunner                                                                                                                                      
-000125d1  getdevice                                                                                                                                       
+00012b25  getdevice                                                                                                                                       
 20204cb0  ind                                                                                                                                             
 00000000  interruptVectors                                                                                                                                
 20204cb4  joystickPacket                                                                                                                                  
@@ -793,30 +798,30 @@ ffffffff  binit
 20204a70  langText                                                                                                                                        
 20204cb8  lasInd                                                                                                                                          
 20204cbc  lastInput                                                                                                                                       
-00011629  main                                                                                                                                            
+00011b7d  main                                                                                                                                            
 20204c44  mainChange                                                                                                                                      
 20204ad0  mainText                                                                                                                                        
-000139d5  malloc                                                                                                                                          
-000104c1  memalign                                                                                                                                        
-00013565  memmove                                                                                                                                         
+00013f81  malloc                                                                                                                                          
+00010b35  memalign                                                                                                                                        
+00013b11  memmove                                                                                                                                         
 20204728  menuFSM                                                                                                                                         
 20204cc0  off                                                                                                                                             
-000118f1  open                                                                                                                                            
+00011e45  open                                                                                                                                            
 20204708  parmbuf                                                                                                                                         
 20204cc4  period                                                                                                                                          
 20204cc8  priority                                                                                                                                        
-00013a75  remove                                                                                                                                          
+00014021  remove                                                                                                                                          
 20204ccc  row                                                                                                                                             
 20204ce5  semaphore                                                                                                                                       
 20204c28  settChange                                                                                                                                      
 20204b30  settText                                                                                                                                        
-00011211  setvbuf                                                                                                                                         
+00011765  setvbuf                                                                                                                                         
 20204cd0  size                                                                                                                                            
 20204c50  speeds                                                                                                                                          
-00013961  strlen                                                                                                                                          
-000134e9  unlink                                                                                                                                          
+00013f0d  strlen                                                                                                                                          
+00013a95  unlink                                                                                                                                          
 20200000  visitedMatrix                                                                                                                                   
-0001358d  write                                                                                                                                           
+00013b39  write                                                                                                                                           
 20204cd4  xInput                                                                                                                                          
 20204cd8  yInput                                                                                                                                          
 
@@ -838,219 +843,221 @@ address   name
 00000000  interruptVectors                                                                                                                                
 00000200  __STACK_SIZE                                                                                                                                    
 00000200  __SYSMEM_SIZE                                                                                                                                   
-0000f881  _ZN4Bike7displayEv                                                                                                                              
-0000fb11  _Z17ST7735_DrawBitmapssPKtss                                                                                                                    
-0000fd21  _Z15Clock_Init80MHzi                                                                                                                            
-0000fed5  _Z16ST7735_DrawCharSsscssh                                                                                                                      
-00010075  _Z11menu_updatev                                                                                                                                
-000101ed  _ZN8Gameplay6updateEii                                                                                                                          
-0001035f  __aeabi_idiv0                                                                                                                                   
-000104c1  aligned_alloc                                                                                                                                   
-000104c1  memalign                                                                                                                                        
-000105ed  _Z8ADC_InitP10ADC12_Regsjj                                                                                                                      
-00010715  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_                                                                         
-0001083d  _ZN4Bike14updateLocationEi                                                                                                                      
-0001095b  _nop                                                                                                                                            
-0001095d  _Z15ST7735_FillRectsssst                                                                                                                        
-00010a75  _Z20periodic_menu_updatei                                                                                                                       
-00010b75  _ZN8Gameplay9countDownEv                                                                                                                        
-00010c71  _Z8SPI_Initv                                                                                                                                    
-00010d69  _Z18ST7735_SetRotationh                                                                                                                         
-00010e5d  _Z2upv                                                                                                                                          
-00010f51  add_device                                                                                                                                      
-0001103d  free                                                                                                                                            
-00011129  _Z9UART_Initv                                                                                                                                   
-00011211  setvbuf                                                                                                                                         
-000112ed  TIMG12_IRQHandler                                                                                                                               
-000113c5  _Z14ST7735_OutCharc                                                                                                                             
-00011495  _Z4downv                                                                                                                                        
-00011561  _Z9changeSetv                                                                                                                                   
-00011629  main                                                                                                                                            
-00011849  _Z14TimerG7_IntArmtjj                                                                                                                           
-000118f1  open                                                                                                                                            
-00011a3d  _Z17ST7735_InitPrintfv                                                                                                                          
-00011add  _ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi                                                             
-00011c19  _Z12ST7735_InitR10initRFlags                                                                                                                    
-00011cb1  _ZN4Bike12displayCrashEv                                                                                                                        
-00011d49  _ZN9Joystick213JoyStick_InitEv                                                                                                                  
-00011de1  _Z15TimerG12_IntArmjj                                                                                                                           
-00011e75  _ZN8Gameplay5resetEv                                                                                                                            
-00011f09  _ZN8GameplayC2Eiib                                                                                                                              
-0001202d  _ZN4Bike10collisionsES_                                                                                                                         
-00012141  _Z17ST7735_DrawStringttPKcs                                                                                                                     
-000121c5  _Z14LaunchPad_Initv                                                                                                                             
-00012241  _ZN4Bike8newPointEii                                                                                                                            
-000122bd  __TI_closefile                                                                                                                                  
-00012339  __TI_decompress_lzss                                                                                                                            
-000123b1  _Z16ST7735_DrawPixelsst                                                                                                                         
-00012421  HOSTlseek                                                                                                                                       
-0001248d  HOSTrename                                                                                                                                      
-000124f9  _ZN9Joystick27ConvertEPiS0_                                                                                                                     
-00012565  __cxa_finalize                                                                                                                                  
-000125d1  getdevice                                                                                                                                       
-00012701  HOSTopen                                                                                                                                        
-00012761  HOSTread                                                                                                                                        
-000127b9  HOSTwrite                                                                                                                                       
-00012811  _Z10TExaS_InitP10ADC12_RegsjPFhvE                                                                                                               
-00012869  _Z11Switch_Initv                                                                                                                                
-000128c1  __aeabi_idiv                                                                                                                                    
-000128c1  __aeabi_idivmod                                                                                                                                 
-00012919  _Z10Sound_Initv                                                                                                                                 
-0001296d  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj                                                                     
-000129c1  _Znwj                                                                                                                                           
-00012a15  __TI_auto_init_nobinit                                                                                                                          
-00012a69  __TI_doflush                                                                                                                                    
-00012abd  close                                                                                                                                           
-00012b0d  HOSTclose                                                                                                                                       
-00012b55  HOSTunlink                                                                                                                                      
-00012b9d  _Z14SPI_OutCommandc                                                                                                                             
-00012be5  SysTick_Handler                                                                                                                                 
-00012c29  _Z11Sound_StartPKhj                                                                                                                             
-00012c6d  _Z8LED_Initv                                                                                                                                    
-00012cb1  _ZN4Bike5resetEv                                                                                                                                
-00012cf5  TIMG7_IRQHandler                                                                                                                                
-00012d35  _Z9SPI_Resetv                                                                                                                                   
-00012d75  _ZN4Bike12firstDisplayEv                                                                                                                        
-00012db5  __aeabi_uidiv                                                                                                                                   
-00012db5  __aeabi_uidivmod                                                                                                                                
-00012e35  _ZN4BikeC2Eibb                                                                                                                                  
-00012e75  _Z9DAC5_Initv                                                                                                                                   
-00012f29  _Z11SPI_OutDatac                                                                                                                                
-00012f61  _Z15ActivatePortA_Bv                                                                                                                            
-00012f99  finddevice                                                                                                                                      
-00012fd1  _Z12ST7735_writeiPKcj                                                                                                                           
-00013005  _Z14Clock_Delay1msj                                                                                                                             
-00013039  _Z16ST7735_SetCursorjj                                                                                                                          
-0001306d  __TI_cleanup                                                                                                                                    
-000130a1  __TI_readmsg                                                                                                                                    
-000130d5  __TI_writemsg                                                                                                                                   
-00013101  C$$IO$$                                                                                                                                         
-00013109  exit                                                                                                                                            
-0001313d  freopen                                                                                                                                         
-00013171  _Z15ST7735_Color565hhh                                                                                                                          
-000131a3  _ZN8Gameplay8newRoundEv                                                                                                                         
-000131d5  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc                                                               
-00013209  _Z6LED_Onj                                                                                                                                      
-00013239  _Z7LED_Offj                                                                                                                                     
-00013269  _Z8gameInitv                                                                                                                                    
-000132c9  _ZN8Gameplay8gameOverEv                                                                                                                         
-00013329  fopen                                                                                                                                           
-00013359  _ZN4MenuD2Ev                                                                                                                                    
-00013387  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev                                                       
-000133b5  _Z12tronMenuInitv                                                                                                                               
-000133e1  _Z17ST7735_FillScreent                                                                                                                          
-0001340d  _Z9Switch_Inv                                                                                                                                   
-000134e9  unlink                                                                                                                                          
-00013515  _Z9ADC_StartP10ADC12_Regs                                                                                                                       
-00013565  memmove                                                                                                                                         
-0001358d  write                                                                                                                                           
-000135b5  _c_int00_noargs                                                                                                                                 
-000135dd  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev                                                                
-00013605  _Z8DAC5_Outh                                                                                                                                    
-00013629  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev                                                                     
-0001364d  _Z20ST7735_InvertDisplayi                                                                                                                       
-00013671  _Z14SysTick_IntArmjj                                                                                                                            
-000136af  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_
-000136cd  _Z10gameUpdatei                                                                                                                                 
-00013705  _Z11ST7735_openPKcji                                                                                                                            
-0001371b  _Z11ST7735_readiPcj                                                                                                                             
-00013731  _ZN4Bike5crashEv                                                                                                                                
-00013747  _ZN9Joystick2C1Ejj                                                                                                                              
-00013747  _ZN9Joystick2C2Ejj                                                                                                                              
-0001375d  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev                                                 
-00013773  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev                                                            
-0001379d  _Z10Sound_Menuv                                                                                                                                 
-000137b1  _Z12Sound_Selectv                                                                                                                               
-000137c5  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev                                                                 
-000137d9  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev                                                                             
-000137d9  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev                                                                             
-000137ed  _ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE                                                 
-00013801  _ZNSt3__19allocatorIcEC2B6v15007Ev                                                                                                              
-00013815  __cxa_atexit                                                                                                                                    
-0001383d  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev                                                  
-00013861  TI_memcpy_small                                                                                                                                 
-00013873  __TI_decompress_none                                                                                                                            
-00013895  _Z10menuIsDonev                                                                                                                                 
-000138a5  _Z11Clock_Delayj                                                                                                                                
-000138b5  _Z12gameFinishedv                                                                                                                               
-000138c5  _Z28TExaS_LaunchPadLogicPB27PB26v                                                                                                               
-000138d5  _ZN8Gameplay10isGameOverEv                                                                                                                      
-000138e5  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev                                                                
-000138f5  _ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                              
-00013905  _ZNSt3__111char_traitsIcE6lengthEPKc                                                                                                            
-00013915  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev                                                       
-00013925  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                               
-00013935  __TI_zero_init                                                                                                                                  
-00013953  _Z12ST7735_lseekili                                                                                                                             
-00013961  strlen                                                                                                                                          
-0001397d  TI_memset_small                                                                                                                                 
-0001398d  _Z10Clock_Freqv                                                                                                                                 
-00013999  _Z10Sound_Stopv                                                                                                                                 
-000139a5  _Z13ST7735_renamePKcS0_                                                                                                                         
-000139b1  _ZN4Bike6healthEv                                                                                                                               
-000139bd  _ZSt15get_new_handlerv                                                                                                                          
-000139c9  __aeabi_memclr                                                                                                                                  
-000139c9  __aeabi_memclr4                                                                                                                                 
-000139c9  __aeabi_memclr8                                                                                                                                 
-000139d5  malloc                                                                                                                                          
-000139e1  _Z12ST7735_closei                                                                                                                               
-000139eb  _Z13ST7735_unlinkPKc                                                                                                                            
-000139f5  _Z8PLL_Initv                                                                                                                                    
-000139ff  _ZN4BikeC2Ev                                                                                                                                    
-00013a09  _ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                    
-00013a13  _ZNSt3__112__to_addressB6v15007IKcEEPT_S3_                                                                                                      
-00013a1d  _ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_                                                                                         
-00013a27  _ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev                                                                                  
-00013a31  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                     
-00013a3b  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE  
-00013a4d  _ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_                                         
-00013a55  _ZdlPv                                                                                                                                          
-00013a5d  __aeabi_memcpy                                                                                                                                  
-00013a5d  __aeabi_memcpy4                                                                                                                                 
-00013a5d  __aeabi_memcpy8                                                                                                                                 
-00013a65  __aeabi_memmove                                                                                                                                 
-00013a65  __aeabi_memmove4                                                                                                                                
-00013a65  __aeabi_memmove8                                                                                                                                
-00013a6d  __cxa_ia64_exit                                                                                                                                 
-00013a75  remove                                                                                                                                          
-00013a7d  ADC0_IRQHandler                                                                                                                                 
-00013a7d  ADC1_IRQHandler                                                                                                                                 
-00013a7d  AES_IRQHandler                                                                                                                                  
-00013a7d  CANFD0_IRQHandler                                                                                                                               
-00013a7d  DAC0_IRQHandler                                                                                                                                 
-00013a7d  DMA_IRQHandler                                                                                                                                  
-00013a7d  Default_Handler                                                                                                                                 
-00013a7d  GROUP0_IRQHandler                                                                                                                               
-00013a7d  GROUP1_IRQHandler                                                                                                                               
-00013a7d  I2C0_IRQHandler                                                                                                                                 
-00013a7d  I2C1_IRQHandler                                                                                                                                 
-00013a7d  NMI_Handler                                                                                                                                     
-00013a7d  PendSV_Handler                                                                                                                                  
-00013a7d  RTC_IRQHandler                                                                                                                                  
-00013a7d  SPI0_IRQHandler                                                                                                                                 
-00013a7d  SPI1_IRQHandler                                                                                                                                 
-00013a7d  SVC_Handler                                                                                                                                     
-00013a7d  TIMA0_IRQHandler                                                                                                                                
-00013a7d  TIMA1_IRQHandler                                                                                                                                
-00013a7d  TIMG0_IRQHandler                                                                                                                                
-00013a7d  TIMG6_IRQHandler                                                                                                                                
-00013a7d  TIMG8_IRQHandler                                                                                                                                
-00013a7d  UART0_IRQHandler                                                                                                                                
-00013a7d  UART1_IRQHandler                                                                                                                                
-00013a7d  UART2_IRQHandler                                                                                                                                
-00013a7d  UART3_IRQHandler                                                                                                                                
-00013a81  HardFault_Handler                                                                                                                               
-00013a85  Reset_Handler                                                                                                                                   
-00013a89  _system_pre_init                                                                                                                                
-00013a8c  C$$EXIT                                                                                                                                         
-00013a8d  abort                                                                                                                                           
-00013a90  SHT$$INIT_ARRAY$$Base                                                                                                                           
-00013a9c  SHT$$INIT_ARRAY$$Limit                                                                                                                          
-00013b78  __TI_Handler_Table_Base                                                                                                                         
-00013b84  __TI_Handler_Table_Limit                                                                                                                        
-00013b8c  __TI_CINIT_Base                                                                                                                                 
-00013b9c  __TI_CINIT_Limit                                                                                                                                
-00013b9c  __TI_CINIT_Warm                                                                                                                                 
+0000f881  _ZN4Bike12updateCornerEPKt                                                                                                                      
+0000fd25  _ZN4Bike7displayEv                                                                                                                              
+0000ffe5  _Z17ST7735_DrawBitmapssPKtss                                                                                                                    
+000101f5  _Z15Clock_Init80MHzi                                                                                                                            
+000103a9  _Z16ST7735_DrawCharSsscssh                                                                                                                      
+00010549  _ZN4Bike14updateLocationEi                                                                                                                      
+000106e9  _Z11menu_updatev                                                                                                                                
+00010861  _ZN8Gameplay6updateEii                                                                                                                          
+000109d3  __aeabi_idiv0                                                                                                                                   
+00010b35  aligned_alloc                                                                                                                                   
+00010b35  memalign                                                                                                                                        
+00010c61  _Z8ADC_InitP10ADC12_Regsjj                                                                                                                      
+00010d89  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEaSERKS5_                                                                         
+00010eb1  _Z15ST7735_FillRectsssst                                                                                                                        
+00010fc9  _Z20periodic_menu_updatei                                                                                                                       
+000110c9  _ZN8Gameplay9countDownEv                                                                                                                        
+000111c5  _Z8SPI_Initv                                                                                                                                    
+000112bd  _Z18ST7735_SetRotationh                                                                                                                         
+000113b1  _Z2upv                                                                                                                                          
+000114a5  add_device                                                                                                                                      
+00011591  free                                                                                                                                            
+0001167d  _Z9UART_Initv                                                                                                                                   
+00011765  setvbuf                                                                                                                                         
+00011841  TIMG12_IRQHandler                                                                                                                               
+00011919  _Z14ST7735_OutCharc                                                                                                                             
+000119e9  _Z4downv                                                                                                                                        
+00011ab5  _Z9changeSetv                                                                                                                                   
+00011b7d  main                                                                                                                                            
+00011d9d  _Z14TimerG7_IntArmtjj                                                                                                                           
+00011e45  open                                                                                                                                            
+00011f8f  _nop                                                                                                                                            
+00011f91  _Z17ST7735_InitPrintfv                                                                                                                          
+00012031  _ZN4MenuC2EPA4_NSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiPKi                                                             
+0001216d  _Z12ST7735_InitR10initRFlags                                                                                                                    
+00012205  _ZN4Bike12displayCrashEv                                                                                                                        
+0001229d  _ZN9Joystick213JoyStick_InitEv                                                                                                                  
+00012335  _Z15TimerG12_IntArmjj                                                                                                                           
+000123c9  _ZN8Gameplay5resetEv                                                                                                                            
+0001245d  _ZN8GameplayC2Eiib                                                                                                                              
+00012581  _ZN4Bike10collisionsES_                                                                                                                         
+00012695  _Z17ST7735_DrawStringttPKcs                                                                                                                     
+00012719  _Z14LaunchPad_Initv                                                                                                                             
+00012795  _ZN4Bike8newPointEii                                                                                                                            
+00012811  __TI_closefile                                                                                                                                  
+0001288d  __TI_decompress_lzss                                                                                                                            
+00012905  _Z16ST7735_DrawPixelsst                                                                                                                         
+00012975  HOSTlseek                                                                                                                                       
+000129e1  HOSTrename                                                                                                                                      
+00012a4d  _ZN9Joystick27ConvertEPiS0_                                                                                                                     
+00012ab9  __cxa_finalize                                                                                                                                  
+00012b25  getdevice                                                                                                                                       
+00012c55  HOSTopen                                                                                                                                        
+00012cb5  HOSTread                                                                                                                                        
+00012d0d  HOSTwrite                                                                                                                                       
+00012d65  _Z10TExaS_InitP10ADC12_RegsjPFhvE                                                                                                               
+00012dbd  _Z11Switch_Initv                                                                                                                                
+00012e15  _ZN4Bike5clearEv                                                                                                                                
+00012e6d  __aeabi_idiv                                                                                                                                    
+00012e6d  __aeabi_idivmod                                                                                                                                 
+00012ec5  _Z10Sound_Initv                                                                                                                                 
+00012f19  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcj                                                                     
+00012f6d  _Znwj                                                                                                                                           
+00012fc1  __TI_auto_init_nobinit                                                                                                                          
+00013015  __TI_doflush                                                                                                                                    
+00013069  close                                                                                                                                           
+000130b9  HOSTclose                                                                                                                                       
+00013101  HOSTunlink                                                                                                                                      
+00013149  _Z14SPI_OutCommandc                                                                                                                             
+00013191  SysTick_Handler                                                                                                                                 
+000131d5  _Z11Sound_StartPKhj                                                                                                                             
+00013219  _Z8LED_Initv                                                                                                                                    
+0001325d  _ZN4Bike5resetEv                                                                                                                                
+000132a1  TIMG7_IRQHandler                                                                                                                                
+000132e1  _Z9SPI_Resetv                                                                                                                                   
+00013321  _ZN4Bike12firstDisplayEv                                                                                                                        
+00013361  __aeabi_uidiv                                                                                                                                   
+00013361  __aeabi_uidivmod                                                                                                                                
+000133e1  _ZN4BikeC2Eibb                                                                                                                                  
+00013421  _Z9DAC5_Initv                                                                                                                                   
+000134d5  _Z11SPI_OutDatac                                                                                                                                
+0001350d  _Z15ActivatePortA_Bv                                                                                                                            
+00013545  finddevice                                                                                                                                      
+0001357d  _Z12ST7735_writeiPKcj                                                                                                                           
+000135b1  _Z14Clock_Delay1msj                                                                                                                             
+000135e5  _Z16ST7735_SetCursorjj                                                                                                                          
+00013619  __TI_cleanup                                                                                                                                    
+0001364d  __TI_readmsg                                                                                                                                    
+00013681  __TI_writemsg                                                                                                                                   
+000136ad  C$$IO$$                                                                                                                                         
+000136b5  exit                                                                                                                                            
+000136e9  freopen                                                                                                                                         
+0001371d  _Z15ST7735_Color565hhh                                                                                                                          
+0001374f  _ZN8Gameplay8newRoundEv                                                                                                                         
+00013781  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007IDnEEPKc                                                               
+000137b5  _Z6LED_Onj                                                                                                                                      
+000137e5  _Z7LED_Offj                                                                                                                                     
+00013815  _Z8gameInitv                                                                                                                                    
+00013875  _ZN8Gameplay8gameOverEv                                                                                                                         
+000138d5  fopen                                                                                                                                           
+00013905  _ZN4MenuD2Ev                                                                                                                                    
+00013933  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE13__get_pointerB6v15007Ev                                                       
+00013961  _Z12tronMenuInitv                                                                                                                               
+0001398d  _Z17ST7735_FillScreent                                                                                                                          
+000139b9  _Z9Switch_Inv                                                                                                                                   
+00013a95  unlink                                                                                                                                          
+00013ac1  _Z9ADC_StartP10ADC12_Regs                                                                                                                       
+00013b11  memmove                                                                                                                                         
+00013b39  write                                                                                                                                           
+00013b61  _c_int00_noargs                                                                                                                                 
+00013b89  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__zeroB6v15007Ev                                                                
+00013bb1  _Z8DAC5_Outh                                                                                                                                    
+00013bd5  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B6v15007Ev                                                                     
+00013bf9  _Z20ST7735_InvertDisplayi                                                                                                                       
+00013c1d  _Z14SysTick_IntArmjj                                                                                                                            
+00013c5b  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_EC2B6v15007INS_18__default_init_tagESA_EEOT_OT0_
+00013c79  _Z10gameUpdatei                                                                                                                                 
+00013cb1  _Z11ST7735_openPKcji                                                                                                                            
+00013cc7  _Z11ST7735_readiPcj                                                                                                                             
+00013cdd  _ZN4Bike5crashEv                                                                                                                                
+00013cf3  _ZN9Joystick2C1Ejj                                                                                                                              
+00013cf3  _ZN9Joystick2C2Ejj                                                                                                                              
+00013d09  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE19__get_short_pointerB6v15007Ev                                                 
+00013d1f  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9__is_longB6v15007Ev                                                            
+00013d49  _Z10Sound_Menuv                                                                                                                                 
+00013d5d  _Z12Sound_Selectv                                                                                                                               
+00013d71  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE4dataB6v15007Ev                                                                 
+00013d85  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev                                                                             
+00013d85  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED2Ev                                                                             
+00013d99  _ZNSt3__122__compressed_pair_elemINS_9allocatorIcEELi1ELb1EEC2B6v15007ENS_18__default_init_tagE                                                 
+00013dad  _ZNSt3__19allocatorIcEC2B6v15007Ev                                                                                                              
+00013dc1  __cxa_atexit                                                                                                                                    
+00013de9  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE18__get_long_pointerB6v15007Ev                                                  
+00013e0d  TI_memcpy_small                                                                                                                                 
+00013e1f  __TI_decompress_none                                                                                                                            
+00013e41  _Z10menuIsDonev                                                                                                                                 
+00013e51  _Z11Clock_Delayj                                                                                                                                
+00013e61  _Z12gameFinishedv                                                                                                                               
+00013e71  _Z28TExaS_LaunchPadLogicPB27PB26v                                                                                                               
+00013e81  _ZN8Gameplay10isGameOverEv                                                                                                                      
+00013e91  _ZNKSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5c_strB6v15007Ev                                                                
+00013ea1  _ZNKSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                              
+00013eb1  _ZNSt3__111char_traitsIcE6lengthEPKc                                                                                                            
+00013ec1  _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE14__default_initB6v15007Ev                                                       
+00013ed1  _ZNSt3__117__compressed_pairINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repES5_E5firstB6v15007Ev                               
+00013ee1  __TI_zero_init                                                                                                                                  
+00013eff  _Z12ST7735_lseekili                                                                                                                             
+00013f0d  strlen                                                                                                                                          
+00013f29  TI_memset_small                                                                                                                                 
+00013f39  _Z10Clock_Freqv                                                                                                                                 
+00013f45  _Z10Sound_Stopv                                                                                                                                 
+00013f51  _Z13ST7735_renamePKcS0_                                                                                                                         
+00013f5d  _ZN4Bike6healthEv                                                                                                                               
+00013f69  _ZSt15get_new_handlerv                                                                                                                          
+00013f75  __aeabi_memclr                                                                                                                                  
+00013f75  __aeabi_memclr4                                                                                                                                 
+00013f75  __aeabi_memclr8                                                                                                                                 
+00013f81  malloc                                                                                                                                          
+00013f8d  _Z12ST7735_closei                                                                                                                               
+00013f97  _Z13ST7735_unlinkPKc                                                                                                                            
+00013fa1  _Z8PLL_Initv                                                                                                                                    
+00013fab  _ZN4BikeC2Ev                                                                                                                                    
+00013fb5  _ZNKSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                    
+00013fbf  _ZNSt3__112__to_addressB6v15007IKcEEPT_S3_                                                                                                      
+00013fc9  _ZNSt3__114pointer_traitsIPKcE10pointer_toB6v15007ERS1_                                                                                         
+00013fd3  _ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B6v15007Ev                                                                                  
+00013fdd  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EE5__getB6v15007Ev                     
+00013fe7  _ZNSt3__122__compressed_pair_elemINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE5__repELi0ELb0EEC2B6v15007ENS_18__default_init_tagE  
+00013ff9  _ZNSt3__119__debug_db_insert_cB6v15007INS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEEEvPT_                                         
+00014001  _ZdlPv                                                                                                                                          
+00014009  __aeabi_memcpy                                                                                                                                  
+00014009  __aeabi_memcpy4                                                                                                                                 
+00014009  __aeabi_memcpy8                                                                                                                                 
+00014011  __aeabi_memmove                                                                                                                                 
+00014011  __aeabi_memmove4                                                                                                                                
+00014011  __aeabi_memmove8                                                                                                                                
+00014019  __cxa_ia64_exit                                                                                                                                 
+00014021  remove                                                                                                                                          
+00014029  ADC0_IRQHandler                                                                                                                                 
+00014029  ADC1_IRQHandler                                                                                                                                 
+00014029  AES_IRQHandler                                                                                                                                  
+00014029  CANFD0_IRQHandler                                                                                                                               
+00014029  DAC0_IRQHandler                                                                                                                                 
+00014029  DMA_IRQHandler                                                                                                                                  
+00014029  Default_Handler                                                                                                                                 
+00014029  GROUP0_IRQHandler                                                                                                                               
+00014029  GROUP1_IRQHandler                                                                                                                               
+00014029  I2C0_IRQHandler                                                                                                                                 
+00014029  I2C1_IRQHandler                                                                                                                                 
+00014029  NMI_Handler                                                                                                                                     
+00014029  PendSV_Handler                                                                                                                                  
+00014029  RTC_IRQHandler                                                                                                                                  
+00014029  SPI0_IRQHandler                                                                                                                                 
+00014029  SPI1_IRQHandler                                                                                                                                 
+00014029  SVC_Handler                                                                                                                                     
+00014029  TIMA0_IRQHandler                                                                                                                                
+00014029  TIMA1_IRQHandler                                                                                                                                
+00014029  TIMG0_IRQHandler                                                                                                                                
+00014029  TIMG6_IRQHandler                                                                                                                                
+00014029  TIMG8_IRQHandler                                                                                                                                
+00014029  UART0_IRQHandler                                                                                                                                
+00014029  UART1_IRQHandler                                                                                                                                
+00014029  UART2_IRQHandler                                                                                                                                
+00014029  UART3_IRQHandler                                                                                                                                
+0001402d  HardFault_Handler                                                                                                                               
+00014031  Reset_Handler                                                                                                                                   
+00014035  _system_pre_init                                                                                                                                
+00014038  C$$EXIT                                                                                                                                         
+00014039  abort                                                                                                                                           
+00014040  SHT$$INIT_ARRAY$$Base                                                                                                                           
+0001404c  SHT$$INIT_ARRAY$$Limit                                                                                                                          
+0001412c  __TI_Handler_Table_Base                                                                                                                         
+00014138  __TI_Handler_Table_Limit                                                                                                                        
+00014140  __TI_CINIT_Base                                                                                                                                 
+00014150  __TI_CINIT_Limit                                                                                                                                
+00014150  __TI_CINIT_Warm                                                                                                                                 
 20200000  __start___llvm_prf_bits                                                                                                                         
 20200000  __start___llvm_prf_cnts                                                                                                                         
 20200000  __stop___llvm_prf_bits                                                                                                                          
@@ -1120,4 +1127,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                                                                                                                                      
 UNDEFED   _system_post_cinit                                                                                                                              
 
-[294 symbols]
+[296 symbols]

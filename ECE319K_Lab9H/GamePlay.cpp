@@ -52,10 +52,10 @@ class Bike
         curPos[0] += delx;
         curPos[1] += dely;
 
-        if(visitedMatrix[curPos[0]][curPos[1]])
+        if (visitedMatrix[curPos[0]][curPos[1]])
             dead = true;
 
-        if (curPos[0] < 0 || curPos[1] < 0 || curPos[0] >= 160 || curPos[1] >= 110)
+        if (curPos[0] < 1 || curPos[1] < 7 || curPos[0] >= 153 || curPos[1] >= 110)
             dead = true;
     }
 
@@ -81,7 +81,6 @@ public:
         this->dead = false;
         this->lives = 3;
         reset();
-
     }
 
     void reset()
@@ -114,10 +113,120 @@ public:
         return lives;
     }
 
+    void clear()
+    {
+        if (!(last_direction % 2))
+        {
+            ST7735_FillRect(curPos[0] - 2, curPos[1] - 6, 5, 7, ST7735_BLACK);
+        }
+        else
+        {
+            ST7735_FillRect(curPos[0], curPos[1] - 2, 7, 5, ST7735_BLACK);
+        }
+    }
+
+    void updateCorner(const unsigned short *trailColor)
+    {
+        if (last_direction == DIR_DOWN && (this->direction % 2))
+        {
+            for (int row = 3; row < 8; row++)
+            {
+                ST7735_DrawPixel(lastPos[0], lastPos[1] - row, trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] - row, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] - row, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] - 2, lastPos[1] - row, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + 2, lastPos[1] - row, trailColor[2]);
+
+                if (this->direction == DIR_RIGHT)
+                {
+                    visitedMatrix[lastPos[0] - 1][lastPos[1] + row] = true;
+                    visitedMatrix[lastPos[0] - 2][lastPos[1] + row] = true;
+                }
+                else
+                {
+                    visitedMatrix[lastPos[0] + 1][lastPos[1] + row] = true;
+                    visitedMatrix[lastPos[0] + 2][lastPos[1] + row] = true;
+                }
+            }
+        }
+        if (last_direction == DIR_UP && (this->direction % 2))
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                ST7735_DrawPixel(lastPos[0], lastPos[1] - row, trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] - row, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] - row, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] - 2, lastPos[1] - row, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + 2, lastPos[1] - row, trailColor[2]);
+
+                visitedMatrix[lastPos[0] + 0][lastPos[1] + row] = true;
+
+                if (this->direction == DIR_RIGHT)
+                {
+                    visitedMatrix[lastPos[0] - 1][lastPos[1] + row] = true;
+                    visitedMatrix[lastPos[0] - 2][lastPos[1] + row] = true;
+                }
+                else
+                {
+                    visitedMatrix[lastPos[0] + 1][lastPos[1] + row] = true;
+                    visitedMatrix[lastPos[0] + 2][lastPos[1] + row] = true;
+                }
+            }
+        }
+        if (last_direction == DIR_RIGHT && !(this->direction % 2))
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1], trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] - 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] + 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] - 2, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] + 2, trailColor[2]);
+
+                visitedMatrix[lastPos[0] + col][lastPos[1]] = true;
+
+                if (this->direction == DIR_DOWN)
+                {
+                    visitedMatrix[lastPos[0] + col][lastPos[1] - 1] = true;
+                    visitedMatrix[lastPos[0] + col][lastPos[1] - 2] = true;
+                }
+                else
+                {
+                    visitedMatrix[lastPos[0] + col][lastPos[1] + 1] = true;
+                    visitedMatrix[lastPos[0] + col][lastPos[1] + 2] = true;
+                }
+            }
+        }
+        if (last_direction == DIR_LEFT && !(this->direction % 2))
+        {
+            for (int col = 3; col < 8; col++)
+            {
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1], trailColor[0]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] - 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] + 1, trailColor[1]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] - 2, trailColor[2]);
+                ST7735_DrawPixel(lastPos[0] + col, lastPos[1] + 2, trailColor[2]);
+
+                visitedMatrix[lastPos[0] + col][lastPos[1]] = true;
+
+                if (this->direction == DIR_DOWN)
+                {
+                    visitedMatrix[lastPos[0] + col][lastPos[1] - 1] = true;
+                    visitedMatrix[lastPos[0] + col][lastPos[1] - 2] = true;
+                }
+                else
+                {
+                    visitedMatrix[lastPos[0] + col][lastPos[1] + 1] = true;
+                    visitedMatrix[lastPos[0] + col][lastPos[1] + 2] = true;
+                }
+            }
+        }
+    }
+
     void updateLocation(int direction)
     {
         int conversion = direction;
-        switch(direction)
+        switch (direction)
         {
         case 0:
             conversion = -1;
@@ -137,35 +246,60 @@ public:
         }
 
         last_direction = this->direction;
-        switch(conversion)
-        {
-            case DIR_UP:
-            case DIR_DOWN:
-            case DIR_LEFT:
-            case DIR_RIGHT:
-                this->direction = conversion;
-
-            default:
-                break;
-        }
-        
-        switch (this->direction)
+        switch (conversion)
         {
         case DIR_UP:
-            newPoint(0, -1);
-            break;
-        case DIR_RIGHT:
-            newPoint(1, 0);
-            break;
         case DIR_DOWN:
-            if(last_direction == DIR_LEFT || last_direction == DIR_RIGHT)
-                newPoint(0, 8);
+        case DIR_LEFT:
+        case DIR_RIGHT:
+            if ((last_direction - conversion) != 2 && (last_direction - conversion) != -2)
+            {
+                this->direction = conversion;
+            }
+
+        default:
+            break;
+        }
+
+        switch (this->direction)
+        {
+        // Updated
+        case DIR_UP:
+            if (last_direction % 2)
+            {
+                clear();
+                newPoint(3, -1);
+            }
+            else
+                newPoint(0, -1);
+            break;
+        // Updated
+        case DIR_RIGHT:
+            if (!(last_direction % 2))
+            {
+                clear();
+                newPoint(1, -3);
+            }
+            else
+                newPoint(1, 0);
+            break;
+        // Updated
+        case DIR_DOWN:
+            if (last_direction % 2)
+            {
+                clear();
+                newPoint(3, 8);
+            }
             else
                 newPoint(0, 1);
             break;
+        // Updated
         case DIR_LEFT:
-            if(last_direction == DIR_UP || last_direction == DIR_RIGHT)
-                newPoint(-8, 0);
+            if (!(last_direction % 2))
+            {
+                clear();
+                newPoint(-8, -3);
+            }
             else
                 newPoint(-1, 0);
             break;
@@ -174,7 +308,7 @@ public:
 
     bool collisions(Bike other)
     {
-        if(other.curPos[0] == curPos[0] && other.curPos[1] == curPos[1])
+        if (other.curPos[0] == curPos[0] && other.curPos[1] == curPos[1])
             return true;
 
         return dead;
@@ -183,7 +317,7 @@ public:
     void firstDisplay()
     {
         // display bike sprite at starting coordinate
-        if(!number)
+        if (!number)
             ST7735_DrawBitmap(PLAYER1_START_X - 2, PLAYER1_START_Y, DownBlueCycle, 5, 7);
         else
             ST7735_DrawBitmap(PLAYER2_START_X - 2, PLAYER2_START_Y, UpRedCycle, 5, 7);
@@ -199,7 +333,7 @@ public:
         int xOff = 0;
         int yOff = 0;
 
-        switch(direction)
+        switch (last_direction)
         {
         case DIR_LEFT:
             xOff = 7;
@@ -214,14 +348,23 @@ public:
             break;
         }
 
-
-
-        switch (direction)
+        switch (this->direction)
         {
         case DIR_UP:
         case DIR_DOWN:
             ST7735_DrawBitmap(curPos[0] - 2, curPos[1], cycleSprites[direction][number], 5, 7);
+            break;
 
+        case DIR_LEFT:
+        case DIR_RIGHT:
+            ST7735_DrawBitmap(curPos[0], curPos[1] + 2, cycleSprites[direction][number], 7, 5);
+            break;
+        }
+
+        switch (last_direction)
+        {
+        case DIR_UP:
+        case DIR_DOWN:
             ST7735_DrawPixel(lastPos[0], lastPos[1] + yOff, trailColor[0]);
             ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] + yOff, trailColor[1]);
             ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] + yOff, trailColor[1]);
@@ -237,8 +380,6 @@ public:
 
         case DIR_LEFT:
         case DIR_RIGHT:
-            ST7735_DrawBitmap(curPos[0], curPos[1] + 2, cycleSprites[direction][number], 7, 5);
-
             ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1], trailColor[0]);
             ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 1, trailColor[1]);
             ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 1, trailColor[1]);
@@ -252,6 +393,8 @@ public:
             visitedMatrix[lastPos[0] + xOff][lastPos[1] - 2] = true;
             break;
         }
+
+        updateCorner(trailColor);
     }
 };
 
@@ -275,8 +418,8 @@ class Gameplay
         player1.firstDisplay();
         player2.firstDisplay();
 
-        for(int col = 0; col < 160; col++)
-            for(int row = 0; row < 110; row++)
+        for (int col = 0; col < 160; col++)
+            for (int row = 0; row < 110; row++)
                 visitedMatrix[col][row] = false;
 
         LED_Off(7);
@@ -303,7 +446,7 @@ class Gameplay
 
     void gameOver()
     {
-        if(player1.health() <= 0 || player2.health() <= 0)
+        if (player1.health() <= 0 || player2.health() <= 0)
         {
             gameDone = true;
         }
