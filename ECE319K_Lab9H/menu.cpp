@@ -8,9 +8,12 @@
 using namespace std;
 
 #include "GameSettings.h"
-extern int bikeSpeed;
-extern bool abilityEnabled;
-extern int currLang;
+
+int currLang = ENGLISH;
+int bikeSpeed = 1;
+bool abilityEnabled = false;
+
+bool done = false;
 
 // Offsets for text
 int col = 16;
@@ -100,16 +103,17 @@ void tronMenuInit()
 {
     ST7735_DrawBitmap(0, 127, tron_menu_img, 160, 128);
     menu_update();
+    done = false;
 }
 
 void changeSet()
 {
     if (currInd == 1)
     {
-        if (menuFSM[currInd].highlight == 0)
-            currLang = 0;
-        else if (menuFSM[currInd].highlight == 1)
-            currLang = 1;
+        if (menuFSM[currInd].highlight == ENGLISH)
+            currLang = ENGLISH;
+        else if (menuFSM[currInd].highlight == GERMAN)
+            currLang = GERMAN;
     }
     else if (currInd == 2)
     {
@@ -131,7 +135,7 @@ void changeSet()
 }
 
 int lastInput = 0;
-void periodic_update(int input)
+void periodic_menu_update(int input)
 {
     if (input != lastInput)
     {
@@ -150,6 +154,11 @@ void periodic_update(int input)
             break;
 
         case 0x0020:
+            if(currInd == 0 && menuFSM[currInd].highlight == 0)
+            {
+                done = true;
+                break;
+            }
             changeSet();
             lasInd = currInd;
             currInd = menuFSM[currInd].next[menuFSM[currInd].highlight];
@@ -177,4 +186,9 @@ void periodic_update(int input)
         }
 
     }
+}
+
+bool menuIsDone(void)
+{
+    return done;
 }

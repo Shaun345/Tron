@@ -36,13 +36,13 @@ void LED_On(uint32_t data)
 // data specifies which LED to turn off
 void LED_Off(uint32_t data)
 {
-    GPIOB->DOUTCLR31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
+    GPIOB->DOUTCLR31_0 = (0x03 & data) << 16 | (0x04 & data) << 17;
     GPIOA->DOUTCLR31_0 = (0x08 & data) << 8;
 }
 
 // data specifies which LED to toggle
 void LED_Toggle(uint32_t data)
 {
-    GPIOB->DOUTTGL31_0 = (0x03 & data) << 16 | (0x04 & data) << 19;
+    GPIOB->DOUTTGL31_0 = (0x03 & data) << 16 | (0x04 & data) << 17;
     GPIOA->DOUTTGL31_0 = (0x08 & data) << 8;
 }

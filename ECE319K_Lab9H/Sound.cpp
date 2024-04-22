@@ -90,7 +90,7 @@ void Sound_Select(void)
     Sound_Start(TronMenuSelect, sizeof(TronMenuSelect));
 }
 
-void Sound_Start(void)
+void Sound_StartGame(void)
 {
     Sound_Start(TronStart, sizeof(TronStart));
 }
@@ -108,9 +108,4 @@ void Sound_Fail(void)
 void Sound_GameWin(void)
 {
     Sound_Start(TronGameWin, sizeof(TronGameWin));
-}
-
-void Sound_GameLose(void)
-{
-    Sound_Start(TronGameOver, sizeof(TronGameOver));
 }

@@ -21,6 +21,7 @@
 #include "images/images.h"
 #include "menu.h"
 #include "Joystick2.h"
+#include "GamePlay.h"
 extern "C" void __disable_irq(void);
 extern "C" void __enable_irq(void);
 extern "C" void TIMG12_IRQHandler(void);
@@ -33,6 +34,26 @@ void PLL_Init(void)
     // Clock_Init40MHz(); // run this line for 40MHz
     Clock_Init80MHz(0); // run this line for 80MHz
 }
+
+struct State
+{
+    void (*init_func)(void);
+    void (*per_func)(int);
+    bool (*isDone)(void);
+    State *next[2];
+};
+
+#define menuInd &MainFSM[0]
+#define gameStartInd &MainFSM[1]
+#define gamePlayInd &MainFSM[2]
+#define gameDoneInd &MainFSM[3]
+#define replayInd &MainFSM[4]
+
+State MainFSM[] = {
+    {tronMenuInit, periodic_menu_update, menuIsDone, {gameStartInd, gameStartInd}},
+    {gameInit, gameUpdate, gameFinished, {menuInd, gameStartInd}}};
+
+State *currState = menuInd;
 
 uint32_t M = 1;
 uint32_t Random32(void)
@@ -73,8 +94,7 @@ void TIMG12_IRQHandler(void)
 
         // 2) read input switches
         buttonInput = Switch_In();
-        joystickPacket = ((yInput>threshold)<<3)|((yInput<-threshold)<<2)
-                        |((xInput>threshold)<<1)|((xInput<-threshold));
+        joystickPacket = ((yInput > threshold) << 3) | ((yInput < -threshold) << 2) | ((xInput > threshold) << 1) | ((xInput < -threshold));
 
         // 3) move sprites
         // 4) start sounds
@@ -112,7 +132,6 @@ int main(void)
 
     // Start the menu
     tronMenuInit();
-    LED_On(0x07);
 
     while (1)
     {
@@ -123,9 +142,14 @@ int main(void)
             semaphore = false;
 
             // update ST7735R
-            periodic_update((joystickPacket<<8) | buttonInput);
+            currState->per_func((joystickPacket << 8) | buttonInput);
 
             // check for end game or level switch
+            if (currState->isDone())
+            {
+                currState = currState->next[0];
+                currState->init_func();
+            }
         }
     }
 }

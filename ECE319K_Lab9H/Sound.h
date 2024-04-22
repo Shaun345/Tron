@@ -29,11 +29,11 @@ void Sound_Start(const uint8_t *pt, uint32_t count);
 void Sound_Stop(void);
 
 void Sound_Menu(void);
+void Sound_Explosion(void);
 void Sound_Select(void);
-void Sound_Start(void);
+void Sound_StartGame(void);
 void Sound_Success(void);
 void Sound_Fail(void);
 void Sound_GameWin(void);
-void Sound_GameLose(void);
 
 #endif

@@ -10,6 +10,8 @@ void down(void);
 void select(void);
 void exit(void);
 
-void periodic_update(int);
+void periodic_menu_update(int);
+
+bool menuIsDone(void);
 
 #endif

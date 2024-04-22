@@ -44,7 +44,8 @@ Lab9HMain.o: ../Lab9HMain.cpp \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Sound.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/images/images.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/menu.h \
- C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Joystick2.h
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Joystick2.h \
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GamePlay.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -133,3 +134,5 @@ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/images/images.h:
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/menu.h:
 
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Joystick2.h:
+
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GamePlay.h:

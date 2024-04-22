@@ -10,167 +10,65 @@
 #include "../inc/ST7735.h"
 #include "../inc/Clock.h"
 #include "images/images.h"
+#include "Sound.h"
+#include "LED.h"
+#include "GameSettings.h"
+extern int bikeSpeed;
+extern bool abilityEnabled;
+extern int currLang;
 
 const int default_capacity = 10;
 
-const int redTrail[3] = {64593, 20480, 8192};
-const int blueTrail[3] = {46495, 10, 4};
+bool visitedMatrix[160][110];
+
+const unsigned short redTrail[3] = {ST7735_Color565(255, 136, 136), ST7735_Color565(152, 0, 0), ST7735_Color565(87, 0, 0)};
+const unsigned short blueTrail[3] = {ST7735_Color565(178, 178, 255), ST7735_Color565(0, 0, 152), ST7735_Color565(0, 0, 87)};
 
 const unsigned short *cycleSprites[4][2] = {{UpBlueCycle, UpRedCycle},
-                                {RightBlueCycle, RightRedCycle},
-                                {DownBlueCycle, DownRedCycle},
-                                {LeftBlueCycle, LeftRedCycle}};
-
-class Coord
-{
-    int x;
-    int y;
-
-public:
-    Coord(int x, int y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-
-    Coord()
-    {
-        x = 0;
-        y = 0;
-    }
-
-    bool operator==(Coord &other)
-    {
-        if (other.x == this->x && other.y == this->y)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    };
-
-    Coord operator+(Coord &other)
-    {
-        Coord res;
-        res.x = x + other.x;
-        res.y = y + other.y;
-        return res;
-    }
-
-    void setX(int x)
-    {
-        this->x = x;
-    }
-
-    void setY(int y)
-    {
-        this->y = y;
-    }
-
-    int getX()
-    {
-        return x;
-    }
-
-    int getY()
-    {
-        return y;
-    }
-};
-
-class Line
-{
-    Coord *data;
-    int length;
-    int capacity;
-
-public:
-    Line()
-    {
-        this->capacity = default_capacity;
-        this->data = new Coord[this->capacity];
-        this->length = 0;
-    }
-
-    int getLength()
-    {
-        return length;
-    }
-
-    Coord operator[](int index)
-    {
-        // assert((index > 0) && (index < this->length));
-        return this->data[index];
-    }
-
-    bool isMember(Coord point)
-    {
-        for (int i = 0; i < this->length; i++)
-        {
-            if (this->data[i] == point)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    bool operator[](Coord point)
-    {
-        for (int i = 0; i < this->length; i++)
-        {
-            if (this->data[i] == point)
-            {
-                return false;
-            }
-        }
-
-        this->capacity *= 2;
-        Coord *temp = new Coord[this->capacity];
-        for (int i = 0; i < this->length; i++)
-        {
-            temp[i] = this->data[i];
-        }
-        delete[] this->data;
-        this->data = temp;
-        this->data[this->length] = point;
-        length++;
-        return true;
-    }
-};
+                                            {RightBlueCycle, RightRedCycle},
+                                            {DownBlueCycle, DownRedCycle},
+                                            {LeftBlueCycle, LeftRedCycle}};
 
 class Bike
 {
     int speed;
     bool abilities;
-    Line line;
     int lineLength;
     int lineCapacity;
     int number;
     bool dead;
+    int last_direction;
     int direction;
     int lives;
 
-    void newPoint(int x, int y)
+    int curPos[2];
+    int lastPos[2];
+
+    void newPoint(int delx, int dely)
     {
-        Coord point = Coord(x, y);
-        if (!line[point])
-        {
+        lastPos[0] = curPos[0];
+        lastPos[1] = curPos[1];
+
+        curPos[0] += delx;
+        curPos[1] += dely;
+
+        if(visitedMatrix[curPos[0]][curPos[1]])
             dead = true;
-        }
+
+        if (curPos[0] < 0 || curPos[1] < 0 || curPos[0] >= 160 || curPos[1] >= 110)
+            dead = true;
     }
 
     void displayCrash()
     {
-        // display crash sprite at last coordinate
-        Coord last = line[line.getLength() - 7];
-
-        ST7735_DrawBitmap(last.getX(), last.getY(), ExplosionOne, 8, 8);
-        ST7735_DrawBitmap(last.getX(), last.getY(), ExplosionTwo, 8, 8);
-        ST7735_DrawBitmap(last.getX(), last.getY(), ExplosionThree, 8, 8);
-        ST7735_DrawBitmap(last.getX(), last.getY(), ExplosionFour, 8, 8);
+        ST7735_DrawBitmap(lastPos[0] - 5, lastPos[1], ExplosionOne, 8, 8);
+        Clock_Delay(10000000);
+        ST7735_DrawBitmap(lastPos[0] - 5, lastPos[1], ExplosionTwo, 8, 8);
+        Clock_Delay(10000000);
+        ST7735_DrawBitmap(lastPos[0] - 5, lastPos[1], ExplosionThree, 8, 8);
+        Clock_Delay(10000000);
+        ST7735_DrawBitmap(lastPos[0] - 5, lastPos[1], ExplosionFour, 8, 8);
+        Clock_Delay(10000000);
     }
 
 public:
@@ -180,19 +78,34 @@ public:
         this->speed = speed;
         this->abilities = abilities;
         this->number = number;
-        if (number)
+        this->dead = false;
+        this->lives = 3;
+        reset();
+
+    }
+
+    void reset()
+    {
+        if (!number)
         {
-            line[0] = Coord(PLAYER1_START_X, PLAYER1_START_Y);
+            curPos[0] = lastPos[0] = PLAYER1_START_X;
+            curPos[1] = lastPos[1] = PLAYER1_START_Y;
+            this->direction = last_direction = DIR_DOWN;
         }
         else
         {
-            line[0] = Coord(PLAYER2_START_X, PLAYER2_START_Y);
+            curPos[0] = lastPos[0] = PLAYER2_START_X;
+            curPos[1] = lastPos[1] = PLAYER2_START_Y;
+            this->direction = last_direction = DIR_UP;
         }
+
+        this->dead = false;
     }
 
     void crash()
     {
         lives--;
+        // Sound_Explosion();
         displayCrash();
     }
 
@@ -203,55 +116,77 @@ public:
 
     void updateLocation(int direction)
     {
-        this->direction = direction;
-        Coord point = line[line.getLength() - 1];
-        switch (direction)
+        int conversion = direction;
+        switch(direction)
+        {
+        case 0:
+            conversion = -1;
+            break;
+        case 1:
+            conversion = DIR_LEFT;
+            break;
+        case 2:
+            conversion = DIR_RIGHT;
+            break;
+        case 4:
+            conversion = DIR_DOWN;
+            break;
+        case 8:
+            conversion = DIR_UP;
+            break;
+        }
+
+        last_direction = this->direction;
+        switch(conversion)
+        {
+            case DIR_UP:
+            case DIR_DOWN:
+            case DIR_LEFT:
+            case DIR_RIGHT:
+                this->direction = conversion;
+
+            default:
+                break;
+        }
+        
+        switch (this->direction)
         {
         case DIR_UP:
-            newPoint(point.getX(), point.getY() - 1);
+            newPoint(0, -1);
             break;
         case DIR_RIGHT:
-            newPoint(point.getX() + 1, point.getY());
+            newPoint(1, 0);
             break;
         case DIR_DOWN:
-            newPoint(point.getX(), point.getY() + 1);
+            if(last_direction == DIR_LEFT || last_direction == DIR_RIGHT)
+                newPoint(0, 8);
+            else
+                newPoint(0, 1);
             break;
         case DIR_LEFT:
-            newPoint(point.getX() - 1, point.getY());
+            if(last_direction == DIR_UP || last_direction == DIR_RIGHT)
+                newPoint(-8, 0);
+            else
+                newPoint(-1, 0);
             break;
         }
     }
 
     bool collisions(Bike other)
     {
-        if (dead)
-        {
+        if(other.curPos[0] == curPos[0] && other.curPos[1] == curPos[1])
             return true;
-        }
-        Coord currentPos = this->line[this->lineLength - 1];
-        if (other.line.isMember(currentPos))
-        {
-            dead = true;
-            return true;
-        }
-        if (currentPos.getX() < 0 || currentPos.getY() < 0 || currentPos.getX() >= 160 || currentPos.getY() >= 128)
-        {
-            dead = true;
-            return true;
-        }
+
+        return dead;
     }
 
     void firstDisplay()
     {
         // display bike sprite at starting coordinate
-        if (!number)
-        {
-            ST7735_DrawBitmap(PLAYER1_START_X, PLAYER1_START_Y, DownBlueCycle, 5, 7);
-        }
+        if(!number)
+            ST7735_DrawBitmap(PLAYER1_START_X - 2, PLAYER1_START_Y, DownBlueCycle, 5, 7);
         else
-        {
-            ST7735_DrawBitmap(PLAYER2_START_X, PLAYER2_START_Y, UpRedCycle, 5, 7);
-        }
+            ST7735_DrawBitmap(PLAYER2_START_X - 2, PLAYER2_START_Y, UpRedCycle, 5, 7);
     }
 
     void display()
@@ -259,33 +194,62 @@ public:
         // display bike sprite at current coordinate
         // if current direction up or down, display vertical line sprite at last coordinate
         // else display horizontal sprite at last coordinate
-        Coord last = line[line.getLength() - 7];
-        Coord current = line[line.getLength() - 1];
-        const int *trailColor = !number ? blueTrail : redTrail;
+        const unsigned short *trailColor = (!number) ? blueTrail : redTrail;
 
-        int width = direction % 2 ? 7 : 5;
-        int height = direction % 2 ? 5 : 7;
+        int xOff = 0;
+        int yOff = 0;
 
-        ST7735_DrawBitmap(current.getX(), current.getY(), cycleSprites[direction][number], width, height);
+        switch(direction)
+        {
+        case DIR_LEFT:
+            xOff = 7;
+            break;
+
+        case DIR_DOWN:
+            yOff = -7;
+            break;
+
+        case DIR_UP:
+        case DIR_RIGHT:
+            break;
+        }
+
+
 
         switch (direction)
         {
         case DIR_UP:
         case DIR_DOWN:
-            ST7735_DrawPixel(last.getX(), last.getY(), trailColor[0]);
-            ST7735_DrawPixel(last.getX() - 1, last.getY(), trailColor[1]);
-            ST7735_DrawPixel(last.getX() + 1, last.getY(), trailColor[1]);
-            ST7735_DrawPixel(last.getX() - 2, last.getY(), trailColor[2]);
-            ST7735_DrawPixel(last.getX() + 2, last.getY(), trailColor[2]);
+            ST7735_DrawBitmap(curPos[0] - 2, curPos[1], cycleSprites[direction][number], 5, 7);
+
+            ST7735_DrawPixel(lastPos[0], lastPos[1] + yOff, trailColor[0]);
+            ST7735_DrawPixel(lastPos[0] - 1, lastPos[1] + yOff, trailColor[1]);
+            ST7735_DrawPixel(lastPos[0] + 1, lastPos[1] + yOff, trailColor[1]);
+            ST7735_DrawPixel(lastPos[0] - 2, lastPos[1] + yOff, trailColor[2]);
+            ST7735_DrawPixel(lastPos[0] + 2, lastPos[1] + yOff, trailColor[2]);
+
+            visitedMatrix[lastPos[0] + 0][lastPos[1] + yOff] = true;
+            visitedMatrix[lastPos[0] - 1][lastPos[1] + yOff] = true;
+            visitedMatrix[lastPos[0] + 1][lastPos[1] + yOff] = true;
+            visitedMatrix[lastPos[0] - 2][lastPos[1] + yOff] = true;
+            visitedMatrix[lastPos[0] + 2][lastPos[1] + yOff] = true;
             break;
 
         case DIR_LEFT:
         case DIR_RIGHT:
-            ST7735_DrawPixel(last.getX(), last.getY(), trailColor[0]);
-            ST7735_DrawPixel(last.getX(), last.getY() - 1, trailColor[1]);
-            ST7735_DrawPixel(last.getX(), last.getY() + 1, trailColor[1]);
-            ST7735_DrawPixel(last.getX(), last.getY() - 2, trailColor[2]);
-            ST7735_DrawPixel(last.getX(), last.getY() + 2, trailColor[2]);
+            ST7735_DrawBitmap(curPos[0], curPos[1] + 2, cycleSprites[direction][number], 7, 5);
+
+            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1], trailColor[0]);
+            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 1, trailColor[1]);
+            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 1, trailColor[1]);
+            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] - 2, trailColor[2]);
+            ST7735_DrawPixel(lastPos[0] + xOff, lastPos[1] + 2, trailColor[2]);
+
+            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 0] = true;
+            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 1] = true;
+            visitedMatrix[lastPos[0] + xOff][lastPos[1] - 1] = true;
+            visitedMatrix[lastPos[0] + xOff][lastPos[1] + 2] = true;
+            visitedMatrix[lastPos[0] + xOff][lastPos[1] - 2] = true;
             break;
         }
     }
@@ -297,6 +261,9 @@ class Gameplay
     int speed;
     int language;
     bool abilities;
+
+    bool gameDone = false;
+
     Bike player1;
     Bike player2;
 
@@ -305,16 +272,41 @@ class Gameplay
         // display background
         // display bikes
         // display countdown timer
-        ST7735_FillRect(0, 0, 159, 113, 0);
         player1.firstDisplay();
         player2.firstDisplay();
-        ST7735_DrawBitmap(60, 40, three_image, 40, 80);
-        Clock_Delay(1000);
-        ST7735_DrawBitmap(60, 40, two_image, 40, 80);
-        Clock_Delay(1000);
-        ST7735_DrawBitmap(60, 40, one_image, 40, 80);
-        Clock_Delay(1000);
-        ST7735_FillRect(60, 40, 40, 80, 0);
+
+        for(int col = 0; col < 160; col++)
+            for(int row = 0; row < 110; row++)
+                visitedMatrix[col][row] = false;
+
+        LED_Off(7);
+        LED_On(1);
+        Sound_Select();
+        ST7735_DrawBitmap(60, 79, three_image, 40, 40);
+        Clock_Delay(50000000);
+
+        Sound_Select();
+        ST7735_DrawBitmap(60, 79, two_image, 40, 40);
+        Clock_Delay(50000000);
+
+        LED_Off(7);
+        LED_On(2);
+        Sound_Select();
+        ST7735_DrawBitmap(60, 79, one_image, 40, 40);
+        Clock_Delay(50000000);
+
+        LED_Off(7);
+        LED_On(4);
+        Sound_Select();
+        ST7735_FillRect(60, 40, 40, 40, ST7735_BLACK);
+    }
+
+    void gameOver()
+    {
+        if(player1.health() <= 0 || player2.health() <= 0)
+        {
+            gameDone = true;
+        }
     }
 
 public:
@@ -335,6 +327,15 @@ public:
         delete &player2;
         player1 = Bike(speed, abilities, 0);
         player2 = Bike(speed, abilities, 1);
+        gameDone = false;
+        countDown();
+    }
+
+    void newRound()
+    {
+        ST7735_FillRect(0, 0, 160, 110, ST7735_BLACK);
+        player1.reset();
+        player2.reset();
         countDown();
     }
 
@@ -351,6 +352,8 @@ public:
                 gameOver();
                 return true;
             }
+
+            newRound();
         }
         if (player2.collisions(player1))
         {
@@ -361,13 +364,36 @@ public:
                 gameOver();
                 return true;
             }
+
+            newRound();
         }
         player1.display();
         player2.display();
         return false;
     }
 
-    void gameOver()
+    bool isGameOver()
     {
+        return gameDone;
     }
 };
+
+Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
+
+void gameInit(void)
+{
+    ST7735_FillScreen(ST7735_BLACK);
+    ST7735_FillRect(0, 110, 160, 18, 65289);
+    gameRunner.reset();
+}
+
+void gameUpdate(int input)
+{
+    // gameRunner.update(0x000F & (input >> 8), input >> 12);
+    gameRunner.update(0x000F & (input >> 8), 0);
+}
+
+bool gameFinished()
+{
+    return gameRunner.isGameOver();
+}

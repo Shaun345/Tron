@@ -1,8 +1,12 @@
 #ifndef Tron_Settings
 #define Tron_Settings
 
-int currLang = 0;
-int bikeSpeed = 1;
-bool abilityEnabled = false;
+#define ENGLISH 0
+#define GERMAN 1
+
+extern int bikeSpeed;
+extern bool abilityEnabled;
+extern int currLang;
+
 
 #endif

@@ -16,9 +16,11 @@
 #define PLAYER1_START_X 10
 #define PLAYER1_START_Y 10
 #define PLAYER2_START_X 150
-#define PLAYER2_START_Y 103
+#define PLAYER2_START_Y 100
 
-
-
+void gameInit(void);
+void gameUpdate(int);
+void gameOver(void);
+bool gameFinished(void);
 
 #endif /* GAMEPLAY_H_ */
