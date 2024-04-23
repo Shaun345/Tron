@@ -13,6 +13,7 @@ ORDERED_OBJS += \
 "./Clock.o" \
 "./DAC5.o" \
 "./FIFO2.o" \
+"./GameDoneMenu.o" \
 "./GamePlay.o" \
 "./IRxmt.o" \
 "./Joystick2.o" \
@@ -168,9 +169,9 @@ ECE319K_Lab9H.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Clock.o" "DAC5.o" "FIFO2.o" "GamePlay.o" "IRxmt.o" "Joystick2.o" "LED.o" "Lab9HMain.o" "LaunchPad.o" "SPI.o" "ST7735.o" "SlidePot.o" "SmallFont.o" "Sound.o" "Switch.o" "TExaS.o" "Timer.o" "UART2.o" "menu.o" "images\pipedreams\PipeSound.o" "ticlang\startup_mspm0g3507_ticlang.o" 
+	-$(RM) "Clock.o" "DAC5.o" "FIFO2.o" "GameDoneMenu.o" "GamePlay.o" "IRxmt.o" "Joystick2.o" "LED.o" "Lab9HMain.o" "LaunchPad.o" "SPI.o" "ST7735.o" "SlidePot.o" "SmallFont.o" "Sound.o" "Switch.o" "TExaS.o" "Timer.o" "UART2.o" "menu.o" "images\pipedreams\PipeSound.o" "ticlang\startup_mspm0g3507_ticlang.o" 
 	-$(RM) "images\pipedreams\PipeSound.d" "ticlang\startup_mspm0g3507_ticlang.d" 
-	-$(RM) "Clock.d" "DAC5.d" "FIFO2.d" "GamePlay.d" "IRxmt.d" "Joystick2.d" "LED.d" "Lab9HMain.d" "LaunchPad.d" "SPI.d" "ST7735.d" "SlidePot.d" "SmallFont.d" "Sound.d" "Switch.d" "TExaS.d" "Timer.d" "UART2.d" "menu.d" 
+	-$(RM) "Clock.d" "DAC5.d" "FIFO2.d" "GameDoneMenu.d" "GamePlay.d" "IRxmt.d" "Joystick2.d" "LED.d" "Lab9HMain.d" "LaunchPad.d" "SPI.d" "ST7735.d" "SlidePot.d" "SmallFont.d" "Sound.d" "Switch.d" "TExaS.d" "Timer.d" "UART2.d" "menu.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

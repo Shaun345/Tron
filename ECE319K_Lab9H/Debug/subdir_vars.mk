@@ -9,6 +9,7 @@ CPP_SRCS += \
 C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.cpp \
 ../FIFO2.cpp \
+../GameDoneMenu.cpp \
 ../GamePlay.cpp \
 ../IRxmt.cpp \
 ../Joystick2.cpp \
@@ -33,6 +34,7 @@ OBJS += \
 ./Clock.o \
 ./DAC5.o \
 ./FIFO2.o \
+./GameDoneMenu.o \
 ./GamePlay.o \
 ./IRxmt.o \
 ./Joystick2.o \
@@ -54,6 +56,7 @@ CPP_DEPS += \
 ./Clock.d \
 ./DAC5.d \
 ./FIFO2.d \
+./GameDoneMenu.d \
 ./GamePlay.d \
 ./IRxmt.d \
 ./Joystick2.d \
@@ -75,6 +78,7 @@ OBJS__QUOTED += \
 "Clock.o" \
 "DAC5.o" \
 "FIFO2.o" \
+"GameDoneMenu.o" \
 "GamePlay.o" \
 "IRxmt.o" \
 "Joystick2.o" \
@@ -96,6 +100,7 @@ CPP_DEPS__QUOTED += \
 "Clock.d" \
 "DAC5.d" \
 "FIFO2.d" \
+"GameDoneMenu.d" \
 "GamePlay.d" \
 "IRxmt.d" \
 "Joystick2.d" \
@@ -117,6 +122,7 @@ CPP_SRCS__QUOTED += \
 "C:/ECE 319 Final Project/Tron/inc/Clock.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/DAC5.cpp" \
 "../FIFO2.cpp" \
+"../GameDoneMenu.cpp" \
 "../GamePlay.cpp" \
 "../IRxmt.cpp" \
 "../Joystick2.cpp" \

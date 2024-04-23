@@ -24,4 +24,6 @@ void gameOver(void);
 bool gameFinished(void);
 int getAbility();
 
+int gameWinner(void);
+
 #endif /* GAMEPLAY_H_ */

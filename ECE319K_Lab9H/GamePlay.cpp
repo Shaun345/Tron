@@ -612,9 +612,16 @@ public:
         return 0;
 
     }
+
+
 };
 
 Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
+
+int gameWinner()
+{
+    return gameRunner.winner;
+}
 
 void gameInit(void)
 {
