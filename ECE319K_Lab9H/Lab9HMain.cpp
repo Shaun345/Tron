@@ -14,9 +14,9 @@
 #include "../inc/Timer.h"
 #include "../inc/SlidePot.h"
 #include "../inc/DAC5.h"
-#include "../inc/FIFO2.h"
-//#include "UART2.h"
-//#include "IRxmt.h"
+#include "FIFO2.h"
+#include "UART2.h"
+#include "IRxmt.h"
 #include "SmallFont.h"
 #include "LED.h"
 #include "Switch.h"
@@ -102,7 +102,7 @@ void TIMG12_IRQHandler(void)
         // 3) move sprites
         // 4) start sounds
         // 5) transmit UART data
-        // IRxmt_OutChar(joystickPacket |= 0x80);
+        IRxmt_OutChar(joystickPacket | 0x80);
         // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
@@ -128,8 +128,8 @@ int main(void)
     Switch_Init();                                   // initialize switches
     LED_Init();                                      // initialize LED
     Sound_Init();                                    // initialize sound
-    //UART2_Init();                                    // initialize Receiving
-    //IRxmt_Init();                                    // initialize Transmitting
+    UART2_Init();                                    // initialize Receiving
+    IRxmt_Init();                                    // initialize Transmitting
     TExaS_Init(0, 0, &TExaS_LaunchPadLogicPB27PB26); // PB27 and PB26
                                                      // initialize interrupts on TimerG12 at 30 Hz
     TimerG12_IntArm(80000000 / 30, 2);

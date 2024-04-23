@@ -12,9 +12,9 @@
 #include "../inc/LaunchPad.h"
 #include "../inc/TExaS.h"
 #include "../inc/Timer.h"
-#include "../inc/FIFO2.h"
-//#include "UART2.h"
-//#include "IRxmt.h"
+#include "FIFO2.h"
+#include "UART2.h"
+#include "IRxmt.h"
 #include "images/images.h"
 #include "Sound.h"
 #include "LED.h"
@@ -589,17 +589,16 @@ public:
         player2.turnOffLine(p2);
     }
 
-    int getPacket() {
-//        int packet;
-//        {
-//                do
-//            {
-//                packet = UART2_InChar();
-//            }
-//            while ((packet&(1<<7)) != (1<<7));
-//            return packet &= ~(1<<7);
-//        }
-        return 0;
+    int getPacket()
+    {
+        int packet;
+        {
+            do
+            {
+                packet = UART2_InChar();
+            } while (!packet);
+            return packet & ~(1<<7);
+        }
     }
 };
 
@@ -618,12 +617,13 @@ void gameInit(void)
 void gameUpdate(int input)
 {
     // gameRunner.update(0x000F & (input >> 8), input >> 12);
-    if (host) {
+    if (host)
+    {
         gameRunner.update(0x000F & (input >> 8), gameRunner.getPacket());
     }
-    else {
+    else
+    {
         gameRunner.update(gameRunner.getPacket(), 0x000F & (input >> 8));
-
     }
     gameRunner.toggleAbilities((input & 0x0020) >> 5, (input & 0x1000) >> 12);
 }

@@ -8,7 +8,9 @@ SHELL = cmd.exe
 CPP_SRCS += \
 C:/ECE\ 319\ Final\ Project/Tron/inc/Clock.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.cpp \
+../FIFO2.cpp \
 ../GamePlay.cpp \
+../IRxmt.cpp \
 ../Joystick2.cpp \
 ../LED.cpp \
 ../Lab9HMain.cpp \
@@ -21,6 +23,7 @@ C:/ECE\ 319\ Final\ Project/Tron/inc/SlidePot.cpp \
 ../Switch.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/TExaS.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.cpp \
+../UART2.cpp \
 ../menu.cpp 
 
 CMD_SRCS += \
@@ -29,7 +32,9 @@ CMD_SRCS += \
 OBJS += \
 ./Clock.o \
 ./DAC5.o \
+./FIFO2.o \
 ./GamePlay.o \
+./IRxmt.o \
 ./Joystick2.o \
 ./LED.o \
 ./Lab9HMain.o \
@@ -42,12 +47,15 @@ OBJS += \
 ./Switch.o \
 ./TExaS.o \
 ./Timer.o \
+./UART2.o \
 ./menu.o 
 
 CPP_DEPS += \
 ./Clock.d \
 ./DAC5.d \
+./FIFO2.d \
 ./GamePlay.d \
+./IRxmt.d \
 ./Joystick2.d \
 ./LED.d \
 ./Lab9HMain.d \
@@ -60,12 +68,15 @@ CPP_DEPS += \
 ./Switch.d \
 ./TExaS.d \
 ./Timer.d \
+./UART2.d \
 ./menu.d 
 
 OBJS__QUOTED += \
 "Clock.o" \
 "DAC5.o" \
+"FIFO2.o" \
 "GamePlay.o" \
+"IRxmt.o" \
 "Joystick2.o" \
 "LED.o" \
 "Lab9HMain.o" \
@@ -78,12 +89,15 @@ OBJS__QUOTED += \
 "Switch.o" \
 "TExaS.o" \
 "Timer.o" \
+"UART2.o" \
 "menu.o" 
 
 CPP_DEPS__QUOTED += \
 "Clock.d" \
 "DAC5.d" \
+"FIFO2.d" \
 "GamePlay.d" \
+"IRxmt.d" \
 "Joystick2.d" \
 "LED.d" \
 "Lab9HMain.d" \
@@ -96,12 +110,15 @@ CPP_DEPS__QUOTED += \
 "Switch.d" \
 "TExaS.d" \
 "Timer.d" \
+"UART2.d" \
 "menu.d" 
 
 CPP_SRCS__QUOTED += \
 "C:/ECE 319 Final Project/Tron/inc/Clock.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/DAC5.cpp" \
+"../FIFO2.cpp" \
 "../GamePlay.cpp" \
+"../IRxmt.cpp" \
 "../Joystick2.cpp" \
 "../LED.cpp" \
 "../Lab9HMain.cpp" \
@@ -114,6 +131,7 @@ CPP_SRCS__QUOTED += \
 "../Switch.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/TExaS.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/Timer.cpp" \
+"../UART2.cpp" \
 "../menu.cpp" 
 
 

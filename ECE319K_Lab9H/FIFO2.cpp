@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../inc/FIFO2.h"
+#include "FIFO2.h"
 #include "../inc/ST7735.h"
 
 
