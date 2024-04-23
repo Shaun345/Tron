@@ -447,14 +447,6 @@ class Gameplay
         // display background
         // display bikes
         // display countdown timer
-        synced = true;
-        Clock_Delay1ms(100);
-        while (getPacket() != SYNCH_KEY) {
-            synced = false;
-        }
-        Clock_Delay1ms(100);
-        synced = true;
-
 
         ST7735_DrawFastVLine(0, 0, 110, 65289);
         ST7735_DrawFastVLine(159, 0, 110, 65289);
@@ -646,18 +638,14 @@ void gameInit(void)
 void gameUpdate(int input)
 {
     
-    uint8_t packet = gameRunner.getPacket();
+    //int player1Input = (input >> 2) & 0x01 | (input >> 4) & 0x02 | (input >> 3) & 0x04 | (input >> 1) & 0x08;
+    int player1Input = (input & 0x04) << 1 | (input & 0x10) >> 2 | (input & 0x20) >> 4 | (input & 0x08) >> 3;
+    int player1Ability = (input >> 0) & 0x01;
+    int player2Input = (input >> 8) & 0x0F;
+    int player2Ability = (input & 0x40) >> 6 ;
 
-    if (host)
-    {
-        gameRunner.update(0x000F & (input >> 8), packet & 0x0F);
-        gameRunner.toggleAbilities((input & 0x0020) >> 5, (packet & 0x10) >> 4);
-    }
-    else
-    {
-        gameRunner.update(packet & 0x0F, 0x000F & (input >> 8));
-        gameRunner.toggleAbilities((packet & 0x10) >> 4, (input & 0x0020) >> 5);
-    }
+    gameRunner.update(player1Input, player2Input);
+    gameRunner.toggleAbilities(player1Ability, player2Ability);
     
 }
 

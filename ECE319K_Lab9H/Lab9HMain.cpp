@@ -102,19 +102,9 @@ void TIMG12_IRQHandler(void)
         buttonInput = Switch_In();
         
         joystickPacket = ((yInput > threshold) << 3) | ((yInput < -threshold) << 2) | ((xInput > threshold) << 1) | ((xInput < -threshold));
-        abilityPacket = (getAbility() << 4);
         // 3) move sprites
         // 4) start sounds
         // 5) transmit UART data
-        if (!synced) {
-            IRxmt_OutChar(SYNCH_KEY | 0x80);
-            IRxmt_OutChar(SYNCH_KEY);
-        }
-        else {
-            IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
-            IRxmt_OutChar(abilityPacket | joystickPacket);
-
-        }
         // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
@@ -144,7 +134,7 @@ int main(void)
     IRxmt_Init();                                    // initialize Transmitting
     TExaS_Init(0, 0, &TExaS_LaunchPadLogicPB27PB26); // PB27 and PB26
                                                      // initialize interrupts on TimerG12 at 30 Hz
-    TimerG12_IntArm(80000000 / 30, 2);
+    TimerG12_IntArm(80000000 / 15, 2);
     SysTick_IntArm(7272, 3);
     // initialize all data structures
     __enable_irq();

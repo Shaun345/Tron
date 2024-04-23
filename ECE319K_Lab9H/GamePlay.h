@@ -13,9 +13,9 @@
 #define DIR_DOWN 2
 #define DIR_LEFT 3
 
-#define PLAYER1_START_X 10
+#define PLAYER1_START_X 75
 #define PLAYER1_START_Y 10
-#define PLAYER2_START_X 150
+#define PLAYER2_START_X 75
 #define PLAYER2_START_Y 100
 
 #define SYNCH_KEY 0x5F
