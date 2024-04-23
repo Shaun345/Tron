@@ -25,6 +25,8 @@
 #include "menu.h"
 #include "Joystick2.h"
 #include "GamePlay.h"
+#include "GameDoneMenu.h"
+
 extern "C" void __disable_irq(void);
 extern "C" void __enable_irq(void);
 extern "C" void TIMG12_IRQHandler(void);
@@ -48,13 +50,13 @@ struct State
 
 #define menuInd &MainFSM[0]
 #define gameStartInd &MainFSM[1]
-#define gamePlayInd &MainFSM[2]
-#define gameDoneInd &MainFSM[3]
-#define replayInd &MainFSM[4]
+#define gameDoneInd &MainFSM[2]
+#define replayInd &MainFSM[3]
 
 State MainFSM[] = {
     {tronMenuInit, periodic_menu_update, menuIsDone, {gameStartInd, gameStartInd}},
-    {gameInit, gameUpdate, gameFinished, {menuInd, gameStartInd}}};
+    {gameInit, gameUpdate, gameFinished, {gameDoneInd, gameDoneInd}},
+    {printWinLose, updateScreen, readyForMenu, {menuInd, menuInd}}};
 
 State *currState = menuInd;
 

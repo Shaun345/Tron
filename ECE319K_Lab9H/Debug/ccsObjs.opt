@@ -1,6 +1,7 @@
 "./Clock.o"
 "./DAC5.o"
 "./FIFO2.o"
+"./GameDoneMenu.o"
 "./GamePlay.o"
 "./IRxmt.o"
 "./Joystick2.o"

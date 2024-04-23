@@ -23,4 +23,6 @@ void gameUpdate(int);
 void gameOver(void);
 bool gameFinished(void);
 
+int gameWinner(void);
+
 #endif /* GAMEPLAY_H_ */

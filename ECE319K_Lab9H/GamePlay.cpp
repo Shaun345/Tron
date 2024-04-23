@@ -600,9 +600,16 @@ public:
             return packet & ~(1<<7);
         }
     }
+
+
 };
 
 Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
+
+int gameWinner()
+{
+    return gameRunner.winner;
+}
 
 void gameInit(void)
 {
