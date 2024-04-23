@@ -8,5 +8,6 @@ extern int bikeSpeed;
 extern bool abilityEnabled;
 extern int currLang;
 extern bool host;
+extern bool synced;
 
 #endif

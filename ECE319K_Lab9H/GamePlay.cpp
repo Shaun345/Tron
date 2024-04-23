@@ -447,6 +447,15 @@ class Gameplay
         // display background
         // display bikes
         // display countdown timer
+        synced = true;
+        Clock_Delay1ms(100);
+        while (getPacket() != SYNCH_KEY) {
+            synced = false;
+        }
+        Clock_Delay1ms(100);
+        synced = true;
+
+
         ST7735_DrawFastVLine(0, 0, 110, 65289);
         ST7735_DrawFastVLine(159, 0, 110, 65289);
         ST7735_DrawFastHLine(0, 0, 160, 65289);
@@ -552,6 +561,7 @@ public:
 
     bool update(int player1Direction, int player2Direction)
     {
+
         player1.updateLocation(player1Direction);
         player2.updateLocation(player2Direction);
         if (player1.collisions(player2))

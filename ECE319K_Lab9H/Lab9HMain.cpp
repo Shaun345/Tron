@@ -106,8 +106,15 @@ void TIMG12_IRQHandler(void)
         // 3) move sprites
         // 4) start sounds
         // 5) transmit UART data
-        IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
-        IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
+        if (!synced) {
+            IRxmt_OutChar(SYNCH_KEY | 0x80);
+            IRxmt_OutChar(SYNCH_KEY);
+        }
+        else {
+            IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
+            IRxmt_OutChar(abilityPacket | joystickPacket);
+
+        }
         // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
@@ -121,7 +128,7 @@ uint8_t TExaS_LaunchPadLogicPB27PB26(void)
 
 // ALL ST7735 OUTPUT MUST OCCUR IN MAIN
 int main(void)
-{ // final main
+   { // final main
     __disable_irq();
     PLL_Init(); // set bus speed
     LaunchPad_Init();

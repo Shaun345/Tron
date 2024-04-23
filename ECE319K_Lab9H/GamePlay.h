@@ -18,6 +18,10 @@
 #define PLAYER2_START_X 150
 #define PLAYER2_START_Y 100
 
+#define SYNCH_KEY 0x5F
+
+extern bool synced;
+
 void gameInit(void);
 void gameUpdate(int);
 void gameOver(void);

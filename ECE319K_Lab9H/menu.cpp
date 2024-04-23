@@ -13,6 +13,7 @@ int currLang = ENGLISH;
 int bikeSpeed = 1;
 bool abilityEnabled = false;
 bool host = true;
+bool synced = false;
 
 bool done = false;
 
