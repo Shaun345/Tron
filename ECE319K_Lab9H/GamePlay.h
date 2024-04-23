@@ -22,5 +22,6 @@ void gameInit(void);
 void gameUpdate(int);
 void gameOver(void);
 bool gameFinished(void);
+int getAbility();
 
 #endif /* GAMEPLAY_H_ */

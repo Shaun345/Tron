@@ -73,6 +73,7 @@ Joystick2 axes(1, 2);
 
 int buttonInput = 0;
 uint8_t joystickPacket = 0; // Up Down Left Right
+uint8_t abilityPacket = 0;
 int32_t xInput = 0;
 int32_t yInput = 0;
 // Change this to a FSM
@@ -97,12 +98,14 @@ void TIMG12_IRQHandler(void)
 
         // 2) read input switches
         buttonInput = Switch_In();
+        
         joystickPacket = ((yInput > threshold) << 3) | ((yInput < -threshold) << 2) | ((xInput > threshold) << 1) | ((xInput < -threshold));
-
+        abilityPacket = (getAbility() << 4);
         // 3) move sprites
         // 4) start sounds
         // 5) transmit UART data
-        IRxmt_OutChar(joystickPacket | 0x80);
+        IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
+        IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
         // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES

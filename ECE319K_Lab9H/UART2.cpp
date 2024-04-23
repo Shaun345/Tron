@@ -9,7 +9,7 @@
 #include "UART2.h"
 #include "../inc/Clock.h"
 #include "../inc/LaunchPad.h"
-#include "../inc/FIFO2.h"
+#include "FIFO2.h"
 
 uint32_t LostData;
 Queue FIFO2;

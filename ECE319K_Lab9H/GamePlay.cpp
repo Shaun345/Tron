@@ -274,7 +274,7 @@ public:
         case DIR_DOWN:
         case DIR_LEFT:
         case DIR_RIGHT:
-            if ((last_direction - conversion) != 2 && (last_direction - conversion) != -2)
+            if ((last_direction - conversion) != 2 && (last_direction - conversion) != -2 && conversion != -1)
             {
                 this->direction = conversion;
             }
@@ -425,6 +425,10 @@ public:
             updateCorner(trailColor);
         }
     }
+
+    bool getAbility() {
+        return abilities;
+    }
 };
 
 class Gameplay
@@ -436,8 +440,7 @@ class Gameplay
 
     bool gameDone = false;
 
-    Bike player1;
-    Bike player2;
+
 
     void countDown()
     {
@@ -514,6 +517,8 @@ class Gameplay
     }
 
 public:
+    Bike player1;
+    Bike player2;
     int winner;
 
     Gameplay(int speed, int language, bool abilities)
@@ -592,13 +597,20 @@ public:
     int getPacket()
     {
         int packet;
+        int packet2;
+
+        do
         {
-            do
-            {
-                packet = UART2_InChar();
-            } while (!packet);
-            return packet & ~(1<<7);
+            packet = UART2_InChar();
+        } while (!packet);
+        packet2 = UART2_InChar();
+
+        packet &= ~(1<<7);
+        if (packet == packet2) {
+            return packet;
         }
+        return 0;
+
     }
 };
 
@@ -616,19 +628,32 @@ void gameInit(void)
 
 void gameUpdate(int input)
 {
-    // gameRunner.update(0x000F & (input >> 8), input >> 12);
+    
+    uint8_t packet = gameRunner.getPacket();
+
     if (host)
     {
-        gameRunner.update(0x000F & (input >> 8), gameRunner.getPacket());
+        gameRunner.update(0x000F & (input >> 8), packet & 0x0F);
+        gameRunner.toggleAbilities((input & 0x0020) >> 5, (packet & 0x10) >> 4);
     }
     else
     {
-        gameRunner.update(gameRunner.getPacket(), 0x000F & (input >> 8));
+        gameRunner.update(packet & 0x0F, 0x000F & (input >> 8));
+        gameRunner.toggleAbilities((packet & 0x10) >> 4, (input & 0x0020) >> 5);
     }
-    gameRunner.toggleAbilities((input & 0x0020) >> 5, (input & 0x1000) >> 12);
+    
 }
 
 bool gameFinished()
 {
     return gameRunner.isGameOver();
 }
+
+int getAbility() {
+        if (host) {
+            return gameRunner.player1.getAbility();
+        }
+        else {
+            return gameRunner.player2.getAbility();
+        }
+    }
