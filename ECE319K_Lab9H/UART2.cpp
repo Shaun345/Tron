@@ -11,7 +11,7 @@
 #include "../inc/LaunchPad.h"
 #include "FIFO2.h"
 
-uint32_t LostData;
+uint32_t LostData2;
 Queue FIFO2;
 
 // power Domain PD0
@@ -20,7 +20,7 @@ Queue FIFO2;
 // no transmit, interrupt on receive timeout
 void UART2_Init(void){
 // write this
-    LostData = 0;
+    LostData2 = 0;
 
     UART2->GPRCM.RSTCTL = 0xB1000003;
     UART2->GPRCM.PWREN = 0x26000001;
@@ -66,7 +66,7 @@ void UART2_IRQHandler(void){
 // read all data, putting in FIFO
     if(FIFO2.IsFull())
     {
-        LostData++;
+        LostData2++;
         return;
     }
 

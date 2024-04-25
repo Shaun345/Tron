@@ -13,7 +13,8 @@
 #include "../inc/TExaS.h"
 #include "../inc/Timer.h"
 #include "FIFO2.h"
-#include "UART2.h"
+#include "UART0_TX.h"
+#include "UART1_RX.h"
 #include "IRxmt.h"
 #include "images/images.h"
 #include "Sound.h"
@@ -426,7 +427,8 @@ public:
         }
     }
 
-    bool getAbility() {
+    bool getAbility()
+    {
         return abilities;
     }
 };
@@ -440,22 +442,11 @@ class Gameplay
 
     bool gameDone = false;
 
-
-
     void countDown()
     {
         // display background
         // display bikes
         // display countdown timer
-        synced = true;
-        Clock_Delay1ms(100);
-        while (getPacket() != SYNCH_KEY) {
-            synced = false;
-        }
-        Clock_Delay1ms(100);
-        synced = true;
-
-
         ST7735_DrawFastVLine(0, 0, 110, 65289);
         ST7735_DrawFastVLine(159, 0, 110, 65289);
         ST7735_DrawFastHLine(0, 0, 160, 65289);
@@ -574,6 +565,7 @@ public:
                 return true;
             }
             else
+                synced = false;
                 newRound();
         }
         if (player2.collisions(player1))
@@ -586,6 +578,7 @@ public:
                 return true;
             }
             else
+            synced = false;
                 newRound();
         }
         player1.display();
@@ -603,27 +596,6 @@ public:
         player1.turnOffLine(p1);
         player2.turnOffLine(p2);
     }
-
-    int getPacket()
-    {
-        int packet;
-        int packet2;
-
-        do
-        {
-            packet = UART2_InChar();
-        } while (!packet);
-        packet2 = UART2_InChar();
-
-        packet &= ~(1<<7);
-        if (packet == packet2) {
-            return packet;
-        }
-        return 0;
-
-    }
-
-
 };
 
 Gameplay gameRunner(bikeSpeed, currLang, abilityEnabled);
@@ -640,13 +612,17 @@ void gameInit(void)
     __enable_irq();
 
     ST7735_FillScreen(ST7735_BLACK);
-    gameRunner.reset();
 }
 
 void gameUpdate(int input)
 {
-    
-    uint8_t packet = gameRunner.getPacket();
+    if(!synced)
+        return;
+
+    if(!lastSync)
+        gameRunner.newRound();
+
+    uint8_t packet = input >> 12;
 
     if (host)
     {
@@ -658,7 +634,6 @@ void gameUpdate(int input)
         gameRunner.update(packet & 0x0F, 0x000F & (input >> 8));
         gameRunner.toggleAbilities((packet & 0x10) >> 4, (input & 0x0020) >> 5);
     }
-    
 }
 
 bool gameFinished()
@@ -666,11 +641,14 @@ bool gameFinished()
     return gameRunner.isGameOver();
 }
 
-int getAbility() {
-        if (host) {
-            return gameRunner.player1.getAbility();
-        }
-        else {
-            return gameRunner.player2.getAbility();
-        }
+int getAbility()
+{
+    if (host)
+    {
+        return gameRunner.player1.getAbility();
     }
+    else
+    {
+        return gameRunner.player2.getAbility();
+    }
+}

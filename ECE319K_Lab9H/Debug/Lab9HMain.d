@@ -39,7 +39,8 @@ Lab9HMain.o: ../Lab9HMain.cpp \
  C:/ECE\ 319\ Final\ Project/Tron/inc/SlidePot.h \
  C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/FIFO2.h \
- C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART2.h \
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART0_TX.h \
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART1_RX.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/IRxmt.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/SmallFont.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/LED.h \
@@ -49,7 +50,8 @@ Lab9HMain.o: ../Lab9HMain.cpp \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/menu.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Joystick2.h \
  C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GamePlay.h \
- C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GameDoneMenu.h
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GameDoneMenu.h \
+ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GameSettings.h
 
 C:/ti/mspm0_sdk_1_20_01_06/source/ti/devices/msp/msp.h:
 
@@ -127,7 +129,9 @@ C:/ECE\ 319\ Final\ Project/Tron/inc/DAC5.h:
 
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/FIFO2.h:
 
-C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART2.h:
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART0_TX.h:
+
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/UART1_RX.h:
 
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/IRxmt.h:
 
@@ -148,3 +152,5 @@ C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/Joystick2.h:
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GamePlay.h:
 
 C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GameDoneMenu.h:
+
+C:/ECE\ 319\ Final\ Project/Tron/ECE319K_Lab9H/GameSettings.h:

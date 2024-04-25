@@ -2,6 +2,7 @@
     "files.associations": {
         "xstring": "cpp",
         "adc.h": "c",
-        "clock.h": "c"
+        "clock.h": "c",
+        "uart.h": "c"
     }
 }

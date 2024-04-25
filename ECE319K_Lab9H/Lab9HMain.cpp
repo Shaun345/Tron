@@ -15,7 +15,8 @@
 #include "../inc/SlidePot.h"
 #include "../inc/DAC5.h"
 #include "FIFO2.h"
-#include "UART2.h"
+#include "UART0_TX.h"
+#include "UART1_RX.h"
 #include "IRxmt.h"
 #include "SmallFont.h"
 #include "LED.h"
@@ -26,6 +27,7 @@
 #include "Joystick2.h"
 #include "GamePlay.h"
 #include "GameDoneMenu.h"
+#include "GameSettings.h"
 
 extern "C" void __disable_irq(void);
 extern "C" void __enable_irq(void);
@@ -73,6 +75,7 @@ uint32_t Random(uint32_t n)
 
 Joystick2 axes(1, 2);
 
+uint8_t userInput = 0;
 int buttonInput = 0;
 uint8_t joystickPacket = 0; // Up Down Left Right
 uint8_t abilityPacket = 0;
@@ -100,21 +103,22 @@ void TIMG12_IRQHandler(void)
 
         // 2) read input switches
         buttonInput = Switch_In();
-        
+
         joystickPacket = ((yInput > threshold) << 3) | ((yInput < -threshold) << 2) | ((xInput > threshold) << 1) | ((xInput < -threshold));
         abilityPacket = (getAbility() << 4);
         // 3) move sprites
         // 4) start sounds
         // 5) transmit UART data
-        if (!synced) {
-            IRxmt_OutChar(SYNCH_KEY | 0x80);
-            IRxmt_OutChar(SYNCH_KEY);
-        }
-        else {
-            IRxmt_OutChar(abilityPacket | joystickPacket | 0x80);
-            IRxmt_OutChar(abilityPacket | joystickPacket);
+        userInput = UART1_InChar();
 
-        }
+        lastSync = synced;
+        if (userInput == SYNCH_KEY)
+            synced = true;
+
+        if (!synced)
+            UART0_OutChar(SYNCH_KEY | 0x80);
+        else
+            UART0_OutChar(abilityPacket | joystickPacket | 0x80);
         // 6) set semaphore
         semaphore = true;
         // NO LCD OUTPUT IN INTERRUPT SERVICE ROUTINES
@@ -128,7 +132,7 @@ uint8_t TExaS_LaunchPadLogicPB27PB26(void)
 
 // ALL ST7735 OUTPUT MUST OCCUR IN MAIN
 int main(void)
-   { // final main
+{ // final main
     __disable_irq();
     PLL_Init(); // set bus speed
     LaunchPad_Init();
@@ -140,12 +144,12 @@ int main(void)
     Switch_Init();                                   // initialize switches
     LED_Init();                                      // initialize LED
     Sound_Init();                                    // initialize sound
-    UART2_Init();                                    // initialize Receiving
-    IRxmt_Init();                                    // initialize Transmitting
+    UART1_Init();                                    // initialize Receiving
+    UART0_Init();                                    // initialize Transmitting
     TExaS_Init(0, 0, &TExaS_LaunchPadLogicPB27PB26); // PB27 and PB26
                                                      // initialize interrupts on TimerG12 at 30 Hz
-    TimerG12_IntArm(80000000 / 30, 2);
-    SysTick_IntArm(7272, 3);
+    TimerG12_IntArm(80000000 / 30, 1);
+    SysTick_IntArm(7272, 2);
     // initialize all data structures
     __enable_irq();
 
@@ -161,7 +165,7 @@ int main(void)
             semaphore = false;
 
             // update ST7735R
-            currState->per_func((joystickPacket << 8) | buttonInput);
+            currState->per_func((userInput << 12) | (joystickPacket << 8) | buttonInput);
 
             // check for end game or level switch
             if (currState->isDone())

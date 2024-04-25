@@ -24,6 +24,8 @@ C:/ECE\ 319\ Final\ Project/Tron/inc/SlidePot.cpp \
 ../Switch.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/TExaS.cpp \
 C:/ECE\ 319\ Final\ Project/Tron/inc/Timer.cpp \
+../UART0_TX.cpp \
+../UART1_RX.cpp \
 ../UART2.cpp \
 ../menu.cpp 
 
@@ -49,6 +51,8 @@ OBJS += \
 ./Switch.o \
 ./TExaS.o \
 ./Timer.o \
+./UART0_TX.o \
+./UART1_RX.o \
 ./UART2.o \
 ./menu.o 
 
@@ -71,6 +75,8 @@ CPP_DEPS += \
 ./Switch.d \
 ./TExaS.d \
 ./Timer.d \
+./UART0_TX.d \
+./UART1_RX.d \
 ./UART2.d \
 ./menu.d 
 
@@ -93,6 +99,8 @@ OBJS__QUOTED += \
 "Switch.o" \
 "TExaS.o" \
 "Timer.o" \
+"UART0_TX.o" \
+"UART1_RX.o" \
 "UART2.o" \
 "menu.o" 
 
@@ -115,6 +123,8 @@ CPP_DEPS__QUOTED += \
 "Switch.d" \
 "TExaS.d" \
 "Timer.d" \
+"UART0_TX.d" \
+"UART1_RX.d" \
 "UART2.d" \
 "menu.d" 
 
@@ -137,6 +147,8 @@ CPP_SRCS__QUOTED += \
 "../Switch.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/TExaS.cpp" \
 "C:/ECE 319 Final Project/Tron/inc/Timer.cpp" \
+"../UART0_TX.cpp" \
+"../UART1_RX.cpp" \
 "../UART2.cpp" \
 "../menu.cpp" 
 

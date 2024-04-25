@@ -16,6 +16,8 @@
 "./Switch.o"
 "./TExaS.o"
 "./Timer.o"
+"./UART0_TX.o"
+"./UART1_RX.o"
 "./UART2.o"
 "./menu.o"
 "./images/pipedreams/PipeSound.o"

@@ -14,6 +14,7 @@ int bikeSpeed = 1;
 bool abilityEnabled = false;
 bool host = true;
 bool synced = false;
+bool lastSync = false;
 
 bool done = false;
 
@@ -141,6 +142,7 @@ void changeSet()
 int lastInput = 0;
 void periodic_menu_update(int input)
 {
+    input &= 0x00FF;
     if (input != lastInput)
     {
         lastInput = input;
